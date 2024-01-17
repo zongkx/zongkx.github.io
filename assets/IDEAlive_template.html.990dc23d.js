@@ -1,0 +1,1 @@
+const e={key:"v-8d7c4c92",path:"/java/IDEAlive_template.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"class/enum/interface",slug:"class-enum-interface",children:[]},{level:2,title:"tests",slug:"tests",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"java/IDEAlive_template.md"};export{e as data};

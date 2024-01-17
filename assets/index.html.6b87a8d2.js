@@ -1,1 +1,0 @@
-const e={key:"v-2d0a9a6d",path:"/js/",title:"Dev",lang:"en-US",frontmatter:{catagory:"Dev",readme:!0},excerpt:"",headers:[],git:{updatedTime:170545334e4,contributors:[{name:"zongkx",email:"32995330+zongkx@users.noreply.github.com",commits:1}]},filePathRelative:"js/README.md"};export{e as data};

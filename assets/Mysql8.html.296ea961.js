@@ -1,1 +1,0 @@
-const t={key:"v-2c3a5488",path:"/database/Mysql8.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"Window Function",slug:"window-function",children:[]}],git:{updatedTime:170545334e4,contributors:[{name:"zongkx",email:"32995330+zongkx@users.noreply.github.com",commits:1}]},filePathRelative:"database/Mysql8.md"};export{t as data};

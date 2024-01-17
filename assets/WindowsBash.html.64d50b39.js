@@ -1,0 +1,1 @@
+const e={key:"v-1b2fe4d0",path:"/ops/WindowsBash.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u8BBE\u7F6Ejdk path",slug:"\u8BBE\u7F6Ejdk-path",children:[]},{level:2,title:"aaa",slug:"aaa",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"ops/WindowsBash.md"};export{e as data};

@@ -1,0 +1,1 @@
+const e={key:"v-7725be50",path:"/java/Java-Thread.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"CompletableFuture",slug:"completablefuture",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"java/Java-Thread.md"};export{e as data};
