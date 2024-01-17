@@ -35,3 +35,13 @@ public interface IHandler<I,O>{
         }
     }
 ```
+## 泛型擦除的解决方案
+[url](https://www.cnblogs.com/thisiswhy/p/17965123)
+
+参考spring event的 `ResolvableTypeProvider`
+```
+    @Override
+    public ResolvableType getResolvableType() {
+        return ResolvableType.forClassWithGenerics(getClass(), ResolvableType.forInstance(getData()));
+    }
+```
