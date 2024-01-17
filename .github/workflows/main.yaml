@@ -1,0 +1,72 @@
+name: build and deploy VuePress to GitHub Pages
+
+# 检测 master 分支上的推送和 pr
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy-vuepress:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Setup Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # Build VuePress
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+       # Push it to gh-pahes
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          cname: zongkx.github.io
+      # # 同步到gitee
+      # - name: Sync to Gitee
+      #   uses: wearerequired/git-mirror-action@master
+      #   env:
+      #     # 注意在 Settings->Secrets 配置 GITEE_RSA_PRIVATE_KEY
+      #     SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+      #   with:
+      #     # 注意替换为你的 GitHub 源仓库地址
+      #     source-repo: git@github.com:zongkx/zongkx.github.io.git
+      #     # 注意替换为你的 Gitee 目标仓库地址
+      #     destination-repo: git@gitee.com:zongkx/zongkx.git
+
+      # - name: Build Gitee Pages
+      #   uses: yanglbme/gitee-pages-action@main
+      #   with:
+      #     # 注意替换为你的 Gitee 用户名
+      #     gitee-username: 1101732819@qq.com
+      #     # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
+      #     gitee-password: ${{ secrets.GITEE_PASSWORD }}
+      #     # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
+      #     gitee-repo: zongkx/zongkx
+      #     # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
+      #     branch: gh-pages
