@@ -1,0 +1,1 @@
+const t={key:"v-3f2948d6",path:"/practice/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E5%AE%9E%E8%B7%B5.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:170545334e4,contributors:[{name:"zongkx",email:"32995330+zongkx@users.noreply.github.com",commits:1}]},filePathRelative:"practice/\u5F00\u53D1\u5B89\u5168\u5B9E\u8DF5.md"};export{t as data};

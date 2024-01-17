@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title></title><meta name="description" content="">
+    <link rel="modulepreload" href="/assets/app.d740ecc1.js"><link rel="modulepreload" href="/assets/gitlab_jenkins_docker实践.html.12386d67.js"><link rel="modulepreload" href="/assets/gitlab_jenkins_docker实践.html.32aa99d8.js">
+    <link rel="stylesheet" href="/assets/style.c1f02812.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><!----></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading"> <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/ops/gitlab_jenkins_docker%E5%AE%9E%E8%B7%B5.html#gitlab-jenkins-docker-docker" class="router-link-active router-link-exact-active sidebar-item" aria-label="gitlab+jenkins+docker+docker"><!--[--><!--]--> gitlab+jenkins+docker+docker <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/ops/gitlab_jenkins_docker%E5%AE%9E%E8%B7%B5.html#_1-gitlab" class="router-link-active router-link-exact-active sidebar-item" aria-label="1. gitlab"><!--[--><!--]--> 1. gitlab <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/ops/gitlab_jenkins_docker%E5%AE%9E%E8%B7%B5.html#_2-项目中的配置" class="router-link-active router-link-exact-active sidebar-item" aria-label="2. 项目中的配置"><!--[--><!--]--> 2. 项目中的配置 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/ops/gitlab_jenkins_docker%E5%AE%9E%E8%B7%B5.html#_3-jenkins" class="router-link-active router-link-exact-active sidebar-item" aria-label="3. jenkins"><!--[--><!--]--> 3. jenkins <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/ops/gitlab_jenkins_docker%E5%AE%9E%E8%B7%B5.html#_4-k8s" class="router-link-active router-link-exact-active sidebar-item" aria-label="4. k8s"><!--[--><!--]--> 4. k8s <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h2 id="gitlab-jenkins-docker-docker" tabindex="-1"><a class="header-anchor" href="#gitlab-jenkins-docker-docker" aria-hidden="true">#</a> gitlab+jenkins+docker+docker</h2><p>目前公司运行了一套上述服务部署环境,作为一名后端开发虽然没有亲自部署过这些服务,但是简单使用还是很有必要掌握的.</p><h3 id="_1-gitlab" tabindex="-1"><a class="header-anchor" href="#_1-gitlab" aria-hidden="true">#</a> 1. gitlab</h3><p>gitlab中一般包括dev/master分支,分别用于测试环境和生产环境</p><h3 id="_2-项目中的配置" tabindex="-1"><a class="header-anchor" href="#_2-项目中的配置" aria-hidden="true">#</a> 2. 项目中的配置</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>  &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;pro&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;activeByDefault&gt;false&lt;/activeByDefault&gt;
+            &lt;/activation&gt;
+            &lt;properties&gt;
+                &lt;profile-name&gt;pro&lt;/profile-name&gt;
+                &lt;server-port&gt;9092&lt;/server-port&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+        &lt;profile&gt;
+            &lt;id&gt;pro&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+            &lt;/activation&gt;
+            &lt;properties&gt;
+                &lt;profile-name&gt;dev&lt;/profile-name&gt;
+                &lt;server-port&gt;9092&lt;/server-port&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+  &lt;/profiles&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>利用插件<code>maven-resources-plugin</code>自动替换application.yml/k8s svc文件/log.xml等的文件中的占位符, 通过<code>-Pdev</code>/<code>-Ppro</code> 实现生成不同配置文件的功能.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+    &lt;version&gt;3.2.0&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;encoding&gt;utf-8&lt;/encoding&gt;
+        &lt;useDefaultDelimiters&gt;true&lt;/useDefaultDelimiters&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/resources&lt;/directory&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;/resource&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/k8s&lt;/directory&gt;
+                &lt;filtering&gt;true&lt;/filtering&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p><code>deploy.yml</code>:</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mydemo-service
+  namespace: mydemo-${profile-name}
+  labels:
+    name: mydemo
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /prometheus
+        prometheus.io/port: &quot;${server-port}&quot;
+        prometheus.io/scrape: &quot;true&quot;
+      labels:
+        name: mydemo-service
+    spec:
+      containers:
+        - image: 127.0.0.1/${project.artifactId}-${profile-name}:${project.version}-${timestamp}
+          name: mydemo-service
+      restartPolicy: Always
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p><code>svc.yml</code></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: Service
+metadata:
+  name: mydemo-service--svc
+  namespace: mydemo-${profile-name}
+spec:
+  selector:
+    name: mydemo-service
+  ports:
+    - name: http
+      port: ${server-port}
+      protocol: TCP
+  type: NodePort
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p><code>dockerfile</code></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>FROM openjdk:8-arthas
+VOLUME /tmp
+ADD mydemo-service-1.0-SNAPSHOT.jar app.jar
+RUN sh -c &#39;touch /app.jar&#39;
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ENTRYPOINT [&quot;java&quot;,&quot;-Djava.security.egd=file:/dev/./urandom&quot;,&quot;-Duser.timezone=GMT+08&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_3-jenkins" tabindex="-1"><a class="header-anchor" href="#_3-jenkins" aria-hidden="true">#</a> 3. jenkins</h3><p>需要完成流水线中的脚本,为了直接从maven项目到k8s部署,实际上用流水线脚本即可完成. 分三步</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>node(&quot;my&quot;) {
+   stage(&#39;git clone&#39;) { 
+   }
+   stage(&#39;maven build &amp;&amp; deploy &#39;) {
+   }
+   stage(&quot;publish k8s&quot;) {
+   }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ol><li>拉代码</li></ol><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>  stage(&#39;获取代码&#39;) {
+       checkout([$class: &#39;GitSCM&#39;, branches: [[name: &#39;${branch}&#39;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: &#39;凭据ID&#39;, url: &#39;GIT地址&#39;]]])
+   }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="2"><li>构建并推送镜像</li></ol><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>  stage(&#39;maven build &amp;&amp; deploy &#39;) {      
+      sh &quot;   &#39;${mvnHome}/bin/mvn&#39;  clean  package  install -Dmaven.test.skip  -Pdev -U&quot;
+      sh &quot; cd mydemo-service &amp;&amp;  &#39;${mvnHome}/bin/mvn&#39;  clean  package  docker:build -DpushImage   -Dmaven.test.skip  -Pdev&quot;
+   }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>依赖插件<code>docker-maven-plugin</code></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code> &lt;plugin&gt;
+    &lt;groupId&gt;com.spotify&lt;/groupId&gt;
+    &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;0.4.11&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;imageName&gt;127.0.0.1/${project.artifactId}-${profile-name}&lt;/imageName&gt;
+        &lt;imageTags&gt;${project.version}-${timestamp}&lt;/imageTags&gt;
+        &lt;dockerDirectory&gt;src/main/docker&lt;/dockerDirectory&gt;
+        &lt;serverId&gt;docker-image&lt;/serverId&gt;
+        &lt;useConfigFile&gt;true&lt;/useConfigFile&gt;
+        &lt;resources&gt;
+            &lt;resource&gt;
+                &lt;targetPath&gt;/&lt;/targetPath&gt;
+                &lt;directory&gt;${project.build.directory}&lt;/directory&gt;
+                &lt;include&gt;${project.build.finalName}.jar&lt;/include&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ol start="3"><li>k8s部署</li></ol><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>   sh  &quot;cd mydemo-service &amp;&amp; kubectl  -s http://127.0.0.1:8888 apply  -f  target/classes/deploy.yaml -f target/classes/svc.yaml&quot;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h3 id="_4-k8s" tabindex="-1"><a class="header-anchor" href="#_4-k8s" aria-hidden="true">#</a> 4. k8s</h3><p>在k8s中指定的命名空间即可找到对应服务.</p><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 32995330+zongkx@users.noreply.github.com">zongkx</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.d740ecc1.js" defer></script>
+  </body>
+</html>

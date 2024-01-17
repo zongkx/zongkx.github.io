@@ -1,0 +1,1 @@
+const a={key:"v-51d5cc77",path:"/java/Java-Lamdba.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:170545334e4,contributors:[{name:"zongkx",email:"32995330+zongkx@users.noreply.github.com",commits:1}]},filePathRelative:"java/Java-Lamdba.md"};export{a as data};

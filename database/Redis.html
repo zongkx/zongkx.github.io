@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>Redis | </title><meta name="description" content="">
+    <link rel="modulepreload" href="/assets/app.d740ecc1.js"><link rel="modulepreload" href="/assets/Redis.html.3a384b1c.js"><link rel="modulepreload" href="/assets/Redis.html.6ceab221.js">
+    <link rel="stylesheet" href="/assets/style.c1f02812.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><!----></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading">Redis <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#数据类型" class="router-link-active router-link-exact-active sidebar-item" aria-label="数据类型"><!--[--><!--]--> 数据类型 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#字符串string" class="router-link-active router-link-exact-active sidebar-item" aria-label="字符串String"><!--[--><!--]--> 字符串String <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#哈希-hash" class="router-link-active router-link-exact-active sidebar-item" aria-label="哈希 hash"><!--[--><!--]--> 哈希 hash <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#列表" class="router-link-active router-link-exact-active sidebar-item" aria-label="列表"><!--[--><!--]--> 列表 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#集合-set" class="router-link-active router-link-exact-active sidebar-item" aria-label="集合 set"><!--[--><!--]--> 集合 set <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#有序集合zset" class="router-link-active router-link-exact-active sidebar-item" aria-label="有序集合Zset"><!--[--><!--]--> 有序集合Zset <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/database/Redis.html#应用场景" class="router-link-active router-link-exact-active sidebar-item" aria-label="应用场景"><!--[--><!--]--> 应用场景 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#持久化" class="router-link-active router-link-exact-active sidebar-item" aria-label="持久化"><!--[--><!--]--> 持久化 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#rdb-默认" class="router-link-active router-link-exact-active sidebar-item" aria-label="RDB（默认）"><!--[--><!--]--> RDB（默认） <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#aof" class="router-link-active router-link-exact-active sidebar-item" aria-label="AOF"><!--[--><!--]--> AOF <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/database/Redis.html#事务" class="router-link-active router-link-exact-active sidebar-item" aria-label="事务"><!--[--><!--]--> 事务 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#集群" class="router-link-active router-link-exact-active sidebar-item" aria-label="集群"><!--[--><!--]--> 集群 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#哨兵模式" class="router-link-active router-link-exact-active sidebar-item" aria-label="哨兵模式"><!--[--><!--]--> 哨兵模式 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#主从架构" class="router-link-active router-link-exact-active sidebar-item" aria-label="主从架构"><!--[--><!--]--> 主从架构 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/database/Redis.html#springboot-demo" class="router-link-active router-link-exact-active sidebar-item" aria-label="SpringBoot Demo"><!--[--><!--]--> SpringBoot Demo <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#依赖和配置" class="router-link-active router-link-exact-active sidebar-item" aria-label="依赖和配置"><!--[--><!--]--> 依赖和配置 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#redistemplate" class="router-link-active router-link-exact-active sidebar-item" aria-label="RedisTemplate"><!--[--><!--]--> RedisTemplate <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#redisutil" class="router-link-active router-link-exact-active sidebar-item" aria-label="RedisUtil"><!--[--><!--]--> RedisUtil <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#测试" class="router-link-active router-link-exact-active sidebar-item" aria-label="测试"><!--[--><!--]--> 测试 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/database/Redis.html#springboot-应用" class="router-link-active router-link-exact-active sidebar-item" aria-label="SpringBoot 应用"><!--[--><!--]--> SpringBoot 应用 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#token鉴权" class="router-link-active router-link-exact-active sidebar-item" aria-label="Token鉴权"><!--[--><!--]--> Token鉴权 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#redisservice-loginservice" class="router-link-active router-link-exact-active sidebar-item" aria-label="RedisService/LoginService"><!--[--><!--]--> RedisService/LoginService <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#拦截器和配置" class="router-link-active router-link-exact-active sidebar-item" aria-label="拦截器和配置"><!--[--><!--]--> 拦截器和配置 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#接口和测试" class="router-link-active router-link-exact-active sidebar-item" aria-label="接口和测试"><!--[--><!--]--> 接口和测试 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#拓展" class="router-link-active router-link-exact-active sidebar-item" aria-label="拓展"><!--[--><!--]--> 拓展 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/database/Redis.html#分布式存在的并发问题" class="router-link-active router-link-exact-active sidebar-item" aria-label="分布式存在的并发问题"><!--[--><!--]--> 分布式存在的并发问题 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#问题模拟" class="router-link-active router-link-exact-active sidebar-item" aria-label="问题模拟"><!--[--><!--]--> 问题模拟 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#解决" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决"><!--[--><!--]--> 解决 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Redis.html#入门级-setnx-set-if-not-exists" class="router-link-active router-link-exact-active sidebar-item" aria-label="入门级 setnx (set if not exists)"><!--[--><!--]--> 入门级 setnx (set if not exists) <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#优化-添加锁需要原子操作-每个线程加的锁的value都设为uuid-释放锁的时候进行判断" class="router-link-active router-link-exact-active sidebar-item" aria-label="优化:(添加锁需要原子操作)每个线程加的锁的value都设为UUID,释放锁的时候进行判断"><!--[--><!--]--> 优化:(添加锁需要原子操作)每个线程加的锁的value都设为UUID,释放锁的时候进行判断 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#解决-锁续命-删除锁也需要原子操作" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决:锁续命(删除锁也需要原子操作)"><!--[--><!--]--> 解决:锁续命(删除锁也需要原子操作) <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#redission-1" class="router-link-active router-link-exact-active sidebar-item" aria-label="Redission"><!--[--><!--]--> Redission <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Redis.html#redis主从架构导致的分布式锁失效问题" class="router-link-active router-link-exact-active sidebar-item" aria-label="Redis主从架构导致的分布式锁失效问题"><!--[--><!--]--> Redis主从架构导致的分布式锁失效问题 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis" aria-hidden="true">#</a> Redis</h1><p>优点：</p><ol><li>读写性能优秀（基于内存、采用单线程避免了不必要的上下文切换和竞争条件、使用多路IO复用模型，非阻塞IO、数据结构简单且丰富）</li><li>支持数据持久化（AOF、RDB）</li><li>支持事务，Redis的所有操作都是原子性的，同时还支持几个操作合并后的原子性执行</li><li>支持主从复制，主机会自动将数据同步到从机，可以进行读写分离</li></ol><p>缺点：</p><ol><li>受限于物理内存，不适合大量数据高性能读写，适合作为缓存，</li><li>不具备自动容错和恢复功能，存在数据不一致性的问题（主机宕机，数据未及时同步）</li></ol><h2 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型" aria-hidden="true">#</a> 数据类型</h2><h3 id="字符串string" tabindex="-1"><a class="header-anchor" href="#字符串string" aria-hidden="true">#</a> 字符串String</h3><p>可存储：字符串、整数或者浮点数； 操作：对整个字符串或其中一部分执行操作；对整数或浮点数自增或自减 应用：适用于简单的键值对缓存</p><blockquote><p>适合最简单的k-v存储，类似于memcached的存储结构，短信验证码，配置信息等，就用这种类型来存储。</p></blockquote><h3 id="哈希-hash" tabindex="-1"><a class="header-anchor" href="#哈希-hash" aria-hidden="true">#</a> 哈希 hash</h3><p>可存储：包含键值对的无序散列表 操作：添加获取移除单个键值对；获取所有键值对；检查某个键是否存在 应用：结构化的数据，比如一个对象</p><blockquote><p>一般key为ID或者唯一标示，value对应的就是详情了。如商品详情，个人信息详情，新闻详情等。</p></blockquote><h3 id="列表" tabindex="-1"><a class="header-anchor" href="#列表" aria-hidden="true">#</a> 列表</h3><p>可存储：列表 list 操作：从两边压入或弹出元素；对单个多个元素修剪；只保留一个范围内的元素 应用：存储一些列表型的数据，类似**列表</p><blockquote><p>因为list是有序的，比较适合存储一些有序且数据相对固定的数据。如省市区表、字典表等。因为list是有序的，适合根据写入的时间来排序，如：最新的***，消息队列等。</p></blockquote><h3 id="集合-set" tabindex="-1"><a class="header-anchor" href="#集合-set" aria-hidden="true">#</a> 集合 set</h3><p>可存储：无需集合 操作：添加获取移除单个元素；查找某个元素；计算交集、并集、差集；获取某个元素 应用：交集、差集、并集操作</p><blockquote><p>可以简单的理解为ID-List的模式，如微博中一个人有哪些好友，set最牛的地方在于，可以对两个set提供交集、并集、差集操作。例如：查找两个人共同的好友等。</p></blockquote><h3 id="有序集合zset" tabindex="-1"><a class="header-anchor" href="#有序集合zset" aria-hidden="true">#</a> 有序集合Zset</h3><p>可存储：有序集合 操作：添加获取删除元素；根据范围获取元素排名； 应用：去重且排序</p><blockquote><p>排序</p></blockquote><h2 id="应用场景" tabindex="-1"><a class="header-anchor" href="#应用场景" aria-hidden="true">#</a> 应用场景</h2><ul><li>计数器：可以对String自增自减实现计数器功能。</li><li>缓存：将热点数据放到内存中，设置内存的最大使用量以及淘汰机制保证缓存命中率</li><li>会话缓存：可以使用 Redis 来统一存储多台应用服务器的会话信息。当应用服务器不再存储用户的会话信息，也就不再具有状态，一个用户可以请求任意一个应用服务器，从而更容易实现高可用性以及可伸缩性</li><li>查找表：用于获取不可靠数据的快速查询</li><li>消息队列：利用list双向链表的特性，可以通过lpush和lpop写入和读取消息，更主流的是RabbitMQ等消息中间件。</li><li>SET和ZSET：取交集、差集等操作；排序</li></ul><h2 id="持久化" tabindex="-1"><a class="header-anchor" href="#持久化" aria-hidden="true">#</a> 持久化</h2><p>将内存中的数据写入到磁盘，防止数据丢失</p><h3 id="rdb-默认" tabindex="-1"><a class="header-anchor" href="#rdb-默认" aria-hidden="true">#</a> RDB（默认）</h3><p>Redis DataBase：按照一定的时间将内存的数据以快照的形式保存到硬盘中，对应产生的数据文件为dump.rdb。通过配置文件中的save参数来定义快照的周期。 其缺点是：数据安全性低，RDB是间隔一段时间进行持久化，期间出现宕机导致数据丢失。</p><h3 id="aof" tabindex="-1"><a class="header-anchor" href="#aof" aria-hidden="true">#</a> AOF</h3><p>Append Only File：Redis执行的每次写命令记录到单独的日志文件中，当重启Redis会重新将持久化的日志中文件恢复数据。 优点：</p><ol><li>数据安全，aof 持久化可以配置 appendfsync 属性，有 always，每进行一次 命令操作就记录到 aof 文件中一次。</li><li>通过 append 模式写文件，即使中途服务器宕机，可以通过 redis-check-aof 工具解决数据一致性问题。</li><li>AOF 机制的 rewrite 模式。AOF 文件没被 rewrite 之前（文件过大时会对命令 进行合并重写），可以删除其中的某些命令（比如误操作的 flushall）)</li></ol><p>缺点:</p><ol><li>AOF 文件比 RDB 文件大，且恢复速度慢。</li><li>数据集大的时候，比 rdb 启动效率低。</li></ol><h2 id="事务" tabindex="-1"><a class="header-anchor" href="#事务" aria-hidden="true">#</a> 事务</h2><p>原子性:事务中的操作要么都发生，要么都不发生 一致性：事务执行前后数据完整性一致 隔离性：并发执行的互不影响 持久性：事务一旦提交，数据就永久被修改 Redis事务总是保证一致性和隔离性。当服务器运行在AOF持久化模式下，并且appendfsync选项的值为always时，事务也具有持久性。</p><h2 id="集群" tabindex="-1"><a class="header-anchor" href="#集群" aria-hidden="true">#</a> 集群</h2><h3 id="哨兵模式" tabindex="-1"><a class="header-anchor" href="#哨兵模式" aria-hidden="true">#</a> 哨兵模式</h3><p>哨兵是redis集群中非常重要的一个组件，负责</p><ul><li>集群监控：负责监控redis master和slvae进程</li><li>消息通知：如果某个redis实例有故障，通知管理员</li><li>故障转移：如果master node宕机，会自动转移到slave node</li><li>配置中心：如果故障转移了，通知client客户端新的master地址 （至少需要3个哨兵；不保证数据零丢失，保证高可用）</li></ul><h3 id="主从架构" tabindex="-1"><a class="header-anchor" href="#主从架构" aria-hidden="true">#</a> 主从架构</h3><p>maternode负责数据写入，写入之后复制到若干个slavenode，读操作都从从节点取数据。（读写分离）</p><h2 id="springboot-demo" tabindex="-1"><a class="header-anchor" href="#springboot-demo" aria-hidden="true">#</a> SpringBoot Demo</h2><h3 id="依赖和配置" tabindex="-1"><a class="header-anchor" href="#依赖和配置" aria-hidden="true">#</a> 依赖和配置</h3><p>SpringBoot常用的Redis客户端如Jedis\Lettuce，SpringBoot2.0之后已经默认使用Lettuce，</p><blockquote><p>Lettuce的连接是基于Netty的，连接实例可以在多个线程间共享，如果你不知道Netty也没事，大致意思就是一个多线程的应用可以使用同一个连接实例，而不用担心并发线程的数量。通过异步的方式可以让我们更好地利用系统资源。 Jedis 是直连模式，在多个线程间共享一个 Jedis 实例时是线程不安全的，每个线程都去拿自己的 Jedis 实例，当连接数量增多时，物理连接成本就较高了。</p></blockquote><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>配置:</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>spring.cache.type=Redis
+spring.redis.host=127.0.0.1
+spring.redis.port=6379
+spring.redis.lettuce.pool.max-active=8
+spring.redis.lettuce.pool.max-idle=8
+spring.redis.lettuce.pool.min-idle=0
+# 如果配置了pool,那么必须加入commons-pool2的依赖
+        &lt;!-- redis依赖commons-pool --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="redistemplate" tabindex="-1"><a class="header-anchor" href="#redistemplate" aria-hidden="true">#</a> RedisTemplate</h3><p>在配置完之后就可以通过注入RedisTemplate来使用了,不过RedisTemplate默认只支持&lt;String,String&gt;形式的，为了能够扩展，可以手动添加bean来实现。（Spring-Cache也可以使用Redis，在某种情况下，如果可以手动读写缓存也可以不使用@Cache等注解） 下面是自定义bean</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Bean
+    public RedisSerializer&lt;Object&gt; redisSerializer() {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        //反序列化时候遇到不匹配的属性并不抛出异常
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        //序列化时候遇到空对象不抛出异常
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        //反序列化的时候如果是无效子类型,不抛出异常
+        objectMapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false);
+        //不使用默认的dateTime进行序列化,
+        objectMapper.configure(SerializationFeature.WRITE_DATE_KEYS_AS_TIMESTAMPS, false);
+        //使用JSR310提供的序列化类,里面包含了大量的JDK8时间序列化类
+        objectMapper.registerModule(new JavaTimeModule());
+        //启用反序列化所需的类型信息,在属性中添加@class
+        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+        //配置null值的序列化器
+        GenericJackson2JsonRedisSerializer.registerNullValueSerializer(objectMapper, null);
+        return new GenericJackson2JsonRedisSerializer(objectMapper);
+
+    }
+
+
+    @Bean(name = &quot;redisTemplate&quot;)
+    public RedisTemplate&lt;Object, Object&gt; redisTemplate(RedisConnectionFactory redisConnectionFactory, RedisSerializer&lt;Object&gt; redisSerializer) {
+
+        RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;&gt;();
+        template.setConnectionFactory(redisConnectionFactory);
+        template.setDefaultSerializer(redisSerializer);
+        template.setValueSerializer(redisSerializer);
+        template.setHashValueSerializer(redisSerializer);
+        template.setKeySerializer(StringRedisSerializer.UTF_8);
+        template.setHashKeySerializer(StringRedisSerializer.UTF_8);
+        template.afterPropertiesSet();
+        return template;
+    }
+ /**
+     * 对hash类型的数据操作
+     *
+     * @param redisTemplate
+     * @return
+     */
+    @Bean
+    public HashOperations&lt;String, String, Object&gt; hashOperations(RedisTemplate redisTemplate) {
+        return redisTemplate.opsForHash();
+    }
+
+    /**
+     * 对redis字符串类型数据操作
+     *
+     * @param redisTemplate
+     * @return
+     */
+    @Bean
+    public ValueOperations&lt;String, Object&gt; valueOperations(RedisTemplate redisTemplate) {
+        return redisTemplate.opsForValue();
+    }
+
+    /**
+     * 对链表类型的数据操作
+     *
+     * @param redisTemplate
+     * @return
+     */
+    @Bean
+    public ListOperations&lt;String, Object&gt; listOperations(RedisTemplate redisTemplate) {
+        return redisTemplate.opsForList();
+    }
+
+    /**
+     * 对无序集合类型的数据操作
+     *
+     * @param redisTemplate
+     * @return
+     */
+    @Bean
+    public SetOperations&lt;String, Object&gt; setOperations(RedisTemplate redisTemplate) {
+        return redisTemplate.opsForSet();
+    }
+
+    /**
+     * 对有序集合类型的数据操作
+     *
+     * @param redisTemplate
+     * @return
+     */
+    @Bean
+    public ZSetOperations&lt;String, Object&gt; zSetOperations(RedisTemplate redisTemplate) {
+        return redisTemplate.opsForZSet();
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br></div></div><p>在网上搜到的大部分RedisTemplate中用的都是Jackson2JsonRedisSerializer,其中的enableDefaultTyping还是一个过期的方法,找到了使用GenericJackson2JsonRedisSerializer的原因:</p><blockquote><ol><li>无参构造调用一个参数的构造</li><li>构造中创建ObjectMapper,并且设置了一个NullValueSerializer</li><li>ObjectMapper设置包含类信息 上面的RedisTemplate redisTemplate作为参数,如果直接用RedisTemplate&lt;String,Object&gt; redisTemplate 在IDEA中会报不能注入bean的错误,只需要把k,v</li></ol></blockquote><p>对于JDK1.8中的LocalDate和LocalDateTime，可能会出现</p><blockquote><p>Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of <code>java.time.LocalDateTime</code> (no Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator)</p></blockquote><p>这是由于LocalDateTime没空构造,无法反射进行构造,所以会抛出异常.(如果自定义的对象没有提供默认构造,也会抛出这个异常) 可以在该属性上添加注解</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+@JsonSerialize(using = LocalDateTimeSerializer.class)
+private LocalDateTime createTime;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="redisutil" tabindex="-1"><a class="header-anchor" href="#redisutil" aria-hidden="true">#</a> RedisUtil</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>package com.demo.Util;
+
+import org.springframework.data.redis.core.BoundListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * redisTemplate封装
+ *
+ */
+@Component
+public class RedisUtils {
+
+    @Resource
+    private RedisTemplate&lt;String, Object&gt; redisTemplate;
+
+
+    /**
+     * 指定缓存失效时间
+     * @param key 键
+     * @param time 时间(秒)
+     * @return
+     */
+    public boolean expire(String key,long time){
+        try {
+            if(time&gt;0){
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 根据key 获取过期时间
+     * @param key 键 不能为null
+     * @return 时间(秒) 返回0代表为永久有效
+     */
+    public long getExpire(String key){
+        return redisTemplate.getExpire(key,TimeUnit.SECONDS);
+    }
+
+    /**
+     * 判断key是否存在
+     * @param key 键
+     * @return true 存在 false不存在
+     */
+    public boolean hasKey(String key){
+        try {
+            return redisTemplate.hasKey(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 删除缓存
+     * @param key 可以传一个值 或多个
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public void del(String ... key){
+        if(key!=null&amp;&amp;key.length&gt;0){
+            if(key.length==1){
+                redisTemplate.delete(key[0]);
+            }else{
+                redisTemplate.delete(CollectionUtils.arrayToList(key));
+            }
+        }
+    }
+
+    //============================String=============================
+    /**
+     * 普通缓存获取
+     * @param key 键
+     * @return 值
+     */
+    public Object get(String key){
+        return key==null?null:redisTemplate.opsForValue().get(key);
+    }
+
+    /**
+     * 普通缓存放入
+     * @param key 键
+     * @param value 值
+     * @return true成功 false失败
+     */
+    public boolean set(String key,Object value) {
+        try {
+            redisTemplate.opsForValue().set(key, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 普通缓存放入并设置时间
+     * @param key 键
+     * @param value 值
+     * @param time 时间(秒) time要大于0 如果time小于等于0 将设置无限期
+     * @return true成功 false 失败
+     */
+    public boolean set(String key,Object value,long time){
+        try {
+            if(time&gt;0){
+                redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+            }else{
+                set(key, value);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 递增
+     * @param key 键
+     * @param delta 要增加几(大于0)
+     * @return
+     */
+    public long incr(String key, long delta){
+        if(delta&lt;0){
+            throw new RuntimeException(&quot;递增因子必须大于0&quot;);
+        }
+        return redisTemplate.opsForValue().increment(key, delta);
+    }
+
+    /**
+     * 递减
+     * @param key 键
+     * @param delta 要减少几(小于0)
+     * @return
+     */
+    public long decr(String key, long delta){
+        if(delta&lt;0){
+            throw new RuntimeException(&quot;递减因子必须大于0&quot;);
+        }
+        return redisTemplate.opsForValue().increment(key, -delta);
+    }
+
+    //================================Map=================================
+    /**
+     * HashGet
+     * @param key 键 不能为null
+     * @param item 项 不能为null
+     * @return 值
+     */
+    public Object hget(String key,String item){
+        return redisTemplate.opsForHash().get(key, item);
+    }
+
+    /**
+     * 获取hashKey对应的所有键值
+     * @param key 键
+     * @return 对应的多个键值
+     */
+    public Map&lt;Object,Object&gt; hmget(String key){
+        return redisTemplate.opsForHash().entries(key);
+    }
+
+    /**
+     * HashSet
+     * @param key 键
+     * @param map 对应多个键值
+     * @return true 成功 false 失败
+     */
+    public boolean hmset(String key, Map&lt;String,Object&gt; map){
+        try {
+            redisTemplate.opsForHash().putAll(key, map);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * HashSet 并设置时间
+     * @param key 键
+     * @param map 对应多个键值
+     * @param time 时间(秒)
+     * @return true成功 false失败
+     */
+    public boolean hmset(String key, Map&lt;String,Object&gt; map, long time){
+        try {
+            redisTemplate.opsForHash().putAll(key, map);
+            if(time&gt;0){
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 向一张hash表中放入数据,如果不存在将创建
+     * @param key 键
+     * @param item 项
+     * @param value 值
+     * @return true 成功 false失败
+     */
+    public boolean hset(String key,String item,Object value) {
+        try {
+            redisTemplate.opsForHash().put(key, item, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 向一张hash表中放入数据,如果不存在将创建
+     * @param key 键
+     * @param item 项
+     * @param value 值
+     * @param time 时间(秒)  注意:如果已存在的hash表有时间,这里将会替换原有的时间
+     * @return true 成功 false失败
+     */
+    public boolean hset(String key,String item,Object value,long time) {
+        try {
+            redisTemplate.opsForHash().put(key, item, value);
+            if(time&gt;0){
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 删除hash表中的值
+     * @param key 键 不能为null
+     * @param item 项 可以使多个 不能为null
+     */
+    public void hdel(String key, Object... item){
+        redisTemplate.opsForHash().delete(key,item);
+    }
+
+    /**
+     * 判断hash表中是否有该项的值
+     * @param key 键 不能为null
+     * @param item 项 不能为null
+     * @return true 存在 false不存在
+     */
+    public boolean hHasKey(String key, String item){
+        return redisTemplate.opsForHash().hasKey(key, item);
+    }
+
+    /**
+     * hash递增 如果不存在,就会创建一个 并把新增后的值返回
+     * @param key 键
+     * @param item 项
+     * @param by 要增加几(大于0)
+     * @return
+     */
+    public double hincr(String key, String item,double by){
+        return redisTemplate.opsForHash().increment(key, item, by);
+    }
+
+    /**
+     * hash递减
+     * @param key 键
+     * @param item 项
+     * @param by 要减少记(小于0)
+     * @return
+     */
+    public double hdecr(String key, String item,double by){
+        return redisTemplate.opsForHash().increment(key, item,-by);
+    }
+
+    //============================set=============================
+    /**
+     * 根据key获取Set中的所有值
+     * @param key 键
+     * @return
+     */
+    public Set&lt;Object&gt; sGet(String key){
+        try {
+            return redisTemplate.opsForSet().members(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 根据value从一个set中查询,是否存在
+     * @param key 键
+     * @param value 值
+     * @return true 存在 false不存在
+     */
+    public boolean sHasKey(String key,Object value){
+        try {
+            return redisTemplate.opsForSet().isMember(key, value);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 将数据放入set缓存
+     * @param key 键
+     * @param values 值 可以是多个
+     * @return 成功个数
+     */
+    public long sSet(String key, Object...values) {
+        try {
+            return redisTemplate.opsForSet().add(key, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * 将set数据放入缓存
+     * @param key 键
+     * @param time 时间(秒)
+     * @param values 值 可以是多个
+     * @return 成功个数
+     */
+    public long sSetAndTime(String key,long time,Object...values) {
+        try {
+            Long count = redisTemplate.opsForSet().add(key, values);
+            if(time&gt;0) {
+                expire(key, time);
+            }
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * 获取set缓存的长度
+     * @param key 键
+     * @return
+     */
+    public long sGetSetSize(String key){
+        try {
+            return redisTemplate.opsForSet().size(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * 移除值为value的
+     * @param key 键
+     * @param values 值 可以是多个
+     * @return 移除的个数
+     */
+    public long setRemove(String key, Object ...values) {
+        try {
+            Long count = redisTemplate.opsForSet().remove(key, values);
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    //===============================list=================================
+
+    /**
+     * 获取list缓存的内容
+     * @param key 键
+     * @param start 开始
+     * @param end 结束  0 到 -1代表所有值
+     * @return
+     */
+    public List&lt;Object&gt; lGet(String key, long start, long end){
+        try {
+            return redisTemplate.opsForList().range(key, start, end);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 获取list缓存的长度
+     * @param key 键
+     * @return
+     */
+    public long lGetListSize(String key){
+        try {
+            return redisTemplate.opsForList().size(key);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * 通过索引 获取list中的值
+     * @param key 键
+     * @param index 索引  index&gt;=0时， 0 表头，1 第二个元素，依次类推；index&lt;0时，-1，表尾，-2倒数第二个元素，依次类推
+     * @return
+     */
+    public Object lGetIndex(String key,long index){
+        try {
+            return redisTemplate.opsForList().index(key, index);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 将list放入缓存
+     * @param key 键
+     * @param value 值
+     * @return
+     */
+    public boolean lSet(String key, Object value) {
+        try {
+            redisTemplate.opsForList().rightPush(key, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 将list放入缓存
+     * @param key 键
+     * @param value 值
+     * @param time 时间(秒)
+     * @return
+     */
+    public boolean lSet(String key, Object value, long time) {
+        try {
+            redisTemplate.opsForList().rightPush(key, value);
+            if (time &gt; 0) {
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 将list放入缓存
+     * @param key 键
+     * @param value 值
+     * @return
+     */
+    public boolean lSet(String key, List&lt;Object&gt; value) {
+        try {
+            redisTemplate.opsForList().rightPushAll(key, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 将list放入缓存
+     * @param key 键
+     * @param value 值
+     * @param time 时间(秒)
+     * @return
+     */
+    public boolean lSet(String key, List&lt;Object&gt; value, long time) {
+        try {
+            redisTemplate.opsForList().rightPushAll(key, value);
+            if (time &gt; 0) {
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 根据索引修改list中的某条数据
+     * @param key 键
+     * @param index 索引
+     * @param value 值
+     * @return
+     */
+    public boolean lUpdateIndex(String key, long index,Object value) {
+        try {
+            redisTemplate.opsForList().set(key, index, value);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 移除N个值为value
+     * @param key 键
+     * @param count 移除多少个
+     * @param value 值
+     * @return 移除的个数
+     */
+    public long lRemove(String key,long count,Object value) {
+        try {
+            Long remove = redisTemplate.opsForList().remove(key, count, value);
+            return remove;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * 模糊查询获取key值
+     * @param pattern
+     * @return
+     */
+    public Set keys(String pattern){
+        return redisTemplate.keys(pattern);
+    }
+
+    /**
+     * 使用Redis的消息队列
+     * @param channel
+     * @param message 消息内容
+     */
+    public void convertAndSend(String channel, Object message){
+        redisTemplate.convertAndSend(channel,message);
+    }
+
+
+     /**
+     * 根据起始结束序号遍历Redis中的list
+     * @param listKey
+     * @param start  起始序号
+     * @param end  结束序号
+     * @return
+     */
+    public List&lt;Object&gt; rangeList(String listKey, long start, long end) {
+        //绑定操作
+        BoundListOperations&lt;String, Object&gt; boundValueOperations = redisTemplate.boundListOps(listKey);
+        //查询数据
+        return boundValueOperations.range(start, end);
+    }
+    /**
+     * 弹出右边的值 --- 并且移除这个值
+     * @param listKey
+     */
+    public Object rifhtPop(String listKey){
+        //绑定操作
+        BoundListOperations&lt;String, Object&gt; boundValueOperations = redisTemplate.boundListOps(listKey);
+        return boundValueOperations.rightPop();
+    }
+
+    //=========BoundListOperations 用法 End============
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br><span class="line-number">569</span><br><span class="line-number">570</span><br><span class="line-number">571</span><br><span class="line-number">572</span><br><span class="line-number">573</span><br><span class="line-number">574</span><br><span class="line-number">575</span><br><span class="line-number">576</span><br><span class="line-number">577</span><br><span class="line-number">578</span><br><span class="line-number">579</span><br><span class="line-number">580</span><br></div></div><h3 id="测试" tabindex="-1"><a class="header-anchor" href="#测试" aria-hidden="true">#</a> 测试</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Resource
+    private RedisUtils redisUtils;
+
+    @Test
+    void contextLoads() {
+        User user = new User();
+        user.setId(1l);
+        user.setTime(LocalDateTime.now());
+        user.setPassword(&quot;xxx&quot;);
+        redisUtils.lSet(&quot;test&quot;,user);
+        redisUtils.set(&quot;user&quot;,user);
+        log.info(redisUtils.get(&quot;user&quot;).toString());
+        List&lt;Object&gt; list = redisUtils.lGet(&quot;test&quot;,0L,-1L);
+        list.forEach(System.out::print);
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="springboot-应用" tabindex="-1"><a class="header-anchor" href="#springboot-应用" aria-hidden="true">#</a> SpringBoot 应用</h2><h3 id="token鉴权" tabindex="-1"><a class="header-anchor" href="#token鉴权" aria-hidden="true">#</a> Token鉴权</h3><ol><li>用户登录请求登录接口时，验证用户名密码等，验证成功会返回给前端一个token，这个token就是之后鉴权的唯一凭证。</li><li>后台可能将token存储在redis或者数据库中。</li><li>之后前端的请求，需要在header中携带token，后端取出token去redis或者数据库中进行验证，如果验证通过则放行，如果不通过则拒绝操作。</li></ol><p>下面用Redis作为缓存保存token，通过mvc拦截器来实现对登录的验证。</p><h3 id="redisservice-loginservice" tabindex="-1"><a class="header-anchor" href="#redisservice-loginservice" aria-hidden="true">#</a> RedisService/LoginService</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Resource
+    private RedisUtils redisUtils;
+    @Override
+    public void setToken(String key, Object value) {
+        redisUtils.set(key,value);
+    }
+    @Override
+    public Object getToken(String key) {
+        return redisUtils.get(key);
+    }
+    @Override
+    public boolean deleteToken(String key) {
+        redisUtils.del(key);
+        return true;
+    }
+    @Resource
+    private RedisService redisService;
+    @Override
+    public String login(String username, String password) {
+        if (Objects.equals(&quot;test&quot;, username) &amp;&amp; Objects.equals(&quot;123&quot;, password)) {//测试
+            String token = UUID.randomUUID().toString();
+            redisService.setToken(token, username);
+            return &quot;用户：&quot; + username + &quot;登录成功，token是：&quot; + token;
+        } else {
+            return &quot;用户名或密码错误，登录失败！&quot;;
+        }
+
+    }
+    @Override
+    public String logout(HttpServletRequest request) {
+        String token = request.getHeader(&quot;token&quot;);
+        Boolean delete = redisService.deleteToken(token);
+        if (!delete) {
+            return &quot;注销失败，请检查是否登录！&quot;;
+        }
+        return &quot;注销成功！&quot;;
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h3 id="拦截器和配置" tabindex="-1"><a class="header-anchor" href="#拦截器和配置" aria-hidden="true">#</a> 拦截器和配置</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Resource
+    MyInterceptor myInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(myInterceptor).addPathPatterns(&quot;/**&quot;)
+                .excludePathPatterns(&quot;/toLogin&quot;,&quot;/login&quot;,&quot;/js/**&quot;,&quot;/css/**&quot;,&quot;/images/**&quot;);
+    }
+@Component
+@Slf4j
+public class MyInterceptor implements HandlerInterceptor {
+    @Resource
+    private RedisService redisService;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
+        log.info(&quot;请求路径：{}&quot;, request.getRequestURI());
+        response.setCharacterEncoding(&quot;UTF-8&quot;);
+        response.setContentType(&quot;text/html;charset=utf-8&quot;);
+        String token = request.getHeader(&quot;token&quot;);
+        if (StringUtils.isEmpty(token)) {
+            response.getWriter().print(&quot;用户未登录，请登录后操作！&quot;);
+            return false;
+        }
+        Object loginStatus = redisService.getToken(token);
+        if( Objects.isNull(loginStatus)){
+            response.getWriter().print(&quot;token错误，请查看！&quot;);
+            return false;
+        }
+        return true;
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h3 id="接口和测试" tabindex="-1"><a class="header-anchor" href="#接口和测试" aria-hidden="true">#</a> 接口和测试</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Resource
+    private UserService userService;
+    @GetMapping(&quot;/login&quot;)
+    public String login(String username,String password){
+        return userService.login(username,password);
+    }
+    @GetMapping(&quot;/logout&quot;)
+    public String logout(HttpServletRequest request){
+        return userService.logout(request);
+    }
+    @GetMapping(&quot;/test&quot;)
+    public String test(HttpServletRequest request){
+        return &quot;ok&quot;;
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><blockquote><p><a href="http://localhost:8080/login?username=test&amp;password=123" target="_blank" rel="noopener noreferrer">http://localhost:8080/login?username=test&amp;password=123<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a> 用户：test登录成功，token是：564aa232-a015-481e-94f3-8a0174b11932</p></blockquote><blockquote><p>GET /test HTTP/1.1 token: 564aa232-a015-481e-94f3-8a0174b11932 Host: localhost:8080 ok</p></blockquote><blockquote><p>GET /logout HTTP/1.1 token: 564aa232-a015-481e-94f3-8a0174b11932 Host: localhost:8080 注销成功</p></blockquote><h3 id="拓展" tabindex="-1"><a class="header-anchor" href="#拓展" aria-hidden="true">#</a> 拓展</h3><ul><li>基于Token可以实现简单的单点登录,将token放到cookie中</li><li>redis的value可以适当存储用户的信息</li><li>token的生成规则可以适当复杂</li><li>拦截器可以自定义拦截特定的token</li><li>jwt扩展,后续会用.</li></ul><h1 id="redission" tabindex="-1"><a class="header-anchor" href="#redission" aria-hidden="true">#</a> Redission</h1><h2 id="分布式存在的并发问题" tabindex="-1"><a class="header-anchor" href="#分布式存在的并发问题" aria-hidden="true">#</a> 分布式存在的并发问题</h2><h2 id="问题模拟" tabindex="-1"><a class="header-anchor" href="#问题模拟" aria-hidden="true">#</a> 问题模拟</h2><p>商品购买,在单机时并发问题可以通过synchronized, 但是在分布式情况下,JVM级别的锁不会生效.</p><p>假设: redis存了个string [stock:200]</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>@GetMapping(&quot;/buy&quot;)
+public String buy(){
+    synchronized (this){
+        String s = redisUtils.get(&quot;stock&quot;).toString();
+        Integer i = Integer.parseInt(s);
+        if(i&gt;0){
+            int real = i-1;
+            redisUtils.set(&quot;stock&quot;,real+&quot;&quot;);
+            logger.info(&quot;购买成功,剩余:&quot;+real);
+        }else{
+            logger.info(&quot;购买失败&quot;);
+        }
+    }
+    return &quot;buy end&quot;;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ol><li>启动两个服务product 8081/8082,并使用Nginx做负载均衡</li></ol><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code> # 待选服务器列表
+   worker_processes  1;
+
+   events {
+   worker_connections  1024;
+}
+
+
+   http {
+   upstream  my-server {
+   server    localhost:8081 weight=1;
+   server    localhost:8082 weight=1;
+   }
+
+   server {
+   listen       80;
+   server_name  localhost;
+
+   location / {
+   proxy_pass http://my-server;
+   proxy_redirect default;
+   }
+
+}
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><ol><li>使用jmeter进行压力测试</li></ol><blockquote><p><a href="http://127.0.0.1/buy" target="_blank" rel="noopener noreferrer">http://127.0.0.1/buy<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><p>可以看到后台打印的剩余库存出现了同样的数字.</p><h2 id="解决" tabindex="-1"><a class="header-anchor" href="#解决" aria-hidden="true">#</a> 解决</h2><h3 id="入门级-setnx-set-if-not-exists" tabindex="-1"><a class="header-anchor" href="#入门级-setnx-set-if-not-exists" aria-hidden="true">#</a> 入门级 setnx (set if not exists)</h3><p>setnx key value 将key的值设为value,当且仅当key不存在</p><p>利用redis单线程模型,若干线程同时执行setnx,会进入队列.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @GetMapping(&quot;/buy2&quot;)
+    public String buy2() {
+        String lockKey = &quot;product_01&quot;;
+        // setIfAbsent原子命令
+        Boolean result = redisTemplate.opsForValue().setIfAbsent(lockKey, &quot;zong&quot;,10,TimeUnit.SECONDS);//同时设置过期时间
+        if (!result) {
+            return &quot;error&quot;;
+        }
+        try {
+            Integer i = Integer.parseInt(redisUtils.get(&quot;stock&quot;).toString());
+
+            if (i &gt; 0) {
+                int real = i - 1;
+                redisUtils.set(&quot;stock&quot;, real + &quot;&quot;);
+                logger.info(&quot;购买成功,剩余:&quot; + real);
+            } else {
+                logger.info(&quot;购买失败&quot;);
+            }
+        } finally {
+            redisTemplate.delete(lockKey);
+        }
+        return &quot;buy end&quot;;
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>高并发仍然存在的问题: 锁永久失效:假设线程1try后面的代码执行时间超过了锁的过期时间,此时线程2进入并加锁,但线程1会执行到释放锁的地方, 导致线程1删除了线程2的锁.</p><h3 id="优化-添加锁需要原子操作-每个线程加的锁的value都设为uuid-释放锁的时候进行判断" tabindex="-1"><a class="header-anchor" href="#优化-添加锁需要原子操作-每个线程加的锁的value都设为uuid-释放锁的时候进行判断" aria-hidden="true">#</a> 优化:(添加锁需要原子操作)每个线程加的锁的value都设为UUID,释放锁的时候进行判断</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    String id  = UUID.randomUUID().toString();
+    // setIfAbsent原子命令
+    Boolean result = redisTemplate.opsForValue().setIfAbsent(lockKey, id,10,TimeUnit.SECONDS);//同时设置过期时间
+    //...
+    if (id.equals(redisTemplate.opsForValue().get(lockKey))){
+        redisTemplate.delete(lockKey);
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>仍然存在的问题:线程1在判断成功进入的那一瞬间(还没有执行锁的释放), 锁过期了,线程2又刚加了锁,仍然导致线程1释放了线程2的锁</p><h3 id="解决-锁续命-删除锁也需要原子操作" tabindex="-1"><a class="header-anchor" href="#解决-锁续命-删除锁也需要原子操作" aria-hidden="true">#</a> 解决:锁续命(删除锁也需要原子操作)</h3><p>再开一个定时任务,判断主线程的锁是否还持有该锁,若锁过期且主线程还没结束,就刷新锁的过期时间. 使用分布式锁框架解决该问题.</p><h3 id="redission-1" tabindex="-1"><a class="header-anchor" href="#redission-1" aria-hidden="true">#</a> Redission</h3><h4 id="依赖" tabindex="-1"><a class="header-anchor" href="#依赖" aria-hidden="true">#</a> 依赖</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    &lt;dependency&gt;
+        &lt;groupId&gt;org.redisson&lt;/groupId&gt;
+        &lt;artifactId&gt;redisson&lt;/artifactId&gt;
+        &lt;version&gt;3.6.5&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="配置" tabindex="-1"><a class="header-anchor" href="#配置" aria-hidden="true">#</a> 配置</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Bean
+    public Redisson redisson(){
+        //单机模式
+        Config config = new Config();
+        config.useSingleServer().setAddress(&quot;redis://localhost:6379&quot;).setDatabase(0);
+        return (Redisson) Redisson.create(config);
+
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h4 id="加锁和释放" tabindex="-1"><a class="header-anchor" href="#加锁和释放" aria-hidden="true">#</a> 加锁和释放</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Autowired
+    Redisson redisson;
+
+    @GetMapping(&quot;/buy3&quot;)
+    public String buy3() {
+        String lockKey = &quot;product_01&quot;;
+        RLock lock = redisson.getLock(lockKey);
+        try {
+            lock.lock();//真正的加锁 setIfAbsent 30s
+            Integer i = Integer.parseInt(redisUtils.get(&quot;stock&quot;).toString());
+            if (i &gt; 0) {
+                int real = i - 1;
+                redisUtils.set(&quot;stock&quot;, real + &quot;&quot;);
+                logger.info(&quot;购买成功,剩余:&quot; + real);
+            } else {
+                logger.info(&quot;购买失败&quot;);
+            }
+        } finally {
+            lock.unlock();//
+        }
+        return &quot;buy end&quot;;
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>redisson大致逻辑(lua脚本实现):</p><ol><li>线程1加锁成功(30s), 开启后台线程(每个10s检测线程1是否还持有锁,如果有则延长10s)</li><li>线程2判断是否能加锁,不能则自旋等待,知道能为止</li><li>线程1释放锁,线程2加锁</li></ol><h3 id="redis主从架构导致的分布式锁失效问题" tabindex="-1"><a class="header-anchor" href="#redis主从架构导致的分布式锁失效问题" aria-hidden="true">#</a> Redis主从架构导致的分布式锁失效问题</h3><p>客户端加锁拿到主节点的返回后,主节点还未同步给从节点就宕机了,导致从节点没有拿到客户端的锁.</p><blockquote><p>CAP原则:一致性/可用性/分区容错性,三者不可能同时存在.</p></blockquote><ul><li>Redis满足AP:一致性/分区容错性,Redis强调可用性,会立即返回结果.</li><li>Zookeeper满足CP:一致性/分区容错性,同样的,Zookeeper在客户端加锁后不会立即返回结果, 只有Zookeeper集群半数以上都获得同步后,才会返回客户端成功(过半写)</li></ul><h4 id="redlock" tabindex="-1"><a class="header-anchor" href="#redlock" aria-hidden="true">#</a> Redlock</h4><p>Redis对于此问题,也可以使用Redlock来解决. Redlock针对的是客户端,客户端加锁后,超过半数以上的节点加锁成功才算成功.(牺牲可用性,不如直接用zookeeper)</p><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 32995330+zongkx@users.noreply.github.com">zongkx</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.d740ecc1.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+const e={key:"v-1f4e1536",path:"/database/OceanBase.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:170545334e4,contributors:[{name:"zongkx",email:"32995330+zongkx@users.noreply.github.com",commits:1}]},filePathRelative:"database/OceanBase.md"};export{e as data};

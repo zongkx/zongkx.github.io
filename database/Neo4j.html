@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title></title><meta name="description" content="">
+    <link rel="modulepreload" href="/assets/app.d740ecc1.js"><link rel="modulepreload" href="/assets/Neo4j.html.cdb180cb.js"><link rel="modulepreload" href="/assets/Neo4j.html.901f0300.js">
+    <link rel="stylesheet" href="/assets/style.c1f02812.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><!----></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading"> <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/database/Neo4j.html#neo4j" class="router-link-active router-link-exact-active sidebar-item" aria-label="Neo4j"><!--[--><!--]--> Neo4j <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/database/Neo4j.html#测试" class="router-link-active router-link-exact-active sidebar-item" aria-label="测试"><!--[--><!--]--> 测试 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h3 id="neo4j" tabindex="-1"><a class="header-anchor" href="#neo4j" aria-hidden="true">#</a> Neo4j</h3><h4 id="节点简单命令" tabindex="-1"><a class="header-anchor" href="#节点简单命令" aria-hidden="true">#</a> 节点简单命令</h4><ol><li>CREATE命令：创建节点命令</li><li>MATCH命令：查询命令</li><li>RETURN命令：返回数据命令</li><li>DELETE命令：删除命令，可以用于删除节点和关联节点信息</li><li>REMOVE命令：可以用于删除标签和属性</li></ol><h4 id="单个节点操作" tabindex="-1"><a class="header-anchor" href="#单个节点操作" aria-hidden="true">#</a> 单个节点操作</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>CREATE (emp:Employee) --创建节点emp,它的标签名称为EMployee
+CREATE (m:Movie:Cinema:Film:Picture) --创建节点m,它有多个标签名称
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>CREATE (dept:Dept { deptno:10,dname:&quot;Accounting&quot;,location:&quot;Hyderabad&quot; }) --创建节点dept,它的标签名称为Dept,它的属性为 deptno\dname\location
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>MATCH (dept: Dept)
+RETURN dept.deptno,dept.dname --检索节点dept,获取其属性deptno/dname
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="多个节点操作" tabindex="-1"><a class="header-anchor" href="#多个节点操作" aria-hidden="true">#</a> 多个节点操作</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match(n) return n -- 获取所有节点
+match (n) detach delete n --删除所有节点
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="单个关系操作" tabindex="-1"><a class="header-anchor" href="#单个关系操作" aria-hidden="true">#</a> 单个关系操作</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>CREATE (p1:Profile1)-[r1:LIKES]-&gt;(p2:Profile2) --创建节点p1,p2, p1(From Node)指向p2(To Node)的关系是r1
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h4 id="where-布尔运算" tabindex="-1"><a class="header-anchor" href="#where-布尔运算" aria-hidden="true">#</a> WHERE + (布尔运算)</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match(dept:Person) where dept.deptName=&#39;设计部&#39; return dept  --获取节点dept中属性deptName为设计部的节点
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h4 id="创建关系" tabindex="-1"><a class="header-anchor" href="#创建关系" aria-hidden="true">#</a> 创建关系</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match  (c:CC),(b:BB) where c.name=&#39;hahhah&#39;  create (c)-[r1:RRR{name:&#39;shshshshs&#39;}]-&gt;(b) return r1
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h4 id="delete和remove" tabindex="-1"><a class="header-anchor" href="#delete和remove" aria-hidden="true">#</a> DELETE和REMOVE</h4><p>DELETE操作用于删除节点和关联关系。 REMOVE操作用于删除标签和属性。</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>create (:Test{name:&#39;aaa&#39;})
+create (:Test{name:&#39;bbb&#39;})
+match (a:Test),(b:Test) where a.name=&#39;aaa&#39; and b.name=&#39;bbb&#39; create (a)-[:RT{type:&#39;ha&#39;}]-&gt;(b)
+
+match (a:Test) delete a --删除标签为Test的节点
+match (a:Test)-[rel]-(b:Test) delete a,rel,b  --删除标签为Test和其关系
+match (a:Test) where a.name=&#39;aaa&#39; remove a.name --移除标签为Test的节点的name
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="set" tabindex="-1"><a class="header-anchor" href="#set" aria-hidden="true">#</a> SET</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match (a:Test) where id(a)=16 set a.name = &#39;aaa&#39; return a --对id=16的标签Test的a节点设置属性 name=&#39;aaa&#39;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h4 id="order-by" tabindex="-1"><a class="header-anchor" href="#order-by" aria-hidden="true">#</a> ORDER　BY</h4><p>类似于SQL,加在return * 后面即可</p><h4 id="unoin和unoin-all" tabindex="-1"><a class="header-anchor" href="#unoin和unoin-all" aria-hidden="true">#</a> UNOIN和UNOIN ALL</h4><p>类似于SQL</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match (a:Test) return a.name as name union all match(a:Test) return a.name as name --没有去重
+match (a:Test) return a.name as name union  match(a:Test) return a.name as name -- 去重后的结果
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="limit和skip" tabindex="-1"><a class="header-anchor" href="#limit和skip" aria-hidden="true">#</a> LIMIT和SKIP</h4><p>类似于SQL</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match (a:Test) return a limit 1 -- 返回结果中的第一行
+match (a:Test) return a skip 1 --跳过结果中的第一行
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="merge" tabindex="-1"><a class="header-anchor" href="#merge" aria-hidden="true">#</a> MERGE</h4><p>merge = create + match 如果没有结果,则新增,有的话返回</p><h4 id="关系函数" tabindex="-1"><a class="header-anchor" href="#关系函数" aria-hidden="true">#</a> 关系函数</h4><ol><li>STARTNODE 用于知道关系的开始节点。</li><li>ENDNODE    它用于知道关系的结束节点。</li><li>ID 它用于知道关系的ID。</li><li>TYPE   它用于知道字符串表示中的一个关系的TYPE。</li></ol><h3 id="测试" tabindex="-1"><a class="header-anchor" href="#测试" aria-hidden="true">#</a> 测试</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>match (n) detach delete n
+create (cetc:Czdw{name:&#39;15&#39;})
+create (zd:Czdw{name:&#39;ce&#39;})
+create (ht1:Htxx{name:&#39;ht1&#39;})
+create (ht2:Htxx{name:&#39;ht2&#39;})
+create (jds1:Jds{name:&#39;1&#39;})
+create (jds2:Jds{name:&#39;2&#39;})
+-- match的时候节点标签只要对了,标签前面的可以理解为别名,根据别名.属性找到对应的节点即可
+match  (n:Czdw),(j:Jds) where n.name=&#39;15&#39; and j.name=&#39;1&#39; create (n)&lt;-[r1:R1{type:&#39;监管&#39;}]-(j) return r1
+match  (n:Czdw),(h:Htxx) where n.name=&#39;15&#39; and h.name=&#39;ht1&#39; create (n)-[r2:R2{type:&#39;执行&#39;}]-&gt;(h) return r2
+
+match  (n:Czdw),(j:Jds) where n.name=&#39;ce&#39; and j.name=&#39;2&#39; create (n)&lt;-[r11:R1{type:&#39;监管&#39;}]-(j) return r11
+match  (n:Czdw),(h:Htxx) where n.name=&#39;ce&#39; and h.name=&#39;合同2&#39; create (n)-[r22:R2{type:&#39;执行&#39;}]-&gt;(h) return r22
+
+match  (n1:Jds),(n2:Jds) where n1.name=&#39;1&#39; and n2.name=&#39;2&#39; create (n1)-[r3:R3{type:&#39;同级&#39;}]-&gt;(n2) return r3
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>neo4j-admin import --mode=csv --database=test.db --nodes &quot;D:\Java\neo4j-3.5.24\import\htxx.csv&quot; --nodes &quot;D:\Java\neo4j-3.5.24\import\jds.csv&quot; --relationships &quot;D:\Java\neo4j-3.5.24\import\r.csv&quot;
+
+
+neo4j-admin import --mode=csv --database test.db --nodes:Category “D:\Java\neo4j-3.5.24\import\profession.csv” --relationships “F:\neo4j-community-3.5.5-windows\neo4j-community-3.5.5\import\shuyu_to_biaozhun.csv” --ignore-extra-columns=true --ignore-missing-nodes=true --ignore-duplicate-nodes=true
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 32995330+zongkx@users.noreply.github.com">zongkx</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.d740ecc1.js" defer></script>
+  </body>
+</html>

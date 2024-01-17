@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title></title><meta name="description" content="">
+    <link rel="modulepreload" href="/assets/app.d740ecc1.js"><link rel="modulepreload" href="/assets/WPS.html.723048a6.js"><link rel="modulepreload" href="/assets/WPS.html.d31ce9fb.js">
+    <link rel="stylesheet" href="/assets/style.c1f02812.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><!----></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading"> <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/WPS.html#poi导出到模板" class="router-link-active router-link-exact-active sidebar-item" aria-label="POI导出到模板"><!--[--><!--]--> POI导出到模板 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/WPS.html#需求" class="router-link-active router-link-exact-active sidebar-item" aria-label="需求"><!--[--><!--]--> 需求 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/WPS.html#思路" class="router-link-active router-link-exact-active sidebar-item" aria-label="思路"><!--[--><!--]--> 思路 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/WPS.html#代码" class="router-link-active router-link-exact-active sidebar-item" aria-label="代码"><!--[--><!--]--> 代码 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h2 id="poi导出到模板" tabindex="-1"><a class="header-anchor" href="#poi导出到模板" aria-hidden="true">#</a> POI导出到模板</h2><h3 id="需求" tabindex="-1"><a class="header-anchor" href="#需求" aria-hidden="true">#</a> 需求</h3><p>最近连续两个需求都是:导出的Excel能直接再导入到系统中,而导入功能依赖于导入模板，今天写了一个通用的方法，可以先读取系统本地的导入模板，再写入数据生成一个文件供用户下载。</p><blockquote><p>首先添加一条导入导出任务，保存导出生成的文件的服务器地址和该任务的其它信息，在文件生成完成后，将该任务记录设置为已完成，用户根据该任务记录的文件信息下载即可，这样可以优化文件生成过慢的弊端</p></blockquote><h3 id="思路" tabindex="-1"><a class="header-anchor" href="#思路" aria-hidden="true">#</a> 思路</h3><p>导入模板的第一行作为数据标识，可以通过反射来到对应的位置填写数据。不同的sheet页写入的数据可能不一样，所以考虑用Map作为数据容器，</p><blockquote><p>Map&lt;Integer, List&gt; map</p></blockquote><p>其中Integer不仅作为key，而且直接就能用来表示这个list需要填入的sheet[index]</p><h3 id="代码" tabindex="-1"><a class="header-anchor" href="#代码" aria-hidden="true">#</a> 代码</h3><p>下面用的是POI的XSSFWorkbook用来读取生成xlsx文件。</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>        &lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+            &lt;artifactId&gt;poi&lt;/artifactId&gt;
+            &lt;version&gt;4.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+            &lt;artifactId&gt;poi-ooxml&lt;/artifactId&gt;
+            &lt;version&gt;4.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+package com.demo.utils;
+
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.beans.PropertyDescriptor;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.Serializable;
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+public class ExportExcelUseTemplate&lt;T&gt; implements Serializable {
+
+    private String tempPath;
+
+    private String tempName;
+
+    private String fileName;
+
+    private String filePath;
+
+    private Map&lt;Integer, List&lt;T&gt;&gt; map;
+
+    private XSSFWorkbook wb;
+    
+    private ExportExcelUseTemplate(){}
+    
+    public ExportExcelUseTemplate(String tempPath,String tempName,
+        String filePath,String fileName,Map&lt;Integer,List&lt;T&gt;&gt; map){
+        this.tempPath = tempPath;
+        this.tempName = tempName;
+        this.filePath = filePath;
+        this.fileName = fileName;
+        this.map = map;
+    }
+    
+    protected void export(){
+        readTemplate();
+        writeData();
+        createFile();
+    }
+    protected void readTemplate(){
+        try{
+            FileInputStream fileInputStream = new FileInputStream(this.tempPath+this.tempName);
+            this.wb = new XSSFWorkbook(fileInputStream);
+            fileInputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    protected void writeData(){
+        for(Integer index:map.keySet()){
+            if(map.get(index).isEmpty()){
+                continue;
+            }
+            XSSFSheet sheet = wb.getSheetAt(index-1);//第index-1个sheet
+            XSSFRow row = sheet.getRow(0);
+            List&lt;T&gt; list = map.get(index);
+            sheet.shiftRows(3,3+list.size(),list.size());//从第三行开始,结束与size+3,动态添加size行
+            for(int i =0 ;i&lt; list.size();i++){//遍历数据
+                XSSFRow createRow = sheet.createRow(3+i);
+                for(int j=0;j&lt;row.getLastCellNum();j++){//遍历key再通过反射写入数据(导入模板的第一行作为数据标识)
+                    try {
+                        String key = row.getCell(j).getStringCellValue();
+                        String value = getMethod(list.get(i),key);//根据key找到对象中对应的值
+                        createRow.createCell(j).setCellValue(value);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+    private void createFile(){
+        try{
+            File dir = new File(this.filePath);
+            if(!dir.exists()){
+                dir.mkdir();
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(this.filePath+this.fileName);
+            this.wb.write(fileOutputStream);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private String getMethod(T t, String key) throws Exception{
+        Class&lt;?&gt; clazz = t.getClass();
+        PropertyDescriptor pd = new PropertyDescriptor(key,clazz);
+        Method getMethod = pd.getReadMethod();
+        Object o = getMethod.invoke(t);
+        if(o instanceof Date){
+            SimpleDateFormat sd = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+            return o==null? &quot;&quot; : sd.format(o);
+        }
+        return  o==null? &quot;&quot;:o.toString();
+    }
+
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br></div></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 32995330+zongkx@users.noreply.github.com">zongkx</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.d740ecc1.js" defer></script>
+  </body>
+</html>

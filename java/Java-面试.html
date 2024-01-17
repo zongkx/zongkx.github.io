@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title></title><meta name="description" content="">
+    <link rel="modulepreload" href="/assets/app.d740ecc1.js"><link rel="modulepreload" href="/assets/Java-面试.html.39add0cc.js"><link rel="modulepreload" href="/assets/Java-面试.html.60e41903.js">
+    <link rel="stylesheet" href="/assets/style.c1f02812.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><!----></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading"> <!----></p><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#和-equals" class="router-link-active router-link-exact-active sidebar-item" aria-label="== 和 equals"><!--[--><!--]--> == 和 equals <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#结论" class="router-link-active router-link-exact-active sidebar-item" aria-label="结论:"><!--[--><!--]--> 结论: <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#分析" class="router-link-active router-link-exact-active sidebar-item" aria-label="分析"><!--[--><!--]--> 分析 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#用法" class="router-link-active router-link-exact-active sidebar-item" aria-label="用法:"><!--[--><!--]--> 用法: <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#map" class="router-link-active router-link-exact-active sidebar-item" aria-label="Map"><!--[--><!--]--> Map <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#hashmap" class="router-link-active router-link-exact-active sidebar-item" aria-label="HashMap"><!--[--><!--]--> HashMap <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#concurrenthashmap" class="router-link-active router-link-exact-active sidebar-item" aria-label="ConcurrentHashMap"><!--[--><!--]--> ConcurrentHashMap <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#" class="router-link-active router-link-exact-active sidebar-item" aria-label><!--[--><!--]-->  <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#对象拷贝" class="router-link-active router-link-exact-active sidebar-item" aria-label="对象拷贝"><!--[--><!--]--> 对象拷贝 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#重写clone方法" class="router-link-active router-link-exact-active sidebar-item" aria-label="重写clone方法"><!--[--><!--]--> 重写clone方法 <!--[--><!--]--></a><!--[--><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#序列化" class="router-link-active router-link-exact-active sidebar-item" aria-label="序列化"><!--[--><!--]--> 序列化 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/java/Java-%E9%9D%A2%E8%AF%95.html#反射" class="router-link-active router-link-exact-active sidebar-item" aria-label="反射"><!--[--><!--]--> 反射 <!--[--><!--]--></a><!----></li><!--]--></ul><!--]--></li><!--]--></ul><!--]--></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h2 id="和-equals" tabindex="-1"><a class="header-anchor" href="#和-equals" aria-hidden="true">#</a> == 和 equals</h2><h3 id="结论" tabindex="-1"><a class="header-anchor" href="#结论" aria-hidden="true">#</a> 结论:</h3><p>“==”操作符用于比较两个引用（内存中的存放地址）是否相等，它们是否是同一个对象。</p><p>.equals() 用于比较两个对象的内容是否相等。</p><h3 id="分析" tabindex="-1"><a class="header-anchor" href="#分析" aria-hidden="true">#</a> 分析</h3><p>Object类中实现的.equals()方法如下:</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public boolean equals(Object obj) {
+    return (this == obj);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>默认使用==来比较,假如子类没有重写该方法,则两者用法一致:比较两个对象的内存地址或者对象的引用是否相等. 实际上,比较内存地址太重,不一定符合使用场景,如String中重写了该方法:</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public boolean equals(Object anObject) {
+    if (this == anObject) {//==直接返回true
+        return true;
+    }
+    if (anObject instanceof String) {
+        String anotherString = (String)anObject;
+        int n = value.length;
+        if (n == anotherString.value.length) {//比较长度
+            char v1[] = value;
+            char v2[] = anotherString.value;
+            int i = 0;
+            while (n-- != 0) {//逐个比较字符
+                if (v1[i] != v2[i])
+                    return false;
+                i++;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>String的初始化常有直接赋值和 new String();前者是在字符串常量区中创建对象,并将对象的引用赋值;后者在堆中创建对象,并将其引用赋值.</p><p>特别的,对于Integer而言,当其范围在 -128到127之间的值,由于会在IntegerCache.cache产生,会复用已有的对象,所以用或者equals均为true,范围之外的值用会返回false</p><h3 id="用法" tabindex="-1"><a class="header-anchor" href="#用法" aria-hidden="true">#</a> 用法:</h3><p>1.) 使用Objects.equals(Object o1,Object o2); 可以最大程度上避免NPE,不需要手动判空,如果使用 .equals(),尽量将已知字符串放在前面.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public static boolean equals(Object a, Object b) {// a,b均可以为空而不NPE,  null==null 为true
+    return (a == b) || (a != null &amp;&amp; a.equals(b));//任一为真则真
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="map" tabindex="-1"><a class="header-anchor" href="#map" aria-hidden="true">#</a> Map</h2><p>Map键值对，每个键对应的值都是唯一的，而HashMap是Map的一种，称为散列表。除了Map，Set作为数学意义上的集合，与Map密切相关。集合的特性：无序、互异、确定，而Map的key就符合集合的要求，所以Set内部实现利用了Map。在HashSet中就定义了HashMap作为成员变量，set中的元素被作为key，而value作为无意义的值。</p><h3 id="hashmap" tabindex="-1"><a class="header-anchor" href="#hashmap" aria-hidden="true">#</a> HashMap</h3><p>HashMap在Java中的底层实现是数组和链表实现的 通过key的hashcode值找到数组上的某个位置， 然后通过key的equals方法找到链表中key对应的value</p><h4 id="put" tabindex="-1"><a class="header-anchor" href="#put" aria-hidden="true">#</a> put</h4><p>在往hashmap里面put元素的时候，先根据key的hash值得到这个元素在数组中的位置，然后把这个元素放到对应位置，如果这个位置已经有元素，那么新元素将会以链表的形式放入，新加入的在链头。如果没有元素,那么新增一个Entry(链表)在这里,在每次addEntry的时候都会判断是否需要扩容。如果key为空，则put一个空值进去。</p><blockquote><p>HashMap允许 : map.put(null,null);map.put(&quot;&quot;,null);</p></blockquote><h4 id="get" tabindex="-1"><a class="header-anchor" href="#get" aria-hidden="true">#</a> get</h4><p>根据key的hash值找到数组中的位置，再根据key的equals方法找到链表中的元素，由此可以得知当数组中每个位置都只放了一个元素的时候，效率是最高的（省去了key的equals）</p><h4 id="hash算法" tabindex="-1"><a class="header-anchor" href="#hash算法" aria-hidden="true">#</a> hash算法</h4><p>为了让数组更均匀一些，首先可以想到用hashcode对数组长度取模运算，但是过于消耗性能。Java在这里用的是按位与（length-1）：h &amp; （length-1）h是hashcode值</p><ul><li>为什么数组长度为2的整次幂的时候，性能最好？</li></ul><h4 id="负载因子" tabindex="-1"><a class="header-anchor" href="#负载因子" aria-hidden="true">#</a> 负载因子</h4><p>默认的负载因子是0.75，默认容量是16.当当前数据超过容量*负载因子时需要对原数组进行扩容（2倍），扩容需要rehash和数据复制，比较消耗性能，所以尽量预估map的容量，避免出现扩容的情况。</p><h4 id="jdk1-8的优化" tabindex="-1"><a class="header-anchor" href="#jdk1-8的优化" aria-hidden="true">#</a> JDK1.8的优化</h4><p>尽管通过hash算法减少了哈希冲突的可能，但是在某些情况下还是会导致查询效率低下的问题（需要遍历链表），所以jdk1.8引入了红黑树来优化查询效率。 在触发阈值的情况下，链表将被转化为红黑树，</p><h5 id="put-1" tabindex="-1"><a class="header-anchor" href="#put-1" aria-hidden="true">#</a> put</h5><p>1.判断当前桶是否空，空的话初始化。 2.根据key的hash值定位到具体的桶，为空则表面没有哈希冲突，则直接创建一个桶；有的话先比较key的hash值是否与已有的key的hash值相等，如果相等赋值给e，在第6步的时候统一返回 3.如果当前桶是红黑树的话，则按照红黑树的写入方式写入数据；如果为链表的话，则封装节点到链表末端 4.判断当前链表大小是否触发阈值，大于时转换为红黑树 5.如果在遍历的过程中找到key相同时直接退出遍历 6.如果e！=null则相当于存在相同的key，需要覆盖值 7.判断是否需要扩容</p><h5 id="get-1" tabindex="-1"><a class="header-anchor" href="#get-1" aria-hidden="true">#</a> get</h5><p>根据key的hash值定位桶，桶为空返回null，否则判断桶的第一个位置是否为所取key，是的话直接返回，不是的话在判断该桶是红黑树还是链表，再去二叉树查找或遍历链表找到key对应的值返回。</p><h4 id="遍历" tabindex="-1"><a class="header-anchor" href="#遍历" aria-hidden="true">#</a> 遍历</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; entryIterator = map.entrySet().iterator();
+        while (entryIterator.hasNext()) {
+            Map.Entry&lt;String, Integer&gt; next = entryIterator.next();
+            System.out.println(&quot;key=&quot; + next.getKey() + &quot; value=&quot; + next.getValue());
+        }
+        
+        Iterator&lt;String&gt; iterator = map.keySet().iterator();
+        while (iterator.hasNext()){
+            String key = iterator.next();
+            System.out.println(&quot;key=&quot; + key + &quot; value=&quot; + map.get(key));
+
+        }
+//JDK1.8也提供了：
+        map.forEach((k,v)-&gt;{
+            
+        });
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>推荐用entrySet遍历,这样不需要在循环中再执行 map.get(key)操作,避免浪费性能. 由于HashMap并没有对内部的数据做任何同步操作,所以不适合并发时候使用,专门用于并发:java.util.concurrent 下的ConcurrentHashMap</p><h3 id="concurrenthashmap" tabindex="-1"><a class="header-anchor" href="#concurrenthashmap" aria-hidden="true">#</a> ConcurrentHashMap</h3><p>它也是由数组链表组成，其内部类Segment中的 transient volatile HashEntry&lt;K,V&gt;[] table;和HashMap中的HashEntry一样作为数据存放的桶。且其HashEntry的value以及链表都是volatile修饰的，保证其内部的可见性。</p><h4 id="put-2" tabindex="-1"><a class="header-anchor" href="#put-2" aria-hidden="true">#</a> put</h4><p>根据key定位到Segment，在对应的Segment中进行put，其中为了保证并发的原子性，所以put操作添加了锁处理。第一步会尝试获取锁，如果获取失败则通过scanAndLockForPut自旋获取锁，如果到达最大次数仍没有获取锁将会改为阻塞锁获取，保证能获取成功，再put接收后释放锁。其中间的put过程大致和hashmap类似，先根据key的hashcode定位HashEntry，遍历或者创建新的HashEntry。（两次hash定位）</p><h4 id="get-2" tabindex="-1"><a class="header-anchor" href="#get-2" aria-hidden="true">#</a> get</h4><p>get操作类似 由于volatile修饰，保证了内存可见性，所以每次获取都是最新的值。其get方法不需要加锁，十分高效。</p><h4 id="jdk1-8优化" tabindex="-1"><a class="header-anchor" href="#jdk1-8优化" aria-hidden="true">#</a> JDK1.8优化</h4><p>类似HashMap，1.8中用Node替换了HashEntry，同时val和next都加了volatile修饰，保证其可见性。</p><blockquote><p>自旋锁和互斥锁：前者在获取锁的时候，如果该锁已经被其它线程获取，那么该线程将会循环等待，然后不断地尝试获取锁。互斥锁用于保护临界区，确保同一时间只有一个线程访问资源。如果互斥量已经上锁，那么调用者将会阻塞。</p></blockquote><h5 id="put-3" tabindex="-1"><a class="header-anchor" href="#put-3" aria-hidden="true">#</a> put</h5><p>对当前的table进行无条件自循环直到put成功 1.hash（key） 2.判断是否需要初始化 3.如果没有hash冲突就直接CAS插入 4.如果还在进行扩容操作就先进行扩容 5.如果存在hash冲突，就加锁来保证线程安全，这里有两种情况，一种是链表形式就直接遍历到尾端插入，一种是红黑树就按照红黑树结构插入(默认阈值为8) 6.成功就统计size,并计算是否需要扩容.</p><h5 id="get-3" tabindex="-1"><a class="header-anchor" href="#get-3" aria-hidden="true">#</a> get</h5><p>根据hash值定位，按照红黑树或者链表来检索到value。</p><h2 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a></h2><h2 id="对象拷贝" tabindex="-1"><a class="header-anchor" href="#对象拷贝" aria-hidden="true">#</a> 对象拷贝</h2><p>list.addAll()是浅拷贝,list的深拷贝本质上是list存储的对象的深拷贝. 由于Java中用对象的作为入口参数的传递则缺省为&quot;引用传递&quot;，也就是说仅仅传递了对象的一个&quot;引用&quot;，这个&quot;引用&quot;的相当于c中的指针。当函数体内部对输入变量改变时，实质上就是在对这个对象的直接操作。除了在函数传值的时候是&quot;引用传递&quot;，在任何用&quot;＝&quot;向对象变量赋值的时候都是&quot;引用传递&quot;。 对于Class中包含除基础数据类型和String以外,实现深拷贝都需要重写clone方法.例如对象A中有一个变量 String []name;需要A implements Cloneable ,</p><h2 id="重写clone方法" tabindex="-1"><a class="header-anchor" href="#重写clone方法" aria-hidden="true">#</a> 重写clone方法</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public Object clone() {   
+        A o = null;   
+        try {   
+            o = (A) super.clone();   
+            o.name=(String[])name.clone(); 
+        } catch (CloneNotSupportedException e) {   
+            e.printStackTrace();   
+        }   
+        return o;   
+} 
+//String[]的拷贝
+	String []s = {&quot;m&quot;,&quot;n&quot;};
+        String []s1 = (String[])s.clone();
+        s[1] = &quot;a&quot;;
+        for (String s2:s1){
+            log.info(s2.toString());
+        }
+// m,n
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>此时可以循环list,调用</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>list.add((A)o.clone());
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><h3 id="序列化" tabindex="-1"><a class="header-anchor" href="#序列化" aria-hidden="true">#</a> 序列化</h3><p>除此之外可以使用序列化的方法实现深拷贝,需要实现Serializable接口的对象</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    @Test
+    void B(){
+        User user = new User();
+        user.setId(1L);
+        List&lt;User&gt; list = new ArrayList&lt;&gt;();
+        list.add(user);
+        List&lt;User&gt; res = depCopy(list);
+        user.setId(2L);
+        list.forEach(System.out::print);
+        res.forEach(System.out::print);
+    }
+
+    public static &lt;T&gt; List&lt;T&gt; depCopy(List&lt;T&gt; srcList) {
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            out.writeObject(srcList);
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+            ObjectInputStream inStream = new ObjectInputStream(byteIn);
+            List&lt;T&gt; destList = (List&lt;T&gt;) inStream.readObject();
+            return destList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>结果为: User(id=2, name=null, password=null)User(id=1, name=null, password=null)</p><h3 id="反射" tabindex="-1"><a class="header-anchor" href="#反射" aria-hidden="true">#</a> 反射</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code> public static void copy(Object src,Object dest){
+        Field[] fields = src.getClass().getDeclaredFields();
+        Class&lt;?&gt; srcClass = src.getClass();
+        Class&lt;?&gt; destClass = dest.getClass();
+        for(Field f:fields){
+            try { 
+                String key = f.getName();
+                String getMethodName = &quot;get&quot;+key.substring(0,1).toUpperCase()+key.substring(1);
+                String setMethodName = &quot;set&quot;+key.substring(0,1).toUpperCase()+key.substring(1);
+                Method getMethod =  srcClass.getDeclaredMethod(getMethodName);
+                Method setMethod = destClass.getDeclaredMethod(setMethodName,f.getType());
+                Object value = getMethod.invoke(src);
+                if(value != null){
+                    setMethod.invoke(dest,value);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h1 id="-1" tabindex="-1"><a class="header-anchor" href="#-1" aria-hidden="true">#</a></h1><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 32995330+zongkx@users.noreply.github.com">zongkx</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.d740ecc1.js" defer></script>
+  </body>
+</html>
