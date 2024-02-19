@@ -38,7 +38,7 @@ jobs:
       - name: Build
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          npm run docs:build
 
       # Push it to gh-pahes
       - name: Deploy
