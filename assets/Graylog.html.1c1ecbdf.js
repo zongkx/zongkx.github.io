@@ -1,1 +1,0 @@
-const e={key:"v-67acbee8",path:"/java/Graylog.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u4F9D\u8D56",slug:"\u4F9D\u8D56",children:[]},{level:2,title:"\u914D\u7F6E",slug:"\u914D\u7F6E",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"java/Graylog.md"};export{e as data};

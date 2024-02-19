@@ -1,1 +1,0 @@
-const e={key:"v-14c69af4",path:"/java/",title:"Dev",lang:"en-US",frontmatter:{catagory:"Dev",readme:!0},excerpt:"",headers:[{level:2,title:"xml\u{1F44D}",slug:"xml\u{1F44D}",children:[]},{level:2,title:"**yml **",slug:"yml",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"java/README.md"};export{e as data};

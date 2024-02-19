@@ -1,1 +1,0 @@
-const e={key:"v-3a1c68f4",path:"/java/OpenFeign.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1705454245e3},filePathRelative:"java/OpenFeign.md"};export{e as data};

@@ -1,1 +1,0 @@
-const e={key:"v-7f553280",path:"/ops/MiniK8s.html",title:"",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u6587\u6863",slug:"\u6587\u6863",children:[]},{level:2,title:"\u5B89\u88C5",slug:"\u5B89\u88C5",children:[]}],git:{updatedTime:1705454245e3},filePathRelative:"ops/MiniK8s.md"};export{e as data};
