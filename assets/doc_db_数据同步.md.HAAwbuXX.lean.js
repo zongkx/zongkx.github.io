@@ -1,1 +1,0 @@
-import{_ as a,c as e,o as t,a2 as o}from"./chunks/framework.CBOTroAR.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/数据同步.md","filePath":"doc/db/数据同步.md"}'),p={name:"doc/db/数据同步.md"},c=o("",11),d=[c];function i(n,s,m,r,l,h){return t(),e("div",null,d)}const f=a(p,[["render",i]]);export{_ as __pageData,f as default};

@@ -1,1 +1,0 @@
-import{_ as a,c as e,o,a2 as r}from"./chunks/framework.CBOTroAR.js";const b=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/大数据-基础概述.md","filePath":"doc/db/大数据-基础概述.md"}'),t={name:"doc/db/大数据-基础概述.md"},i=r("",19),d=[i];function l(h,n,c,_,s,p){return o(),e("div",null,d)}const m=a(t,[["render",l]]);export{b as __pageData,m as default};
