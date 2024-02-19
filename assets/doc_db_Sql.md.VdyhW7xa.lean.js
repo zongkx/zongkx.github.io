@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a2 as h}from"./chunks/framework.CBOTroAR.js";const F=JSON.parse('{"title":"常用内置函数","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Sql.md","filePath":"doc/db/Sql.md"}'),n={name:"doc/db/Sql.md"},k=h("",29),l=[k];function t(p,e,E,r,d,g){return a(),i("div",null,l)}const C=s(n,[["render",t]]);export{F as __pageData,C as default};
