@@ -5,6 +5,7 @@ import { generateSidebar } from 'vitepress-sidebar';
 export default defineConfig({
   title: "zongkx",
   description: "zongkx",
+  ignoreDeadLinks: true,
   themeConfig: {// https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },

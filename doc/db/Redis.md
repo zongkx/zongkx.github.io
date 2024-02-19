@@ -1,6 +1,6 @@
 # Redis
 
-优点： 
+优点：
 
 1. 读写性能优秀（基于内存、采用单线程避免了不必要的上下文切换和竞争条件、使用多路IO复用模型，非阻塞IO、数据结构简单且丰富）
 2. 支持数据持久化（AOF、RDB）
@@ -20,20 +20,19 @@
 
 > 适合最简单的k-v存储，类似于memcached的存储结构，短信验证码，配置信息等，就用这种类型来存储。
 
-
 ### 哈希 hash
 
 可存储：包含键值对的无序散列表 操作：添加获取移除单个键值对；获取所有键值对；检查某个键是否存在 应用：结构化的数据，比如一个对象
 
 > 一般key为ID或者唯一标示，value对应的就是详情了。如商品详情，个人信息详情，新闻详情等。
 
-
 ### 列表
 
 可存储：列表 list 操作：从两边压入或弹出元素；对单个多个元素修剪；只保留一个范围内的元素 应用：存储一些列表型的数据，类似**列表
 
-> 因为list是有序的，比较适合存储一些有序且数据相对固定的数据。如省市区表、字典表等。因为list是有序的，适合根据写入的时间来排序，如：最新的***，消息队列等。
-
+>
+因为list是有序的，比较适合存储一些有序且数据相对固定的数据。如省市区表、字典表等。因为list是有序的，适合根据写入的时间来排序，如：最新的***
+，消息队列等。
 
 ### 集合 set
 
@@ -41,13 +40,11 @@
 
 > 可以简单的理解为ID-List的模式，如微博中一个人有哪些好友，set最牛的地方在于，可以对两个set提供交集、并集、差集操作。例如：查找两个人共同的好友等。
 
-
 ### 有序集合Zset
 
 可存储：有序集合 操作：添加获取删除元素；根据范围获取元素排名； 应用：去重且排序
 
 > 排序
-
 
 ## 应用场景
 
@@ -64,7 +61,8 @@
 
 ### RDB（默认）
 
-Redis DataBase：按照一定的时间将内存的数据以快照的形式保存到硬盘中，对应产生的数据文件为dump.rdb。通过配置文件中的save参数来定义快照的周期。 其缺点是：数据安全性低，RDB是间隔一段时间进行持久化，期间出现宕机导致数据丢失。
+Redis DataBase：按照一定的时间将内存的数据以快照的形式保存到硬盘中，对应产生的数据文件为dump.rdb。通过配置文件中的save参数来定义快照的周期。
+其缺点是：数据安全性低，RDB是间隔一段时间进行持久化，期间出现宕机导致数据丢失。
 
 ### AOF
 
@@ -72,7 +70,8 @@ Append Only File：Redis执行的每次写命令记录到单独的日志文件�
 
 1. 数据安全，aof 持久化可以配置 appendfsync 属性，有 always，每进行一次 命令操作就记录到 aof 文件中一次。
 2. 通过 append 模式写文件，即使中途服务器宕机，可以通过 redis-check-aof 工具解决数据一致性问题。
-3. AOF 机制的 rewrite 模式。AOF 文件没被 rewrite 之前（文件过大时会对命令 进行合并重写），可以删除其中的某些命令（比如误操作的 flushall）)
+3. AOF 机制的 rewrite 模式。AOF 文件没被 rewrite 之前（文件过大时会对命令 进行合并重写），可以删除其中的某些命令（比如误操作的
+   flushall）)
 
 缺点:
 
@@ -81,7 +80,8 @@ Append Only File：Redis执行的每次写命令记录到单独的日志文件�
 
 ## 事务
 
-原子性:事务中的操作要么都发生，要么都不发生 一致性：事务执行前后数据完整性一致 隔离性：并发执行的互不影响 持久性：事务一旦提交，数据就永久被修改 Redis事务总是保证一致性和隔离性。当服务器运行在AOF持久化模式下，并且appendfsync选项的值为always时，事务也具有持久性。
+原子性:事务中的操作要么都发生，要么都不发生 一致性：事务执行前后数据完整性一致 隔离性：并发执行的互不影响
+持久性：事务一旦提交，数据就永久被修改 Redis事务总是保证一致性和隔离性。当服务器运行在AOF持久化模式下，并且appendfsync选项的值为always时，事务也具有持久性。
 
 ## 集群
 
@@ -104,8 +104,8 @@ maternode负责数据写入，写入之后复制到若干个slavenode，读操�
 
 SpringBoot常用的Redis客户端如Jedis\Lettuce，SpringBoot2.0之后已经默认使用Lettuce，
 
-> Lettuce的连接是基于Netty的，连接实例可以在多个线程间共享，如果你不知道Netty也没事，大致意思就是一个多线程的应用可以使用同一个连接实例，而不用担心并发线程的数量。通过异步的方式可以让我们更好地利用系统资源。 Jedis 是直连模式，在多个线程间共享一个 Jedis 实例时是线程不安全的，每个线程都去拿自己的 Jedis 实例，当连接数量增多时，物理连接成本就较高了。
-
+> Lettuce的连接是基于Netty的，连接实例可以在多个线程间共享，如果你不知道Netty也没事，大致意思就是一个多线程的应用可以使用同一个连接实例，而不用担心并发线程的数量。通过异步的方式可以让我们更好地利用系统资源。
+> Jedis 是直连模式，在多个线程间共享一个 Jedis 实例时是线程不安全的，每个线程都去拿自己的 Jedis 实例，当连接数量增多时，物理连接成本就较高了。
 
 ```
         <dependency>
@@ -133,7 +133,9 @@ spring.redis.lettuce.pool.min-idle=0
 
 ### RedisTemplate
 
-在配置完之后就可以通过注入RedisTemplate来使用了,不过RedisTemplate默认只支持<String,String>形式的，为了能够扩展，可以手动添加bean来实现。（Spring-Cache也可以使用Redis，在某种情况下，如果可以手动读写缓存也可以不使用@Cache等注解） 下面是自定义bean
+在配置完之后就可以通过注入RedisTemplate来使用了,不过RedisTemplate默认只支持<String,String>
+形式的，为了能够扩展，可以手动添加bean来实现。（Spring-Cache也可以使用Redis，在某种情况下，如果可以手动读写缓存也可以不使用@Cache等注解）
+下面是自定义bean
 
 ```
     @Bean
@@ -232,15 +234,19 @@ spring.redis.lettuce.pool.min-idle=0
 
 > 1. 无参构造调用一个参数的构造
 > 2. 构造中创建ObjectMapper,并且设置了一个NullValueSerializer
-> 3. ObjectMapper设置包含类信息 上面的RedisTemplate redisTemplate作为参数,如果直接用RedisTemplate<String,Object> redisTemplate 在IDEA中会报不能注入bean的错误,只需要把k,v
+> 3. ObjectMapper设置包含类信息 上面的RedisTemplate redisTemplate作为参数,如果直接用RedisTemplate<String,Object>
+     redisTemplate 在IDEA中会报不能注入bean的错误,只需要把k,v
 
 
 对于JDK1.8中的LocalDate和LocalDateTime，可能会出现
 
-> Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `java.time.LocalDateTime` (no Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+> Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance
+> of `java.time.LocalDateTime` (no Creators, like default construct, exist): cannot deserialize from Object value (no
+> delegate- or property-based Creator)
 
 
-这是由于LocalDateTime没空构造,无法反射进行构造,所以会抛出异常.(如果自定义的对象没有提供默认构造,也会抛出这个异常) 可以在该属性上添加注解
+这是由于LocalDateTime没空构造,无法反射进行构造,所以会抛出异常.(如果自定义的对象没有提供默认构造,也会抛出这个异常)
+可以在该属性上添加注解
 
 ```
 @JsonDeserialize(using = LocalDateTimeDeserializer.class)
@@ -961,14 +967,14 @@ public class MyInterceptor implements HandlerInterceptor {
     }
 ```
 
-> [http://localhost:8080/login?username=test&password=123](http://localhost:8080/login?username=test&password=123) 用户：test登录成功，token是：564aa232-a015-481e-94f3-8a0174b11932
+> http://localhost:8080/login?username=test&password=123
+> 用户：test登录成功，token是：564aa232-a015-481e-94f3-8a0174b11932
 
 
 > GET /test HTTP/1.1 token: 564aa232-a015-481e-94f3-8a0174b11932 Host: localhost:8080 ok
 
 
 > GET /logout HTTP/1.1 token: 564aa232-a015-481e-94f3-8a0174b11932 Host: localhost:8080 注销成功
-
 
 ### 拓展
 
@@ -1078,7 +1084,8 @@ setnx key value 将key的值设为value,当且仅当key不存在
     }
 ```
 
-高并发仍然存在的问题: 锁永久失效:假设线程1try后面的代码执行时间超过了锁的过期时间,此时线程2进入并加锁,但线程1会执行到释放锁的地方, 导致线程1删除了线程2的锁.
+高并发仍然存在的问题: 锁永久失效:假设线程1try后面的代码执行时间超过了锁的过期时间,此时线程2进入并加锁,但线程1会执行到释放锁的地方,
+导致线程1删除了线程2的锁.
 
 ### 优化:(添加锁需要原子操作)每个线程加的锁的value都设为UUID,释放锁的时候进行判断
 
@@ -1162,10 +1169,11 @@ redisson大致逻辑(lua脚本实现):
 
 > CAP原则:一致性/可用性/分区容错性,三者不可能同时存在.
 
-
 - Redis满足AP:一致性/分区容错性,Redis强调可用性,会立即返回结果.
-- Zookeeper满足CP:一致性/分区容错性,同样的,Zookeeper在客户端加锁后不会立即返回结果, 只有Zookeeper集群半数以上都获得同步后,才会返回客户端成功(过半写)
+- Zookeeper满足CP:一致性/分区容错性,同样的,Zookeeper在客户端加锁后不会立即返回结果,
+  只有Zookeeper集群半数以上都获得同步后,才会返回客户端成功(过半写)
 
 #### Redlock
 
-Redis对于此问题,也可以使用Redlock来解决. Redlock针对的是客户端,客户端加锁后,超过半数以上的节点加锁成功才算成功.(牺牲可用性,不如直接用zookeeper)
+Redis对于此问题,也可以使用Redlock来解决. Redlock针对的是客户端,客户端加锁后,超过半数以上的节点加锁成功才算成功.(
+牺牲可用性,不如直接用zookeeper)

@@ -304,7 +304,7 @@ spring.mvc.static-path-pattern=/static/**
         </dependency>
 ```
 
-访问:http://localhost:8080/webjars/bootstrap/css/bootstrap.min.css即可加载对应的资源文件
+访问:> `http://localhost:8080/webjars/bootstrap/css/bootstrap.min.css` 即可加载对应的资源文件
 
 1. 其中configureMessageConverters实现了默认的Jackson替换为Fastjson.
 
@@ -380,7 +380,7 @@ restful
 风格强调了资源而非动作,请求路径资源化,适合单一资源的增删改查的接口风格统一,但是也存在不灵活的问题,比如登录,登录动作抽象为资源可以理解为创建session:
 post /session 显然不和逻辑,批量删除也没办法按照restful风格等等.实际开发中需要前后台统一一种风格,而非全盘按照restful风格.
 
-##          
+##            
 
 #### 依赖
 
