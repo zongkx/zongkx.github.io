@@ -1,13 +1,9 @@
-## docker
+## Docker
 
 ```shell
 docker pull yandex/clickhouse-server
 docker run -d -p 8123:8123 -p 9000:9000 --name clickhouse yandex/clickhouse-server
 ```
-
-## dbeaver
-
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1650447408983-706a211e-f703-462f-a831-82cbd3d1d878.png#clientId=ufe60f537-602f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=539&id=ue7e3c4b4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=539&originWidth=681&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39006&status=done&style=none&taskId=u3b23c0cf-45db-4f4c-8c96-e38eb879461&title=&width=681)
 
 ## 连接MySQL
 

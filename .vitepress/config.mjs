@@ -20,26 +20,26 @@ export default defineConfig({
         },
         sidebar: generateSidebar([{
             documentRootPath: '/doc/java/',
-            collapseDepth: 4,
+            collapseDepth: 4, hyphenToSpace: true,
             resolvePath: '/doc/java/',
         }, {
-            documentRootPath: '/doc/middleware/',
+            documentRootPath: '/doc/middleware/', hyphenToSpace: true,
             resolvePath: '/doc/middleware/',
             collapseDepth: 4,
         }, {
-            documentRootPath: '/doc/js/',
+            documentRootPath: '/doc/js/', hyphenToSpace: true,
             resolvePath: '/doc/js/',
             collapseDepth: 4,
         }, {
-            documentRootPath: '/doc/ops/',
+            documentRootPath: '/doc/ops/', hyphenToSpace: true,
             resolvePath: '/doc/ops/',
             collapseDepth: 4,
         }, {
-            documentRootPath: '/doc/practice/',
+            documentRootPath: '/doc/practice/', hyphenToSpace: true,
             resolvePath: '/doc/practice/',
             collapseDepth: 4,
         }, {
-            documentRootPath: '/doc/db/',
+            documentRootPath: '/doc/db/', hyphenToSpace: true,
             resolvePath: '/doc/db/',
             collapseDepth: 4,
         }]),

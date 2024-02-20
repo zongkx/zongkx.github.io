@@ -1,4 +1,4 @@
-# Dremio
+## Dremio
 
 > [https://docs.dremio.com/](https://docs.dremio.com/)
 
@@ -8,7 +8,7 @@
 
 基于Arrow的数据加速
 
-# Dremio安装
+## Dremio安装
 
 1. docker
 
@@ -26,7 +26,7 @@
 
 初次启动需要注册用户,注册完成后进入.
 
-# Dremio功能
+## Dremio功能
 
 1. Spaces
 
@@ -41,7 +41,7 @@ Stores,可理解为表/文件管理器,比如添加一个NAS作为文件管理�
 
 外部源,这里添加多种db源,作为虚拟表的数据来源.如Mysql/PostgreSQL/Oracle等
 
-# Dremio JDBC
+## Dremio JDBC
 
 可参考
 
@@ -56,8 +56,6 @@ Stores,可理解为表/文件管理器,比如添加一个NAS作为文件管理�
 
 - 仅支持select
 - 集成Mybatis不支持#{}
-
-# Dremio RestAPI
 
 ## Token API
 
@@ -85,7 +83,7 @@ Authorization:_dremioAAAAA
 "sql": "SELECT * FROM cmpsync."user-mapper""
 > }
 
-# Python CURL Demo
+## Python CURL Demo
 
 ```python
 import requests
@@ -115,7 +113,7 @@ if __name__ == '__main__':
     getResult()
 ```
 
-# Dremio ARP 开发
+## Dremio ARP 开发
 
 [doc](https://www.dremio.com/resources/tutorials/how-to-create-an-arp-connector/#toc_item_Maven%20Build%20Failures)
 
@@ -176,8 +174,6 @@ public static void setupDefaultTestCluster() throws Exception {
     setSessionOption("exec.errors.verbose", "true");
 }
 ```
-
-##  
 
 ## 3. questDB 开发
 
@@ -4226,7 +4222,7 @@ jar上传至 `/opt/dremio/jars/3rdparty`中,重启dremio 服务即可.
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646791638602-58803202-75f1-495c-b8ee-3bf086ed6d1a.png#clientId=u40010713-cff7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=135&id=ud79cf6bb&margin=%5Bobject%20Object%5D&name=image.png&originHeight=254&originWidth=1109&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16148&status=done&style=none&taskId=u8773e75f-d376-4cb0-9f77-e3cad5afbc7&title=&width=588)
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646791622058-c55898ed-d810-4bc6-910b-4f8a488d02d6.png#clientId=u40010713-cff7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=297&id=u1de14f66&margin=%5Bobject%20Object%5D&name=image.png&originHeight=640&originWidth=1220&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36473&status=done&style=none&taskId=u159c12d4-cecc-4d0b-bdbf-9d08017b95b&title=&width=566)
 
-# Dremio 常用sql
+## Dremio 常用sql
 
 1. 元数据
 

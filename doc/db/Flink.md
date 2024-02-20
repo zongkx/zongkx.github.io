@@ -1,6 +1,6 @@
 ## 文档
 
-[doc](http://flink.apache.org/zh/usecases.html) 
+[doc](http://flink.apache.org/zh/usecases.html)
 
 ## docker 安装
 
@@ -33,31 +33,33 @@ services:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
 ```
 
--  `docker-compose build` 
--  `docker-compose up -d --force-recreate` 
--  `http://192.168.203.128:8081` 
+- `docker-compose build`
+- `docker-compose up -d --force-recreate`
+- `http://192.168.203.128:8081`
 
 ## java demo
 
 ```xml
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients_2.12</artifactId>
-            <version>1.13.6</version>
-        </dependency>
+<dependencies>
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-clients_2.12</artifactId>
+        <version>1.13.6</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>1.13.6</version>
-        </dependency>
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-java</artifactId>
+        <version>1.13.6</version>
+    </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_2.12</artifactId>
-            <version>1.13.6</version>
-        </dependency>
+    <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-java_2.12</artifactId>
+        <version>1.13.6</version>
+    </dependency>
+</dependencies> 
 ```
 
 ### 批处理
@@ -80,7 +82,7 @@ import java.util.Arrays;
  *  * 批处理
  */
 @Slf4j
-public class Batch  {
+public class Batch {
     public static void main(String[] args) throws Exception {
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         //读取文件
@@ -90,7 +92,7 @@ public class Batch  {
             // 切割 遍历 收集
             Arrays.stream(lines.split(" ")).forEach(s -> out.collect(Tuple2.of(s, 1)));
             // 当Lambda表达式使用 java 泛型的时候, 由于泛型擦除的存在, 需要显示的声明类型信息
-        }).returns(Types.TUPLE(Types.STRING,Types.INT));
+        }).returns(Types.TUPLE(Types.STRING, Types.INT));
         // 按照单词分组并求算结果
         AggregateOperator<Tuple2<String, Integer>> sum = flatMap.groupBy(0).sum(1);
         sum.print();
