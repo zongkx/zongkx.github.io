@@ -84,6 +84,7 @@ private String getDataFetchQuery(WarehousePollContext warehousePollRequest, List
 }
 ```
 
+![](.Castled_images/8e4bb380.png)
 `pg`的实现核心便是上面的代码.
 
 ## App(Sink)抽象
