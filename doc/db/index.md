@@ -68,6 +68,8 @@ Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix
 
 ## 我所实践的案例
 
+![img.png](/images/img.png)
+
 - 数仓: GreemPlum
 
 使用一个库,不同的业务领域直接使用 schema 隔离,这样方便 比如 DM层的数据表的构建,避免数据跨库移动,提高建仓效率
@@ -86,14 +88,13 @@ DM:  集市层
 
 ### CDC
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646898140401-e7b08a63-736f-445f-ab47-adb0fe1ceb41.png#clientId=u2e6c874a-815d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=176&id=u52567237&margin=%5Bobject%20Object%5D&name=image.png&originHeight=176&originWidth=794&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20555&status=done&style=none&taskId=u8d79fe73-2664-4d70-8cc0-16c8697695e&title=&width=794)
+![](https://raw.githubusercontent.com/zongkx/pic-go/main/image(4).png)
 
 拿`flink-cdc`来说,其核心在于 数据库产生的 操作log,比如`mysql`的 `binlog`,flink-cdc可以采用 `stream`模式进行持续的数据采集,
 根据`log`进行区分,实现几乎无延迟的数据变更捕获. 缺点是需要相关数据库的配合.
 
 下图是基于`canal`的常见的数据采集方案(我认为`flink-cdc`更简洁)
-
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646897965060-240559f5-2a86-48d4-adce-2cf874365fe0.png#clientId=u2e6c874a-815d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=619&id=uf079b2bc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=619&originWidth=1363&originalType=binary&ratio=1&rotation=0&showTitle=false&size=174120&status=done&style=none&taskId=u071836ce-e7aa-49ea-b168-3dc648294bc&title=&width=1363)
+![](https://raw.githubusercontent.com/zongkx/pic-go/main/image(5).png)
 
 ### ts
 
