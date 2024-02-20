@@ -99,6 +99,9 @@ services:
 
 -- 计算百分比
     format('%.2f', (CAST(count(if(gender =1 ,1,null)) AS double) / CAST(count(*) AS double)) * 100  )
+  
+-- sum null-->0
+   SUM(COALESCE(num, 0))
 
 ```
 

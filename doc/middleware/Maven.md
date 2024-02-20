@@ -1,10 +1,8 @@
-## 应用
-
-### 指令
+## 指令
 
 > mvn clean compile deploy -DskipTests
 
-### Profile 指定打包环境
+## Profile
 
 profile也可以指定 ·distributionManagement·
 > mvn package -P all all in one fat jar
@@ -107,13 +105,10 @@ common中即可,在项目根目录或者在其目录下执行 `mvn deploy` 即�
 </distributionManagement>
 ```
 
-## resource插件
+## resource
 
-### 配置文件占位符替换
-
-该插件将会把指定目录下的配置文件中的占位符替换为 `profile`中的配置信息
-`dev`的`activeByDefault`为`true`,默认`mvn package`将执行dev环境
-(也可以指定 `-Ppro` 来执行 `pro`环境.)
+该插件将会把指定目录下的配置文件中的占位符替换为 `profile`中的配置信息`dev`的`activeByDefault`为`true`,默认`mvn package`
+将执行dev环境(也可以指定 `-Ppro` 来执行 `pro`环境.)
 
 比如下文配置将会启用 dev,且dev中的${name}会被替换为dev-name
 
@@ -183,7 +178,7 @@ name: ${name}
 </build>
 ```
 
-### java-doc
+## java-doc
 
 上传至mvn私服
 
@@ -203,7 +198,7 @@ name: ${name}
 </plugin>
 ```
 
-### 生成java-source
+## java-source
 
 ```xml
 
@@ -221,7 +216,7 @@ name: ${name}
 </plugin>
 ```
 
-### fat-jar打包(all in one)
+## fat-jar打包(all in one)
 
 打包后的jar包含所有依赖,且路径被重写.
 
@@ -261,7 +256,7 @@ name: ${name}
 </plugin>
 ```
 
-### springboot插件
+## springboot插件
 
 springboot 插件,用于启动springboot
 > - spring-boot:repackage，默认goal。在mvn package之后，再次打包可执行的jar/war，同时保留mvn package生成的jar/war为.origin
@@ -286,7 +281,54 @@ springboot 插件,用于启动springboot
 </plugin>
 ```
 
-### docker插件
+## docker插件(new)
+
+`io.fabric8`
+
+```xml
+
+<properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!--上传的Docker镜像前缀，此前缀一定要和Harbor中的项目名称一致，和阿里云仓库的命名空间一致-->
+    <docker.registry.name>demo</docker.registry.name>
+    <docker.registry.username>demo@aliyun.com</docker.registry.username>
+    <docker.registry.password>password</docker.registry.password>
+    <docker.registry.url>registry.cn-shenzhen.aliyuncs.com</docker.registry.url>
+    <docker.tag>latest</docker.tag>
+</properties>
+```
+
+```xml
+
+<plugin>
+    <groupId>io.fabric8</groupId>
+    <artifactId>docker-maven-plugin</artifactId>
+    <version>0.37.0</version>
+    <configuration>
+        <pushRegistry>${docker.registry.url}</pushRegistry>
+        <authConfig>
+            <username>${docker.registry.username}</username>
+            <password>${docker.registry.password}</password>
+        </authConfig>
+        <images>
+            <image>
+                <name>${docker.registry.url}/${docker.registry.name}/${project.artifactId}:${docker.tag}
+                </name>
+                <build>
+                    <dockerFileDir>${project.basedir}</dockerFileDir><!--指定 dockerFile 目录-->
+                </build>
+            </image>
+        </images>
+    </configuration>
+</plugin>
+
+```
+
+## docker插件
 
 该插件需要配合mvn setting.xml中配置使用,mvn 编译的时候会自动 构建上传镜像
 
@@ -328,9 +370,42 @@ springboot 插件,用于启动springboot
 </plugin>
 ```
 
-### maven 上传私服插件
+## maven deploy
 
 可以配置忽略某个模块是否上传,配合`distributionManagement` 使用
+在maven的setting 文件中添加server配置
+
+```xml
+
+<servers>
+    <server>
+        <id>maven-releases</id>
+        <username>admin</username>
+        <password>password</password>
+    </server>
+    <server>
+        <id>maven-snapshots</id>
+        <username>admin</username>
+        <password>password</password>
+    </server>
+</servers>
+
+```
+
+```xml
+
+<distributionManagement>
+    <repository>
+        <id>maven-releases</id>
+        <url>http://192.168.8.92:28081/nexus/repository/maven-releases/</url>
+        <uniqueVersion>true</uniqueVersion>
+    </repository>
+    <snapshotRepository>
+        <id>maven-snapshots</id>
+        <url>http://192.168.8.92:28081/nexus/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+```
 
 ```xml
 
