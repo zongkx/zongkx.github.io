@@ -4218,9 +4218,12 @@ public class QuestTest extends BaseTestQuery2 {
 jar上传至 `/opt/dremio/jars/3rdparty`中,重启dremio 服务即可.
 `service dremio start`
 `service dremio stop`
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646791598887-4f58e531-28a5-4510-8aba-d7849e340f3b.png#clientId=u40010713-cff7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=295&id=u147c65a8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=484&originWidth=958&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29586&status=done&style=none&taskId=u7f5f2198-a4bb-4c47-b0e0-17165e52f51&title=&width=584)
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646791638602-58803202-75f1-495c-b8ee-3bf086ed6d1a.png#clientId=u40010713-cff7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=135&id=ud79cf6bb&margin=%5Bobject%20Object%5D&name=image.png&originHeight=254&originWidth=1109&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16148&status=done&style=none&taskId=u8773e75f-d376-4cb0-9f77-e3cad5afbc7&title=&width=588)
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1646791622058-c55898ed-d810-4bc6-910b-4f8a488d02d6.png#clientId=u40010713-cff7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=297&id=u1de14f66&margin=%5Bobject%20Object%5D&name=image.png&originHeight=640&originWidth=1220&originalType=binary&ratio=1&rotation=0&showTitle=false&size=36473&status=done&style=none&taskId=u159c12d4-cecc-4d0b-bdbf-9d08017b95b&title=&width=566)
+
+[1](/images/dremio_1.png)
+
+[2](/images/dremio_2.png)
+
+[3](/images/dremio_3.png)
 
 ## Dremio 常用sql
 

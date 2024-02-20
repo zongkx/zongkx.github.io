@@ -106,7 +106,7 @@ public interface DataSink {
 针对某些特定的模型,指定调度任务进行数据快照,并进行s3存储(parquet)
 快照后的数据可以用来diff也可以用来溯源等.
 
-![](https://cdn.nlark.com/yuque/0/2022/jpeg/21561641/1649301232501-5c4b77dd-29f0-48a8-8dec-cba63a150929.jpeg)
+![yuque_mind.jpeg](/images/yuque_mind.jpeg)
 
 反向etl的核心在于扩展性,dremio作为数据湖引擎提供了source端的强大能力,重点在于sink的标准接口声明
 对于不同的下游系统,可能存在不同的接口规范,基于pf4j的插件化能力,以及easybatch的writer的标准声明,可以极大程度上提高系统的扩展性.

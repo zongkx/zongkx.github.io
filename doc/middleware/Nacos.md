@@ -82,7 +82,7 @@ nacos:
 
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/21561641/1658469470151-a315dcc5-2ce5-4f83-bdbc-69d1d8c35903.png#clientId=ue0bb4431-b2d8-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=92&id=u956d26a1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=92&originWidth=1289&originalType=binary&ratio=1&rotation=0&showTitle=false&size=8450&status=done&style=none&taskId=u92bf4689-9d14-401e-9e14-4ea5bf1c8a1&title=&width=1289)
+![1](/images/nacos_1.png)
 
 ```java
 

@@ -68,8 +68,6 @@ Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix
 
 ## 我所实践的案例
 
-![img.png](/images/img.png)
-
 - 数仓: GreemPlum
 
 使用一个库,不同的业务领域直接使用 schema 隔离,这样方便 比如 DM层的数据表的构建,避免数据跨库移动,提高建仓效率
