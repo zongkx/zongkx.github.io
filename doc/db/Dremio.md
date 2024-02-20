@@ -413,8 +413,6 @@ jar上传至 `/opt/dremio/jars/3rdparty`中,重启dremio 服务即可.
 
 ## 表元数据信息 (表面/字段名/字段类型等)
 
-![yuque_mind.jpeg](/images/yuque_mind.jpeg)
-
 ```sql
  SELECT * FROM 
  table("oracle-dw"
