@@ -1,4 +1,4 @@
-##  
+##    
 
 > S-NEO_PENG#890808-g4tibemn0jen#37bb9
 
@@ -12,7 +12,7 @@ linux：添加启动参数
 > -agentpath:/opt/jprofiler13.0.2/bin/linux-x64/libjprofilerti.so=port=8849,nowait
 
 选择这个本地服务
-![1](/images/jprofiler_1.png)
-![2](/images/jprofiler_2.png)
-![3](/images/jprofiler_3.png)
+![1](.JProfiler_images/jprofiler_1.png)
+![2](.JProfiler_images/jprofiler_2.png)
+![3](.JProfiler_images/jprofiler_3.png)
 

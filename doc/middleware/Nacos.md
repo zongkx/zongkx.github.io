@@ -82,8 +82,6 @@ nacos:
 
 ```
 
-![1](/images/nacos_1.png)
-
 ```java
 
 @Data

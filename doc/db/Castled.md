@@ -1,6 +1,6 @@
 ## 简介
 
-![架构图](https://raw.githubusercontent.com/zongkx/pic-go/main/image.png)
+![1](.Castled_images/dc8a6778.png)
 
 * [https://hub.fastgit.xyz/castledio/castled](https://hub.fastgit.xyz/castledio/castled)
 * [https://docs.castled.io/](https://docs.castled.io/)
@@ -27,17 +27,16 @@ docker-compose: 下载源码,其中` .env`和`docker-compose.yaml `放到` /opt/
 > docker-compose up -d
 
 > [http://192.168.203.128:3000](http://192.168.203.128:3000)
-
-添加数据源
-![](https://raw.githubusercontent.com/zongkx/pic-go/main/image(1).png)
-![](https://raw.githubusercontent.com/zongkx/pic-go/main/image(2).png)
+> 添加数据源
+![2](.Castled_images/9883f687.png)
+![3](.Castled_images/3d0ef7dd.png)
 
 ## 源码学习
 
 ## DataPoll
 
 对于不同的 source 而言,diff 功能的实现并不相同,但逻辑时相通的.
-![](https://raw.githubusercontent.com/zongkx/pic-go/main/image(3).png)
+![4](.Castled_images/73331510.png)
 
 ```java
 package io.castled.warehouses;
@@ -84,7 +83,6 @@ private String getDataFetchQuery(WarehousePollContext warehousePollRequest, List
 }
 ```
 
-![](.Castled_images/8e4bb380.png)
 `pg`的实现核心便是上面的代码.
 
 ## App(Sink)抽象
@@ -106,8 +104,7 @@ public interface DataSink {
 利用dremio的 create view select as 和 except(取差集)的能力,
 针对某些特定的模型,指定调度任务进行数据快照,并进行s3存储(parquet)
 快照后的数据可以用来diff也可以用来溯源等.
-
-![yuque_mind.jpeg](/images/yuque_mind.jpeg)
+![5](.Castled_images/fb2ff997.png)
 
 反向etl的核心在于扩展性,dremio作为数据湖引擎提供了source端的强大能力,重点在于sink的标准接口声明
 对于不同的下游系统,可能存在不同的接口规范,基于pf4j的插件化能力,以及easybatch的writer的标准声明,可以极大程度上提高系统的扩展性.
