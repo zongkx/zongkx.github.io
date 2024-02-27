@@ -23,7 +23,20 @@
 
 ## clean
 
-> docker rmi $(docker images -q -f dangling=true)
+```shell
+docker rmi $(docker images -q -f dangling=true)
+
+#删除空悬镜像
+
+docker image prune
+
+# 删除所有关闭的容器
+docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+
+# 删除所有dangling数据卷(即无用的volume)：
+docker volume rm $(docker volume ls -qf dangling=true)
+
+```
 
 ## push
 
@@ -31,3 +44,13 @@
    输入账号密码
 2. docker tag my/demoapp **.com/my/demoapp:1.0
 3. docker push **.com/my/demoapp:1.0
+
+## update
+
+> docker container update --restart=always mysql
+
+## commit
+
+```shell
+docker commit --author="zkx" 容器ID 镜像名称:tag
+```

@@ -1,4 +1,6 @@
-# Dev
+## resource
+
+- [Jdk下载](https://bell-sw.com/pages/downloads/#jdk-17-lts)
 
 ## xml👍
 

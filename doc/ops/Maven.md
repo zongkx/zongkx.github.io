@@ -281,7 +281,7 @@ springboot 插件,用于启动springboot
 </plugin>
 ```
 
-## docker插件(new)
+## docker插件(new)/分层构建
 
 `io.fabric8`
 
@@ -300,6 +300,34 @@ springboot 插件,用于启动springboot
     <docker.registry.url>registry.cn-shenzhen.aliyuncs.com</docker.registry.url>
     <docker.tag>latest</docker.tag>
 </properties>
+```
+
+```xml
+
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <version>${spring-boot.version}</version>
+    <configuration>
+        <excludes>
+            <exclude>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+            </exclude>
+        </excludes>
+        <layers>
+            <enabled>true</enabled>
+            <configuration>${project.basedir}/layers.xml</configuration>
+        </layers>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>repackage</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 ```
 
 ```xml
@@ -326,6 +354,60 @@ springboot 插件,用于启动springboot
     </configuration>
 </plugin>
 
+```
+
+layers.xml
+
+```xml
+
+<layers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.springframework.org/schema/boot/layers"
+        xsi:schemaLocation="http://www.springframework.org/schema/boot/layers
+                          https://www.springframework.org/schema/boot/layers/layers-3.0.xsd">
+    <application>
+        <into layer="spring-boot-loader">
+            <include>org/springframework/boot/loader/**</include>
+        </into>
+        <into layer="application"/>
+    </application>
+    <dependencies>
+        <into layer="application">
+            <includeModuleDependencies/>
+        </into>
+        <into layer="snapshot-dependencies">
+            <include>*:*:*SNAPSHOT</include>
+        </into>
+        <into layer="dependencies"/>
+    </dependencies>
+    <layerOrder>
+        <layer>dependencies</layer>
+        <layer>spring-boot-loader</layer>
+        <layer>snapshot-dependencies</layer>
+        <layer>application</layer>
+    </layerOrder>
+</layers>
+```
+
+```Dockerfile
+# 分层构建
+FROM bellsoft/liberica-openjdk-debian:17-cds as builder
+# 执行工作目录
+WORKDIR application
+# 将编译构建得到的jar文件复制到镜像空间中
+ADD target/demo-2.0.0-SNAPSHOT.jar .
+# 通过工具spring-boot-jarmode-layertools从application.jar中提取拆分后的构建结果
+RUN java -Djarmode=layertools -jar demo-2.0.0-SNAPSHOT.jar extract
+
+# 正式构建镜像
+FROM bellsoft/liberica-openjdk-debian:17-cds
+WORKDIR application
+EXPOSE 6311
+# 前一阶段从jar中提取除了多个文件，这里分别执行COPY命令复制到镜像空间中，每次COPY都是一个layer
+COPY --from=builder application/dependencies/ ./
+COPY --from=builder application/spring-boot-loader/ ./
+COPY --from=builder application/snapshot-dependencies/ ./
+COPY --from=builder application/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 ```
 
 build&push

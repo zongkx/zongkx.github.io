@@ -1,3 +1,20 @@
+## https/ssl
+
+1. 阿里云申请的ssl证书包括 `zkx.com_public.crt`,`zkx.com_common.crt`,`zkx.com.key`,使用1/3即可
+2. [CRT-JKS在线转换](https://www.myssl.cn/tools/merge-jks-cert.html),输入key,cert已经密码即可生成对应的jks文件
+
+<!--rehype:wrap-class=col-span-2-->
+
+```yaml
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    key-store: classpath:zkx.com.jks
+    key-store-type: JKS
+    key-password: password
+```
+
 ## yml配置自定义数组
 
 demo如下
@@ -12,16 +29,18 @@ users:
 ```
 
 ```java
+
 @Configuration
 @Data
 @ConfigurationProperties(prefix = "users")
 public class UserConf {
     List<User> conf;
 }
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class User{
+class User {
     private String id;
     private String name;
 }
@@ -39,10 +58,11 @@ class User{
 ## 扫描所有bean中指定注解的方法中注解的值
 
 ```java
+
 @Configuration
 public class BeanConf {
     @MyAnnotation("test")
-    public void test(){
+    public void test() {
         System.out.println("test");
     }
 }
@@ -51,6 +71,7 @@ public class BeanConf {
 以下方法可获取所有的被@MyAnnotation的方法的value
 
 ```java
+
 @Configuration
 public class MyAware implements ApplicationContextAware {
 
@@ -61,8 +82,8 @@ public class MyAware implements ApplicationContextAware {
         for (String beanDefinitionName : applicationContext.getBeanDefinitionNames()) {
             Object bean = applicationContext.getBean(beanDefinitionName);
             Map<Method, MyAnnotation> annotatedMethods = MethodIntrospector.selectMethods(bean.getClass(),
-                            (MethodIntrospector.MetadataLookup<MyAnnotation>) method
-                                    -> (MyAnnotation) AnnotatedElementUtils.findMergedAnnotation(method, MyAnnotation.class));
+                    (MethodIntrospector.MetadataLookup<MyAnnotation>) method
+                            -> (MyAnnotation) AnnotatedElementUtils.findMergedAnnotation(method, MyAnnotation.class));
             annotatedMethods.forEach((method, myAnnotation) -> list.add(myAnnotation.value()));
         }
 
@@ -77,6 +98,7 @@ public class MyAware implements ApplicationContextAware {
 拿minio为例
 
 ```java
+
 @Component
 public class MinioConf implements InitializingBean {
     @Value("${aws.s3.access-key}")
@@ -97,8 +119,8 @@ public class MinioConf implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         this.minioClient = new MinioClient.Builder()
-                .credentials(accessKey,accessSecret)
-                .endpoint(endpoint,port,false)
+                .credentials(accessKey, accessSecret)
+                .endpoint(endpoint, port, false)
                 .build();
     }
 }
@@ -107,9 +129,11 @@ public class MinioConf implements InitializingBean {
 MinioUtil中需要注入一个静态变量`MinioClient`
 
 ```java
+
 @Component
 public class MinioUtil {
     private static MinioClient minioClient;
+
     public MinioUtil(MinioConfig minioConf) {
         minioClient = minioConf.getMinioClient();
     }
@@ -119,19 +143,20 @@ public class MinioUtil {
 ## Swagger3 生成全局token参数
 
 ```java
+
 @Bean
 public Docket createRestApi() {
-    log.info("swagger path:{}","http://localhost:8080/swagger-ui/");
-    log.info("knife4j path:{}","http://localhost:8080/doc.html");
-    
+    log.info("swagger path:{}", "http://localhost:8080/swagger-ui/");
+    log.info("knife4j path:{}", "http://localhost:8080/doc.html");
+
     //返回文档摘要信息
     return new Docket(DocumentationType.OAS_30)
-        .enable(true)
-        .apiInfo(apiInfo())
-        .select()
-        .paths(PathSelectors.any())
-        .build()
-        .globalRequestParameters(getGlobalRequestParameters());
+            .enable(true)
+            .apiInfo(apiInfo())
+            .select()
+            .paths(PathSelectors.any())
+            .build()
+            .globalRequestParameters(getGlobalRequestParameters());
 }
 
 private ApiInfo apiInfo() {
@@ -142,16 +167,17 @@ private ApiInfo apiInfo() {
 private List<RequestParameter> getGlobalRequestParameters() {
     List<RequestParameter> parameters = new ArrayList<>();
     parameters.add(new RequestParameterBuilder()
-                   .name("token")
-                   .description("token")
-                   .required(false)
-                   .in(ParameterType.HEADER)
-                   .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
-                   .required(true)
-                   .build());
+            .name("token")
+            .description("token")
+            .required(false)
+            .in(ParameterType.HEADER)
+            .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
+            .required(true)
+            .build());
     return parameters;
-    }
+}
 ```
+
 ## bean构造注入
 
 推荐构造注入,配合`lombok`注解`@RequiredArgsConstructor`,`@Autowire`潜在NPE风险且不利于mock
@@ -161,10 +187,11 @@ private List<RequestParameter> getGlobalRequestParameters() {
 推荐`@ConfigurationProperties`,不推荐`@Value`
 
 ```java
+
 @Data
 @ConfigurationProperties(prefix = "custom")
 public class CustomConfiguration {
-  private String name;
+    private String name;
 }
 ```
 
@@ -174,7 +201,7 @@ yml:
 
 ```yaml
 server:
-  port: {server-port}
+  port: { server-port }
 spring:
   profiles:
     active: ${profile-name}
@@ -183,7 +210,8 @@ spring:
 pom:
 
 ```xml
- <profiles>
+
+<profiles>
     <profile>
         <id>pro</id>
         <activation>
@@ -208,6 +236,7 @@ pom:
 ```
 
 ```xml
+
 <build>
     <plugins>
         <plugin>
@@ -233,10 +262,10 @@ pom:
 </build>
 ```
 
-
 ## 手动注册bean
+
 ```java
-public CommandLineRunner run(ConfigurableApplicationContext applicationContext){
+public CommandLineRunner run(ConfigurableApplicationContext applicationContext) {
     BeanDefinitionRegistry beanFactory = (BeanDefinitionRegistry) applicationContext.getBeanFactory();
     BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(A.class);
     beanDefinitionBuilder.addPropertyValue("object", new ObjectMapper());// setter 注入
@@ -244,25 +273,27 @@ public CommandLineRunner run(ConfigurableApplicationContext applicationContext){
     beanFactory.registerBeanDefinition(dataSourceManager.getId(), beanDefinitionBuilder.getBeanDefinition());
 }
 
-class A{
+class A {
     @Setter
     private Object object;
-    
-    public void init(){
+
+    public void init() {
     }
 }
 ```
 
-
 ## SmartInitializingSingleton 所有bean注册后的扩展点
+
 ```
 public interface SmartInitializingSingleton {
     void afterSingletonsInstantiated();//所有bean注册后会调用该方法
 }
 ```
+
 比如xxl-job中spring集成便使用了改扩展点
 
 XxlJobSpringExecutor
+
 ```
 // start
     @Override
@@ -326,12 +357,12 @@ XxlJobSpringExecutor
 
 两者相反,前者是 Spring容器中存在指定class实例的对象是,对应配置生效
 
-- @ConditionalOnClass/ ConditionalOnMissingClass  
+- @ConditionalOnClass/ ConditionalOnMissingClass
 
- classPath中存在某些Class时条件才成立  
+classPath中存在某些Class时条件才成立
 
-- @ConditionalOnProperty 
+- @ConditionalOnProperty
 
- Environment中存在某些配置项时条件才成立  
+Environment中存在某些配置项时条件才成立  
 name: 用于检测key是否存在
 value: 检测值

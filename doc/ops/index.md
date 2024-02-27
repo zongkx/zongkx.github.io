@@ -2,10 +2,25 @@
 
 ```shell
 # 查看磁盘占用
-> df -Th
+df -Th
+
+# 查看磁盘剩余空间
+df -h
+
+# 清理系统日志文件
+sudo journalctl --vacuum-size=100M
+
+# 清理临时文件
+sudo rm -rf /tmp/*
+
+# 删除无用的软件包和依赖项
+sudo yum autoremove
+
+#     清理Yum缓存：
+sudo yum clean all
 
 # 根据pid查找进程执行目录信息
-> ps -aux|grep -v grep |grep 12421
+ps -aux|grep -v grep |grep 12421
 
 # ssh远程下载
 
@@ -15,6 +30,7 @@ scp -r root@192.168.8.80:/home/gitlab-runner/tmp/vte/jars /path/loacl
 
 firewall-cmd --zone=public --add-port=17000/tcp --permanent
 # 防火墙
+
 # 安装
 
   yum install firewalld firewalld-config
@@ -30,6 +46,10 @@ firewall-cmd --zone=public --add-port=17000/tcp --permanent
 # 重启
 
   firewall-cmd --reload 或者 service firewalld restart
+# 网络
+  lsof -i:8080
+
+  netstat -tuln | grep 8080
 ```
 
 ## docker-compose
@@ -80,8 +100,17 @@ services:
 
 ## portainer
 
-```shell
-docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```yaml
+# docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+version: '3'
+services:
+  portainer:
+    image: portainer/portainer
+    restart: always
+    container_name: portainer
+    ports:
+      - 8000:8000
+      - 9000:9000
 ```
 
 ## dolphinscheduler
@@ -120,6 +149,20 @@ management.endpoints.web.exposure.include=*
 
 ```shell
 docker run -itd mysql --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456a mysql
+```
+
+```yml
+version: '3'
+services:
+  mysql:
+    image: mysql:latest #镜像名称以及版本
+    restart: always #重启docker后该容器也重启
+    container_name: mysql8 #容器名称
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456 #指定用户密码
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306 #本地端口号与容器内部端口号
 ```
 
 ## pg
@@ -174,4 +217,45 @@ services:
 > docker run -d -p 27017:27017 --name mongodb1 -e MONGO_INITDB_ROOT_USERNAME=test -e
 > MONGO_INITDB_ROOT_PASSWORD=123456789 -v $PWD/db:/data/db mongo
 
+## cloud dbeaver
 
+> docker run --name cloudbeaver -d --rm -ti -p 8978:8978 -v ./:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
+
+## cubejs
+
+```yaml
+version: '2.2'
+services:
+  cube:
+    image: cubejs/cube:v0.33.47
+    ports:
+      - 4000:4000  # Cube API and Developer Playground
+      - 3000:3000  # Dashboard app, if created
+    env_file: .env # 同目录下的env文件
+    volumes:
+      - .:/cube/conf #
+```
+
+```env
+CUBEJS_DATASOURCES=default
+CUBEJS_DEV_MODE=true
+CUBEJS_WEB_SOCKETS=false
+CUBEJS_DB_TYPE=trino
+CUBEJS_DB_HOST=192.168.12.24
+CUBEJS_DB_PORT=28443
+CUBEJS_DB_USER=test
+CUBEJS_DB_PRESTO_CATALOG=memory
+CUBEJS_DEV_MODE=true
+CUBEJS_DB_SSL=true
+CUBEJS_DB_PASS=password
+```
+
+```js
+const {FileRepository} = require("@cubejs-backend/server-core");
+module.exports = {
+    contextToAppId: ({securityContext}) =>
+        securityContext && securityContext.tenant !== undefined ? 'CUBEJS_APP_' + securityContext.tenant : 'CUBEJS_APP',
+    repositoryFactory: ({securityContext}) =>
+        new FileRepository(securityContext && securityContext.tenant !== undefined ? 'schema/' + securityContext.tenant : 'schema/'),
+};
+```
