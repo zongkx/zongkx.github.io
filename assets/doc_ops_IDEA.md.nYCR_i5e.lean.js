@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.IXvbZIHp.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/IDEA.md","filePath":"doc/ops/IDEA.md"}'),l={name:"doc/ops/IDEA.md"},p=n("",4),h=[p];function t(k,e,E,r,d,c){return a(),i("div",null,h)}const o=s(l,[["render",t]]);export{y as __pageData,o as default};

@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as h}from"./chunks/framework.IXvbZIHp.js";const F=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Mysql.md","filePath":"doc/db/Mysql.md"}'),k={name:"doc/db/Mysql.md"},n=h("",25),l=[n];function t(p,e,E,r,d,g){return a(),i("div",null,l)}const c=s(k,[["render",t]]);export{F as __pageData,c as default};

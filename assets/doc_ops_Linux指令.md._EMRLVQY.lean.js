@@ -1,1 +1,0 @@
-import{_ as a,c as e,o,a4 as t}from"./chunks/framework.IXvbZIHp.js";const b=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/Linux指令.md","filePath":"doc/ops/Linux指令.md"}'),l={name:"doc/ops/Linux指令.md"},r=t("",26),c=[r];function i(h,n,s,d,p,u){return o(),e("div",null,c)}const q=a(l,[["render",i]]);export{b as __pageData,q as default};
