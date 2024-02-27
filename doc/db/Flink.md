@@ -188,3 +188,51 @@ public class UnboundedStream {
     }
 }
 ```
+
+## sql table
+
+```
+CREATE TABLE t12 (
+    `id` int,
+    `name` string,
+    PRIMARY KEY (`id`) NOT ENFORCED
+) WITH (
+    'connector' = 'mysql-cdc',
+    'hostname' = 'localhost',
+    'port' = '3306',
+    'username' = 'root',
+    'password' = '123456',
+    'database-name' = 'demo',
+    'table-name' = 't1',
+    'server-time-zone' = 'UTC'
+);
+
+CREATE TABLE t11 (
+    `id` int,
+    `name` string,
+    PRIMARY KEY (`id`) NOT ENFORCED
+) WITH (
+    'connector' = 'mysql-cdc',
+    'hostname' = 'localhost',
+    'port' = '3306',
+    'username' = 'root',
+    'password' = '123456',
+    'database-name' = 'bpmn',
+    'table-name' = 't1'
+);
+
+
+select * from t1;
+CREATE TABLE t2(
+    `id` int,
+    `name` string,
+    PRIMARY KEY (`id`) NOT ENFORCED
+) WITH (
+'connector' = 'elasticsearch-7',
+'hosts' = 'http://localhost:9200',
+'index' = 'demo_t12',
+'username' = '',
+'password' = ''
+);
+
+```

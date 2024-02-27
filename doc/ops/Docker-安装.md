@@ -1,4 +1,3 @@
-
 # docker for windows 安装
 
 ## 1.开启windows服务:
@@ -9,7 +8,6 @@
 ## 2. 安装更新wsl2的更新包(可选)
 
 > [https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
-
 
 ## 3.正常安装docker for windows 即可
 
@@ -49,12 +47,15 @@ http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 ```
 
 生成token:
+
 ```
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 ```
 
 复制最后生成的token,即可完成登录
+
 # docker for centos8 安装
+
 ## yum
 
 ```
@@ -75,15 +76,15 @@ yum -y install docker-ce docker-ce-cli containerd.io
 
 > sudo systemctl start docker
 
-
 ## 修改镜像
 
 > vi /etc/docker/daemon.json
 
-
 ```json
 {
-  "registry-mirrors": ["https://2qtk1jto.mirror.aliyuncs.com"]
+  "registry-mirrors": [
+    "https://2qtk1jto.mirror.aliyuncs.com"
+  ]
 }
 ```
 
@@ -95,15 +96,14 @@ yum -y install docker-ce docker-ce-cli containerd.io
 > systemctl restart docker.service
 
 # docker compose
+
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
->  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+> sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o
+> /usr/local/bin/docker-compose
 
 > sudo chmod +x /usr/local/bin/docker-compose
 
 
 
-# docker jar
-## 
 
-## 
 

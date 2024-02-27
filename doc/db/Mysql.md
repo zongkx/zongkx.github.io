@@ -125,6 +125,59 @@ select mock_data();
 
 ```
 
+## json array 按行展开
+
+```sql
+SELECT *
+FROM JSON_TABLE('[5, 6, 7]', "$[*]"
+                COLUMNS (
+                    Value INT PATH "$"
+                    )
+     ) data;
+
+```
+
+```sql
+set @delimited = 'a,b,c';
+
+SELECT *
+FROM JSON_TABLE(
+             CONCAT('["', REPLACE(@delimited, ',', '", "'), '"]'),
+             "$[*]"
+             COLUMNS (
+                 Value varchar(50) PATH "$"
+                 )
+     ) data;
+```
+
+## seq 表
+
+```sql
+WITH RECURSIVE seq AS (
+   SELECT 1 AS v
+   UNION ALL
+   SELECT v + 1 FROM seq WHERE v < 10
+)
+SELECT * FROM seq;
+```
+
+## 虚拟字段 GENERATED
+
+> https://dev.mysql.com/doc/refman/5.7/en/create-table-secondary-indexes.html
+
+```
+CREATE TABLE IF NOT EXISTS database_entity (
+    id VARCHAR(36) GENERATED ALWAYS AS (json ->> '$.id') STORED NOT NULL,
+    fullyQualifiedName VARCHAR(256) GENERATED ALWAYS AS (json ->> '$.fullyQualifiedName') NOT NULL,
+    json JSON NOT NULL,
+    updatedAt BIGINT UNSIGNED GENERATED ALWAYS AS (json ->> '$.updatedAt') NOT NULL,
+    updatedBy VARCHAR(256) GENERATED ALWAYS AS (json ->> '$.updatedBy') NOT NULL,
+    deleted BOOLEAN GENERATED ALWAYS AS (json -> '$.deleted'),
+    PRIMARY KEY (id),
+    UNIQUE (fullyQualifiedName)
+);
+```
+
 ## Window Function
 
 > [https://baijiahao.baidu.com/s?id=1728966619393719484&wfr=spider&for=pc](https://baijiahao.baidu.com/s?id=1728966619393719484&wfr=spider&for=pc)

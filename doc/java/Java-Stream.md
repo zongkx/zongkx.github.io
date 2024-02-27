@@ -93,6 +93,19 @@ public void a5() {
 
 ```
 
+## List 合并(根据某个值)
+
+```java
+
+@Test
+@SneakyThrows
+public void a5() {
+    new ArrayList<>(Stream.concat(list1.stream(), list2.stream())
+            .collect(Collectors.toMap(User::getId, user -> user, (existing, replacement) -> existing))
+            .values());
+}
+``` 
+
 ## List 简单操作
 
 ```java

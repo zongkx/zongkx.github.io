@@ -328,6 +328,16 @@ springboot 插件,用于启动springboot
 
 ```
 
+build&push
+
+```shell
+@echo off
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set mydatetime=%%I
+set mydatetime=%mydatetime:~0,8%%mydatetime:~8,4%
+echo %mydatetime%
+ mvn   docker:build docker:push -DskipTests=true -Ddocker.tag=%mydatetime%
+```
+
 ## docker插件
 
 该插件需要配合mvn setting.xml中配置使用,mvn 编译的时候会自动 构建上传镜像
