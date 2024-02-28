@@ -1,13 +1,14 @@
 # RabbitMQ
 
-## 基础概念 
+## 基础概念
 
 MQ即为Message Queue,消息队列.它是一种典型的消费生产者模型,一端往消息队列中不断写入消息,另一端则读取消息.
 
-1. 队列、生产者、消费者 队列是RabbitMQ的内部对象,用于存储消息.生产者生产消息,投递到队列中,消费者可以从队列中获取消息.多个消费者可以订阅同一个队列,这时消息会被平摊给多个消费者,而不是每个消费者都收到所有的消息.
-2. Exchange、Binding 实际上生产者将消息发送到Exchange（交换器），再通过Binding将Exchange与Queue关联起来。在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding key。在绑定多个Queue到同一个Exchange的时候，这些Binding允许使用相同的binding key。生产者在将消息发送给Exchange的时候，一般会指定一个routing key，来指定这个消息的路由规则，生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。
-
-![](http://spring.hhui.top/spring-blog/imgs/200212/00.jpg#alt=img#crop=0&crop=0&crop=1&crop=1&id=w1LRi&originHeight=265&originWidth=927&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+1. 队列、生产者、消费者
+   队列是RabbitMQ的内部对象,用于存储消息.生产者生产消息,投递到队列中,消费者可以从队列中获取消息.多个消费者可以订阅同一个队列,这时消息会被平摊给多个消费者,而不是每个消费者都收到所有的消息.
+2. Exchange、Binding 实际上生产者将消息发送到Exchange（交换器），再通过Binding将Exchange与Queue关联起来。在绑定（Binding）Exchange与Queue的同时，一般会指定一个binding
+   key。在绑定多个Queue到同一个Exchange的时候，这些Binding允许使用相同的binding key。生产者在将消息发送给Exchange的时候，一般会指定一个routing
+   key，来指定这个消息的路由规则，生产者就可以在发送消息给Exchange时，通过指定routing key来决定消息流向哪里。
 
 > a. Message 具体的消息，包含消息头（即附属的配置信息）和消息体（即消息的实体内容）由发布者，将消息推送到Exchange，由消费者从Queue中获取
 
@@ -33,14 +34,15 @@ MQ即为Message Queue,消息队列.它是一种典型的消费生产者模型,�
 > h. Consumer 消费者，从消息队列中获取消息的主体
 
 
-> i. Virtual Host 虚拟主机，表示一批交换器、消息队列和相关对象。;虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 /可以理解为db中的数据库的概念，用于逻辑拆分 j. Broker 消息队列服务器实体
-
+> i. Virtual Host 虚拟主机，表示一批交换器、消息队列和相关对象。;虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个
+> vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP
+> 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 /可以理解为db中的数据库的概念，用于逻辑拆分 j. Broker 消息队列服务器实体
 
 ## Exchange策略
 
--  Direct<直接>：1对1-----一个消息只能被一个消费者消费 
--  Topic<主题>：1对多-----一个消息可以被多个消费者消费 
--  Fanout<分列>：广播 
+- Direct<直接>：1对1-----一个消息只能被一个消费者消费
+- Topic<主题>：1对多-----一个消息可以被多个消费者消费
+- Fanout<分列>：广播
 
 ## 应用场景
 
@@ -65,13 +67,15 @@ MQ即为Message Queue,消息队列.它是一种典型的消费生产者模型,�
 
 ## 阿里CentOS 安装
 
-[可参考](https://www.cnblogs.com/yw0219/p/8933917.html) 在启动后需要到阿里控制台安全策略里面手动添加一个15672端口的配置 http://39.97.243.43:15672/访问即可,我的默认的管理员账户密码username/password
+[可参考](https://www.cnblogs.com/yw0219/p/8933917.html)
+在启动后需要到阿里控制台安全策略里面手动添加一个15672端口的配置 http://39.97.243.43:15672/访问即可,我的默认的管理员账户密码username/password
 
 ## SpringBoot Demo
 
 ### 依赖和配置
 
 ```xml
+
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-amqp</artifactId>
@@ -101,22 +105,24 @@ public class Content {
 - provider
 
 ```java
-    @Autowired
-    private AmqpTemplate amqpTemplate;
 
-    public String publish2mq(String ans){
-        String msg = "hello world";
-        amqpTemplate.convertAndSend(Content.exchange,Content.routing,msg);
-        return msg;
-    }
+@Autowired
+private AmqpTemplate amqpTemplate;
+
+public String publish2mq(String ans) {
+    String msg = "hello world";
+    amqpTemplate.convertAndSend(Content.exchange, Content.routing, msg);
+    return msg;
+}
 ```
 
 - consumer
 
 ```java
+
 @Service
 public class ConsumerDemo {
-    @RabbitListener(bindings = @QueueBinding(value = @Queue(value = Content.queue, durable = "false",autoDelete = "true"),
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(value = Content.queue, durable = "false", autoDelete = "true"),
             exchange = @Exchange(value = Content.exchange, ignoreDeclarationExceptions = "true",
                     type = ExchangeTypes.TOPIC), key = Content.routing))
     public void consumer(String msg) {
@@ -128,17 +134,19 @@ public class ConsumerDemo {
 - 测试
 
 ```java
-    @Test
-    void contextLoads() {
-        System.out.println(publishDemo.publish2mq("Raynor"));
-    }
+
+@Test
+void contextLoads() {
+    System.out.println(publishDemo.publish2mq("Raynor"));
+}
 ```
 
 ## Springboot 应用
 
 ### MQ配置
 
-对发送端而言,主要是将消息发送给exchange,然后根据不同的策略分发给不同的queue 下面例子将定义一个topic模式的exchange,并绑定一个queue（对发送端而言，不同的exchange类型，对发送端的使用姿势影响并不大，有影响的是消费者）
+对发送端而言,主要是将消息发送给exchange,然后根据不同的策略分发给不同的queue
+下面例子将定义一个topic模式的exchange,并绑定一个queue（对发送端而言，不同的exchange类型，对发送端的使用姿势影响并不大，有影响的是消费者）
 
 ```java
 public class MqConstants {
@@ -152,13 +160,13 @@ public class MqConfig {
 
     @Bean
     public TopicExchange topicExchange() {
-        return new TopicExchange(MqConstants.exchange,true,false);
+        return new TopicExchange(MqConstants.exchange, true, false);
     }
 
     @Bean
     public Queue queue() {
         // 创建一个持久化的队列
-        return new Queue(MqConstants.queue,true);
+        return new Queue(MqConstants.queue, true);
     }
 
     @Bean
@@ -210,7 +218,8 @@ public class PublishDemo {
 
 ### 序列化
 
-RabbitTemplate默认是利用SimpleMessageConverter来实现封装Message逻辑的,它只接受byte数组，string字符串，可序列化对象（这里使用的是jdk的序列化方式来实现对象和byte数组之间的互转） 可以通过自定义MessageConverter来解决上述问题或者用Jackson2JsonMessageConverter来解决
+RabbitTemplate默认是利用SimpleMessageConverter来实现封装Message逻辑的,它只接受byte数组，string字符串，可序列化对象（这里使用的是jdk的序列化方式来实现对象和byte数组之间的互转）
+可以通过自定义MessageConverter来解决上述问题或者用Jackson2JsonMessageConverter来解决
 
 ```
 
@@ -316,7 +325,8 @@ public class MyListener {
 
 #### queue不存在
 
-当queue的autoDelete属性为false时,上面的场景比较合适,但是当其为true的时候,没有消费者队列就会自动删除了,所以直接 [[@RabbitListener(queues ](/RabbitListener(queues ) ](/RabbitListener(queues ) = "topic.a")或出现找不到queue的问题 
+当queue的autoDelete属性为false时,上面的场景比较合适,但是当其为true的时候,没有消费者队列就会自动删除了,所以直接 [[@RabbitListener(queues ](
+/RabbitListener(queues ) ](/RabbitListener(queues ) = "topic.a")或出现找不到queue的问题
 
 ```
 // durable和autoDelete属性一定要和创建queue的时候的属性保持一致
@@ -329,15 +339,16 @@ public void consumerNoQueue(String data) {
 }
 ```
 
-> value: @Queue注解，用于声明队列，value为queueName, durable表示队列是否持久化, autoDelete表示没有消费者之后队列是否自动删除 exchange: @Exchange注解，用于声明exchange， type指定消息投递策略， key: 在topic方式下，这个就是我们熟知的 routingKey
-
+> value: @Queue注解，用于声明队列，value为queueName, durable表示队列是否持久化, autoDelete表示没有消费者之后队列是否自动删除
+> exchange: @Exchange注解，用于声明exchange， type指定消息投递策略， key: 在topic方式下，这个就是我们熟知的 routingKey
 
 #### ack
 
 为了保证数据的一致性,有一个消费确认机制
 
-> RabbitMq消费者可以选择手动和自动确认两种模式，如果是自动，消息已到达队列，RabbitMq对无脑的将消息抛给消费者，一旦发送成功，他会认为消费者已经成功接收，在RabbitMq内部就把消息给删除了。另外一种就是手动模式，手动模式需要消费者对每条消息进行确认(也可以批量确认)，RabbitMq发送完消息之后，会进入到一个待确认(unacked)的队列
-
+>
+RabbitMq消费者可以选择手动和自动确认两种模式，如果是自动，消息已到达队列，RabbitMq对无脑的将消息抛给消费者，一旦发送成功，他会认为消费者已经成功接收，在RabbitMq内部就把消息给删除了。另外一种就是手动模式，手动模式需要消费者对每条消息进行确认(
+也可以批量确认)，RabbitMq发送完消息之后，会进入到一个待确认(unacked)的队列
 
 ```
 /**
@@ -376,7 +387,6 @@ public void consumerNoAck(String data) {
 
 > deliveryTag: 相当于消息的唯一标识，用于mq辨别是哪个消息被ack/nak了 channel: mq和consumer之间的管道，通过它来ack/nak
 
-
 #### 并发消费
 
 concurrency = "2"来实现并发消费
@@ -395,22 +405,25 @@ public void multiConsumer(String data) {
 
 其业务逻辑大致如下:
 
-> 生产者将信道设置成Confirm模式，一旦信道进入Confirm模式，所有在该信道上面发布的消息都会被指派一个唯一的ID(以confirm.select为基础从1开始计数) 一旦消息被投递到所有匹配的队列之后，Broker就会发送一个确认给生产者（包含消息的唯一ID）,这就使得生产者知道消息已经正确到达目的队列了 如果消息和队列是可持久化的，那么确认消息会将消息写入磁盘之后发出 Broker回传给生产者的确认消息中deliver-tag域包含了确认消息的序列号（此外Broker也可以设置basic.ack的multiple域，表示到这个序列号之前的所有消息都已经得到了处理）
+> 生产者将信道设置成Confirm模式，一旦信道进入Confirm模式，所有在该信道上面发布的消息都会被指派一个唯一的ID(
+> 以confirm.select为基础从1开始计数) 一旦消息被投递到所有匹配的队列之后，Broker就会发送一个确认给生产者（包含消息的唯一ID）,这就使得生产者知道消息已经正确到达目的队列了
+> 如果消息和队列是可持久化的，那么确认消息会将消息写入磁盘之后发出
+> Broker回传给生产者的确认消息中deliver-tag域包含了确认消息的序列号（此外Broker也可以设置basic.ack的multiple域，表示到这个序列号之前的所有消息都已经得到了处理）
 
 
 对生产者而言,生产者通常需要知道消息知否正确存到queue中 Confirm模式:信道开器Confirm模式后
 
 ```yml
   #confirm模式
-    publisher-confirm-type: correlated
-    #接收mq返回的确认消息
-    publisher-returns: true
+  publisher-confirm-type: correlated
+  #接收mq返回的确认消息
+  publisher-returns: true
 ```
 
 ```java
-  
+
 @Service
-public class AckPublisher implements RabbitTemplate.ConfirmCallback,RabbitTemplate.ReturnCallback {
+public class AckPublisher implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnCallback {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -420,6 +433,7 @@ public class AckPublisher implements RabbitTemplate.ConfirmCallback,RabbitTempla
         rabbitTemplate.setReturnCallback(this);
         rabbitTemplate.setConfirmCallback(this);
     }
+
     @Override
     //接收发送后确认信息
     public void confirm(CorrelationData correlationData, boolean b, String s) {

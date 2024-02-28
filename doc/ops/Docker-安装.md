@@ -95,7 +95,7 @@ yum -y install docker-ce docker-ce-cli containerd.io
 
 > systemctl restart docker.service
 
-# docker compose
+## docker compose
 
 [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 > sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o

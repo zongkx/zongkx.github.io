@@ -6,9 +6,8 @@
 2. 添加一个Http Header Manager,设置共享header
 3. 线程组下添加十个HTTP请求
 
-> http请求下可添加BeanShell 后置处理器,防止乱码./添加固定定时器,设置间隔
-prev.setDataEncoding("UTF-8");
-
+   > http请求下可添加BeanShell 后置处理器,防止乱码./添加固定定时器,设置间隔
+   prev.setDataEncoding("UTF-8");
 
 4. 添加查看结果树和聚合报告
 
@@ -33,7 +32,6 @@ win安装
 idea 插件安装
 
 > [https://plugins.jetbrains.com/plugin/16141-k6](https://plugins.jetbrains.com/plugin/16141-k6)
-
 
 ### 简单测试
 

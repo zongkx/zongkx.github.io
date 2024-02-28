@@ -33,4 +33,14 @@ kubectl set image deployment/nginx-deployment-basic nginx=nginx:1.9.1 -n aed-tes
 
 ``` 
 
+## mini k8s
+
+[https://minikube.sigs.k8s.io/docs/start/](https://minikube.sigs.k8s.io/docs/start/)
+> curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+>
+> sudo rpm -Uvh minikube-latest.x86_64.rpm
+
+> minikube start --force --driver=docker
+
+
 
