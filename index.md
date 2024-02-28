@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: ""
-  text: ""
+  text: "better late than never"
   tagline: ""
 #  actions:
 #    - theme: brand
