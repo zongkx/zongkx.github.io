@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as h}from"./chunks/framework.JVJExM9n.js";const F=JSON.parse('{"title":"js数组操作","description":"","frontmatter":{},"headers":[],"relativePath":"doc/js/原生Js.md","filePath":"doc/js/原生Js.md"}'),n={name:"doc/js/原生Js.md"},k=h("",27),t=[k];function l(p,e,E,r,d,g){return a(),i("div",null,t)}const c=s(n,[["render",l]]);export{F as __pageData,c as default};

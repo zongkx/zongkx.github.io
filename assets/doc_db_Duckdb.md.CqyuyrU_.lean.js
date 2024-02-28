@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.JVJExM9n.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Duckdb.md","filePath":"doc/db/Duckdb.md"}'),t={name:"doc/db/Duckdb.md"},h=n("",12),l=[h];function k(e,p,d,r,E,o){return a(),i("div",null,l)}const y=s(t,[["render",k]]);export{g as __pageData,y as default};
