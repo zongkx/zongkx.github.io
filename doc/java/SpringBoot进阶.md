@@ -1,3 +1,27 @@
+## download/upload
+
+```java
+public void download(@RequestBody List<Long> ids, HttpServletResponse response) {
+    response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "demo.json");
+    response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+    StreamUtils.copy(new ByteArrayInputStream(JSON.toJSONBytes(new ArrayList<>())), response.getOutputStream());
+    response.flushBuffer();
+}
+
+```
+
+```java
+
+@SneakyThrows
+public void upload(@RequestParam MultipartFile file) {
+    InputStream inputStream = file.getInputStream();
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    String collect = bufferedReader.lines().collect(Collectors.joining());
+}
+
+
+```
+
 ## https/ssl
 
 1. 阿里云申请的ssl证书包括 `zkx.com_public.crt`,`zkx.com_common.crt`,`zkx.com.key`,使用1/3即可

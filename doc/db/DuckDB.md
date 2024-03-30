@@ -6,6 +6,14 @@ http://duckdb.org/
 
 > SELECT CATALOG_NAME,SCHEMA_NAME from information_schema.schemata
 
+## CSV
+
+```sql
+-- 输出csv
+COPY  demo TO 'output.csv' (HEADER, DELIMITER ',');
+
+```
+
 ## MINIO
 
 ```sql
@@ -44,14 +52,28 @@ SELECT * FROM read_json_auto
 
 ## mysql_scanner
 
-直接安装
-> install mysql_scanner
-> load mysql_scanner
-> 或者手动下载改压缩文件到 {用户}\.duckdb\extensions\v0.9.2\windows_amd64\
-> http://extensions.duckdb.org/v0.9.2/windows_amd64/mysql_scanner.duckdb_extension.gz
-> http://extensions.duckdb.org/v0.9.2/linux_amd64_gcc4/mysql_scanner.duckdb_extension.gz
+- install mysql_scanner
+- load mysql_scanner
+- 手动下载改压缩文件到 {用户}\.duckdb\extensions\v0.9.2\windows_amd64\
+    - http://extensions.duckdb.org/v0.9.2/windows_amd64/mysql_scanner.duckdb_extension.gz
+    - http://extensions.duckdb.org/v0.9.2/linux_amd64_gcc4/mysql_scanner.duckdb_extension.gz
+    - http://extensions.duckdb.org/v0.9.2/linux_amd64/mysql_scanner.duckdb_extension.gz
 
 ```sql
  ATTACH 'host=localhost password=password user=root port=3306 database=demo' AS mysqldb (TYPE mysql) 
+
+```
+
+## 日志文件分析
+
+```sql
+ SELECT * from (
+SELECT row_number() over() as index,
+ content,
+FROM ( 
+  SELECT  * FROM read_csv('C:\logs\temp.log', delim = '' ,columns = {'content': 'VARCHAR'})
+    )
+  as t
+ ) where content ilike concat('%', '' ,'%') order by index desc limit 100 offset 10
 
 ```

@@ -4,6 +4,8 @@
 
 ## 免费的云数据库
 
+* [https://supabase.com/](https://supabase.com/)
+* [https://neon.tech/](https://neon.tech/)
 * [https://www.elephantsql.com/](https://www.elephantsql.com/)
 * [https://account.mongodb.com/account/login](https://account.mongodb.com/account/login)
 * [https://app.planetscale.com](https://app.planetscale.com)

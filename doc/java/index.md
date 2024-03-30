@@ -1,6 +1,8 @@
 ## resource
 
 - [Jdk下载](https://bell-sw.com/pages/downloads/#jdk-17-lts)
+- [WPS](https://xxh.nyist.edu.cn/info/1029/3250.htm)
+- [WPS2](https://ncre.neea.edu.cn/html1/report/1507/861-1.htm)
 
 ## xml👍
 

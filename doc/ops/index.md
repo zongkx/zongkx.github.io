@@ -1,3 +1,20 @@
+## 性能指标
+
+```shell
+# 查看pid
+pidof java
+
+# 最大句柄数
+
+cat /porc/{pid}/limits
+# Max open files            1048576              1048576              files     
+
+# 当前打开文件数
+ls -l /proc/{pid}/fd | wc -l
+
+
+```
+
 ## 磁盘
 
 - 查看磁盘占用
