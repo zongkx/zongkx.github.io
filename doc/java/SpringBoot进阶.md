@@ -1,3 +1,144 @@
+## jar包 resource
+
+比如 需要把一个csv文件打包到jar里面,然后被其它项目引入后读取csv文件的内容
+
+```xml
+<!--打包 sys_area.csv文件到jar里面-->
+<build>
+    <resources>
+        <resource>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <includes>
+                <include>/area/sys_area.csv</include>
+            </includes>
+        </resource>
+    </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+```java
+    private Resource[] getResources(String location) {
+    try {
+        return resourceResolver.getResources(location);
+    } catch (IOException e) {
+        return new Resource[0];
+    }
+}
+
+public Resource[] resolveMapperLocations() {
+    return Stream.of(Optional.of("classpath*:/area/sys_area.csv")
+                    .orElse(Arrays.toString(new String[0])))
+            .flatMap(location -> Stream.of(getResources(location))).toArray(Resource[]::new);
+}
+
+@Async
+public void init() {
+    Resource[] resources = resolveMapperLocations();
+    Arrays.stream(resources).forEach(a -> {
+        try (CsvReader csvReader = new CsvReader(new CsvReadConfig())) {
+            InputStream inputStream = a.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            CsvData read = csvReader.read(br);
+            List<CsvRow> rows = read.getRows();
+            //do something
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    });
+}
+```
+
+如果是需要文件拷贝到指定目录,拿`duckdb`的插件文件为例(
+由于网络的缘故,需要把duckdb的插件文件打包到jar里面,项目启动的时候把它们复制到某个目录作为duckdb的插件目录)
+
+```xml
+
+<build>
+    <resources>
+        <resource>
+            <directory>${project.basedir}/src/main/resources</directory>
+            <includes>
+                <include>/**/*</include>
+            </includes>
+        </resource>
+    </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>resources</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+```java
+public String path() {
+    String os = System.getProperty("os.name").toLowerCase();//不同的os需要的插件不一样
+    String scanPath, basePath, copyPath;
+    if (os.contains("win")) {
+        scanPath = "classpath*:/duckdb/extensions/v0.10.0/windows_amd64/mysql_scanner.duckdb_extension";
+        basePath = "C:\\extensions";//如果是用户目录,存在无权限的问题
+        copyPath = "/v0.10.0/windows_amd64/mysql_scanner.duckdb_extension";
+    } else {
+        scanPath = "classpath*:/duckdb/extensions/v0.10.0/linux_amd64_gcc4/mysql_scanner.duckdb_extension";
+        basePath = System.getProperty("user.home");//一般适用于docker容器
+        copyPath = "/v0.10.0/linux_amd64_gcc4/mysql_scanner.duckdb_extension";
+    }
+    Resource[] array = Stream.of(Optional.of(scanPath)
+                    .orElse(Arrays.toString(new String[0])))
+            .flatMap(location -> Stream.of(getResources(location))).toArray(Resource[]::new);
+    for (Resource resource : array) {
+        Path outputPath = Paths.get(basePath + copyPath).normalize();
+        Files.createDirectories(outputPath.getParent());//把完整的目录结构给创建好
+        Files.copy(resource.getInputStream(), outputPath, REPLACE_EXISTING);//文件复制
+
+    }
+    return basePath;
+}
+
+@PostConstruct
+public void init() throws Exception {
+    String path = path();
+    HikariConfig config = new HikariConfig();
+    config.setDriverClassName(DuckDBDriver.class.getCanonicalName());
+    config.setMaximumPoolSize(10);
+    config.setJdbcUrl("jdbc:duckdb:memory.db");
+    config.setCatalog(DEFAULT_CATALOG);
+    config.setSchema(DEFAULT_SCHEMA);
+    HikariDataSource hikariDataSource = new HikariDataSource(config);
+    setJdbcTemplate(new JdbcTemplate(hikariDataSource));
+    jdbcTemplate.execute("PRAGMA extension_directory='" + path + "';");
+    jdbcTemplate.execute("install mysql_scanner;");
+    jdbcTemplate.execute("load mysql_scanner;");
+    Db db = new Db(dataSourceProperties.getUrl());
+    String s = "ATTACH 'host=%s password=%s user=%s port=%s database=%s' AS mysql (TYPE mysql)";
+    jdbcTemplate.execute(String.format(s, db.ip, dataSourceProperties.getPassword(),
+            dataSourceProperties.getUsername(), db.port, db.db));
+}
+```
+
 ## download/upload
 
 ```java
