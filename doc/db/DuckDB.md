@@ -1,6 +1,42 @@
 ## 简介
 
-http://duckdb.org/
+(*)[http://duckdb.org/]
+
+(doc)[https://sekuel.com/sql-courses/duckdb-cookbook/]
+
+## 常用函数
+
+```sql
+  SELECT round(5/3,4)*100
+
+  SELECT ((JSON '{"field": "42"}')->'field')  ;
+  
+  SELECT '2020-01-01 20:01:01' ::timestamptz
+
+  SELECT json_extract_string(json '{"detail":"","title":""}', '$.title') 
+
+   SELECT strftime( '2024-02-02 00:00:00'::timestamp,'%Y-%m') 
+```
+
+## 如何把重复的参数给变量化
+
+```sql
+-- 只需要把 '2024-03-01'和'2024-12-31'使用占位符替换,即可实现注入两个参数满足多个地方使用的需要
+WITH date_range AS (
+    SELECT 
+        CAST('2024-03-01' AS DATE) AS t1, 
+        CAST('2024-12-31' AS DATE) AS t2
+),aaa as (select 1)
+SELECT *
+FROM a
+LEFT JOIN  b  on a.bid =b.id
+JOIN date_range ON TRUE
+WHERE a.createdtime >= date_range.t1
+    AND a.createdtime < date_range.t2
+    AND b.entrytime <= date_range.t2
+    AND (b.leavetime is null or b.leavetime >= date_range.t1)
+
+```
 
 ## 元数据
 

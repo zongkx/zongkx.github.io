@@ -1,3 +1,60 @@
+## 多个workbook zip
+
+`easypoi`
+
+```java
+public void export(@RequestBody @Valid List<DataLoadVo> dtos, HttpServletRequest request, HttpServletResponse response) {
+    log.debug("args:{}", JSON.toJSONString(dtos));
+    Long userId = Long.valueOf(request.getHeader(Constants.X_HEADER_AGENT_USER_ID));
+    response.setCharacterEncoding("UTF-8");
+    response.setContentType("application/octet-stream");
+    List<Workbook> list = new ArrayList<>();//生成
+    for (DataLoadVo dto : dtos) {
+        List<TopicRespVo> topicRespVos = dataLoadService.simpleLoad(dto, userId);//数据查询
+        Workbook workbook = new XSSFWorkbook();
+        for (TopicRespVo topicRespVo : topicRespVos) {
+            final String sheetName = "sheetName";
+            ExportParams exportParams = new ExportParams();
+            exportParams.setSheetName(sheetName);
+            exportParams.setAutoSize(true);
+            List<ExcelExportEntity> entityList = new ArrayList<>();
+            for (MeasureDimension key : topicRespVo.getKeys()) {
+                entityList.add(new ExcelExportEntity(key.getTitle(), key.key()));
+            }
+            ExcelExportService service = new ExcelExportService();
+            List<Map<String, Object>> data = topicRespVo.getData();
+            service.createSheetForMap(workbook, exportParams, entityList,
+                    CollectionUtil.isEmpty(data) ? Lists.newArrayList(new HashMap<>()) : data);
+        }
+        list.add(workbook);
+    }
+    if (list.size() == 1) {//如果只有一个excel ,则不需要压缩
+        response.setHeader("Content-Disposition", "attachment;filename="
+                + URLEncoder.encode("report.xls", "UTF-8"));
+        list.get(0).write(response.getOutputStream());
+    } else {//
+        String zipName = "report.zip";
+        response.setHeader("Content-disposition", "attachment;filename=" + zipName + ";");
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream);
+        OutputStream outputStream = response.getOutputStream();
+        int i = 0;
+        for (Workbook workbook : list) {
+            zipOutputStream.putNextEntry(new ZipEntry(i + ".xlsx"));
+            workbook.write(zipOutputStream);
+            zipOutputStream.closeEntry();
+            i++;
+        }
+        zipOutputStream.finish();
+        IOUtils.write(byteArrayOutputStream.toByteArray(), outputStream);
+        outputStream.flush();
+        byteArrayOutputStream.close();
+        outputStream.close();
+    }
+}
+
+```
+
 ## POI导出到模板
 
 ### 需求

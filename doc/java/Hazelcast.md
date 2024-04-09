@@ -29,7 +29,7 @@ demo:
     hazelcast:
       enable: true
       cluster: false
-      dns: hazelcast.aed-test.svc.cluster.local # k8s 集群配置需要这个dns
+      dns: hazelcast.aed-test.svc.cluster.local # k8s 集群配置需要这个dns,且容器需要暴露5701 tcp端口
 spring:
   cache:
     type: hazelcast
