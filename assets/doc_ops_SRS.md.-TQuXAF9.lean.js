@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as h}from"./chunks/framework.BDUgfJP_.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/SRS.md","filePath":"doc/ops/SRS.md"}'),t={name:"doc/ops/SRS.md"},l=h("",9),p=[l];function n(k,e,F,r,d,g){return a(),i("div",null,p)}const c=s(t,[["render",n]]);export{y as __pageData,c as default};

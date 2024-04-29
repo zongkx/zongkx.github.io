@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.E4YCCYO0.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/Gitlab.md","filePath":"doc/ops/Gitlab.md"}'),l={name:"doc/ops/Gitlab.md"},p=n("",2),t=[p];function h(e,k,E,d,r,c){return a(),i("div",null,t)}const y=s(l,[["render",h]]);export{g as __pageData,y as default};
