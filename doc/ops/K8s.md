@@ -1,3 +1,17 @@
+## 文档
+
+[doc](https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/sysctl-cluster/)
+
+## sysctl
+
+```yaml
+      securityContext:
+        sysctls:
+          - name: net.core.somaxconn
+            value: '1024'
+
+```
+
 ## 安装kubectl
 
 ```shell
