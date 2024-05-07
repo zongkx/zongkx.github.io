@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t}from"./chunks/framework.BDUgfJP_.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/OceanBase.md","filePath":"doc/db/OceanBase.md"}'),c={name:"doc/db/OceanBase.md"};function o(s,n,r,d,p,_){return t(),a("div")}const f=e(c,[["render",o]]);export{m as __pageData,f as default};
