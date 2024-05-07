@@ -5,6 +5,11 @@
 - [WPS2](https://ncre.neea.edu.cn/html1/report/1507/861-1.htm)
 - [面试](https://www.developers.pub/wiki/1002310/1011936)
 - [software](https://linux.do/t/topic/46515)
+- [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
+- [git](https://repo.huaweicloud.com/git-for-windows/)
+- [node](https://nodejs.cn/download/)
+- [chrome2](https://www.google.cn/intl/zh-CN/chrome/
+- [win10_runtime](http://www.pc6.com/softview/SoftView/_104246.html)
 
 ## opensource
 
@@ -20,6 +25,7 @@
 - [java-api-Spark](http://sparkjava.com/documentation#getting-started)
 - [流程-camunda](https://camunda-cn.shaochenfeng.com/)
 - [py-demo](https://github1s.com/Python-World/python-mini-projects/blob/HEAD/README.md)
+- [graylog](http://docs.graylog.org/en/2.4)
 
 ## xml👍
 
