@@ -1,7 +1,7 @@
 ## 官方文档
 
-> [https://docsify.js.org/#/zh-cn/](https://docsify.js.org/#/zh-cn/)
-
+- [docsify](https://docsify.js.org/#/zh-cn/)
+- [docusaurus](https://docusaurus.io/zh-CN/docs/configuration#theme-plugin-and-preset-configurations)
 
 ## 简易步骤
 

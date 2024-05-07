@@ -1,6 +1,8 @@
 ## 文档
 
-[doc](http://flink.apache.org/zh/usecases.html)
+- [doc](http://flink.apache.org/zh/usecases.html)
+- [doc2](https://ververica.github.io/flink-cdc-connectors/master/index.html)
+- [官方文档](https://ifeve.com/flink-quick-start/)
 
 ## docker 安装
 

@@ -1,3 +1,23 @@
+## mirror
+
+```xml
+
+<mirrors>
+    <mirror>
+        <id>central</id>
+        <mirrorOf>external:http:*</mirrorOf>
+        <url>http://127.0.0.1:8081/nexus/repository/maven-public/</url>
+        <blocked>true</blocked>
+    </mirror>
+    <mirror>
+        <id>huaweicloud</id>
+        <name>mirror from maven huaweicloud</name>
+        <mirrorOf>central</mirrorOf>
+        <url>https://repo.huaweicloud.com/repository/maven/</url>
+    </mirror>
+</mirrors>
+```
+
 ## 指令
 
 > mvn clean compile deploy -DskipTests

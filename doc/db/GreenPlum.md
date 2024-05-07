@@ -1,7 +1,7 @@
 ## doc
 
-[https://greenplum.docs.pivotal.io/6-0/main/index.html](https://greenplum.docs.pivotal.io/6-0/main/index.html)
-[https://www.bookstack.cn/read/greenplum-admin_guide-6.0-zh/9ccd913ea8be24b9.md](https://www.bookstack.cn/read/greenplum-admin_guide-6.0-zh/9ccd913ea8be24b9.md)
+- [GP6](https://greenplum.docs.pivotal.io/6-0/main/index.html)
+- [https://www.bookstack.cn/read/greenplum-admin_guide-6.0-zh/9ccd913ea8be24b9.md](https://www.bookstack.cn/read/greenplum-admin_guide-6.0-zh/9ccd913ea8be24b9.md)
 
 ## PXF访问外部数据
 
@@ -114,7 +114,7 @@ GRANT ALL PRIVILEGES ON sales TO admin;
 GRANT SELECT ON sales TO guest;
 ```
 
-###     
+###      
 
 ## 常用的sql
 

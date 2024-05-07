@@ -3,6 +3,23 @@
 - [Jdk下载](https://bell-sw.com/pages/downloads/#jdk-17-lts)
 - [WPS](https://xxh.nyist.edu.cn/info/1029/3250.htm)
 - [WPS2](https://ncre.neea.edu.cn/html1/report/1507/861-1.htm)
+- [面试](https://www.developers.pub/wiki/1002310/1011936)
+- [software](https://linux.do/t/topic/46515)
+
+## opensource
+
+- [多线程-Gobrs](https://async.sizegang.cn/)
+- [sql-sqlbuilder](https://openhms.sourceforge.io/sqlbuilder/example.html)
+- [对象复制-vo2dto](https://github1s.com/fuzhengwei/guide-vo2dto/blob/HEAD/pom.xml#L121-L126)
+- [鉴权-casbin](https://casbin.org/zh-CN/)
+- [api规范-cloudevents](https://cloudevents.github.io/sdk-java/http-basic.html)
+- [json操作-JMESPath](https://jmespath.org/tutorial.html)
+- [spi-PF4J](https://pf4j.org/doc/custom-manager.html)
+- [批处理-easybatch](https://github1s.com/j-easy/easy-batch)
+- [vscode插件-demo](https://www.cnblogs.com/powertoolsteam/p/16044151.html)
+- [java-api-Spark](http://sparkjava.com/documentation#getting-started)
+- [流程-camunda](https://camunda-cn.shaochenfeng.com/)
+- [py-demo](https://github1s.com/Python-World/python-mini-projects/blob/HEAD/README.md)
 
 ## xml👍
 

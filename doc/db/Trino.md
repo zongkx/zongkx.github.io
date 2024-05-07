@@ -1,3 +1,7 @@
+## doc
+
+[doc](https://trino.io/docs/current/index.html)
+
 ## 最小安装
 
 ```yaml

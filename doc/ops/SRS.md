@@ -1,3 +1,8 @@
+## doc
+
+- [FFMPEG转码部署实例](https://github.com/ossrs/srs/wiki/v2_CN_SampleFFMPEG)
+- [Live Streaming Transcode](https://github.com/ossrs/srs/wiki/v2_CN_FFMPEG)
+
 ## 部署
 
 ```yaml

@@ -1,3 +1,9 @@
+## doc
+
+- [8.3](https://cunzaima.cn/mysql8.3-zh/dev.mysql.com/doc/refman/8.3/en/index.html#google_vignette)
+
+- [Mysql45讲](https://zhuanlan.zhihu.com/p/658288649)
+
 ## log / variables
 
 ```sql
