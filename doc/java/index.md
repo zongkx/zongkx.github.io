@@ -8,7 +8,7 @@
 - [AnotherRedisDesktopManager](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
 - [git](https://repo.huaweicloud.com/git-for-windows/)
 - [node](https://nodejs.cn/download/)
-- [chrome2](https://www.google.cn/intl/zh-CN/chrome/
+- [chrome2](https://www.google.cn/intl/zh-CN/chrome/)
 - [win10_runtime](http://www.pc6.com/softview/SoftView/_104246.html)
 
 ## opensource
