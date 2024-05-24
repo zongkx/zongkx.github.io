@@ -35,13 +35,11 @@ ffmpeg -i rtmp://10.13.0.58/live/ccefca -c:v libx264 -preset veryfast -tune zero
 合并流
 
 ```shell
-ffmpeg -i rtmp://10.13.0.58/live/livestream -i rtmp://10.13.0.58/live/mbbmao -filter_complex "[0:v:0][1:v:0]hstack=inputs=2[outv]; [0:a:0][1:a:0]amix=inputs=2[outa]" -map "[outv]" -map "[outa]" -f flv rtmp://10.13.0.58/live/fhgaek?secret=97e315f6bc44468495841a13acd863a5
-```
 
-```shell
+# 
+ffmpeg -i  rtmp://10.13.0.58/live/fdjefg -i rtmp://10.13.0.58/live/bhekhc -filter_complex "[1:v]scale=w=500:h=500:force_original_aspect_ratio=decrease[ckout];[0:v][ckout]overlay=x=W-w-10:y=0[out]" -map "[out]" -c:v libx264 -c:a aac  -f flv rtmp://10.13.0.58/live/acfgab?secret=017b487efd374e4099e9f31ebd80f67c
 
-
-ffmpeg -i  rtmp://10.13.0.58/live/livestream -i rtmp://10.13.0.58/live/mbbmao -filter_complex "[1:v]scale=w=500:h=500:force_original_aspect_ratio=decrease[ckout];[0:v][ckout]overlay=x=W-w-10:y=0[out]" -map "[out]" -c:v libx264 -c:a aac  -f flv rtmp://10.13.0.58/live/fhgaek?secret=97e315f6bc44468495841a13acd863a5
-
+#
+ffmpeg -i rtmp://10.13.0.58/live/fdjefg -i rtmp://10.13.0.58/live/bhekhc -filter_complex "[1:v]scale=w=500:h=500:force_original_aspect_ratio=decrease[ckout]; [0:v][ckout]overlay=x=W-w-10:y=0[outv]; [0:a][1:a]amix=inputs=2[outa]" -map "[outv]" -map "[outa]" -c:v libx264 -c:a aac -f flv rtmp://10.13.0.58/live/acfgab?secret=017b487efd374e4099e9f31ebd80f67c
 
 ```

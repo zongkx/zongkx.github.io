@@ -1,3 +1,40 @@
+## classifier
+
+一个项目打两个jar包
+
+```xml
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>thin-jar</id>
+            <phase>package</phase>
+            <goals>
+                <goal>jar</goal>
+            </goals>
+            <configuration>
+                <includes>
+                    <include>**/com/demo/entity/**</include>
+                </includes>
+                <classifier>base</classifier>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+```xml
+
+<dependency>
+    <groupId>com.zkx</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <classifier>base</classifier>
+</dependency>
+```
+
 ## mirror
 
 ```xml
