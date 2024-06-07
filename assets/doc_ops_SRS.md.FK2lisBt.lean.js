@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a3 as h}from"./chunks/framework.BYhES31N.js";const c=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/SRS.md","filePath":"doc/ops/SRS.md"}'),t={name:"doc/ops/SRS.md"},n=h("",10),l=[n];function k(p,e,F,r,d,g){return a(),i("div",null,l)}const y=s(t,[["render",k]]);export{c as __pageData,y as default};
