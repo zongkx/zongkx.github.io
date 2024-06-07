@@ -4,6 +4,8 @@
 
 (doc)[https://sekuel.com/sql-courses/duckdb-cookbook/]
 
+(demo)[https://taki-mekhalfa.github.io/misc/2024/04/14/beauty_of_olap_sql.html]
+
 ## 常用函数
 
 ```sql
