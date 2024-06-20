@@ -1,3 +1,26 @@
+## 基于时间轮的异步任务
+
+```java
+
+
+public void execute() {
+    log.info("dbt sync mode wheel timer init success");
+    //初始化时间轮
+    HashedWheelTimer timer = new HashedWheelTimer(5, TimeUnit.SECONDS);
+    ScheduledTaskRegistrar taskRegistrar = new ScheduledTaskRegistrar();
+    taskRegistrar.setTaskScheduler(taskScheduler);
+    Runnable task = () -> {
+        ArrayBlockingQueue<String> syncQueue = new ArrayBlockingQueue(100);
+        Object poll = syncQueue.poll();
+        if (Objects.nonNull(poll)) {
+            timer.newTimeout(timeout -> sync(poll.toString()), 0, TimeUnit.SECONDS);
+        }
+    };
+    taskRegistrar.addTriggerTask(task, new PeriodicTrigger(5 * 1000));
+    taskRegistrar.afterPropertiesSet();
+}
+```
+
 ## jar包 resource
 
 比如 需要把一个csv文件打包到jar里面,然后被其它项目引入后读取csv文件的内容
