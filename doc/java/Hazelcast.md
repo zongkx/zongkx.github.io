@@ -118,3 +118,80 @@ public class TopicListener implements MessageListener<String> {
 
 
 ```
+
+## 分布式锁 延迟异步任务(时间轮)
+
+```java
+
+/**
+ * 带有分布式锁延迟runner
+ */
+public interface IDelayLockRunner {
+    void execute();
+
+    /**
+     * 延迟执行时间
+     *
+     * @return delay time /秒
+     */
+    default int delay() {
+        return 10;
+    }
+}
+
+
+```
+
+```java
+
+import com.comen.sms.basic.cache.CacheUtil;
+import com.hazelcast.cp.ISemaphore;
+import io.netty.util.HashedWheelTimer;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class DelayLockRunnerConfig implements CommandLineRunner {
+    private final List<IDelayLockRunner> runners;
+
+    @Override
+    public void run(String... args) throws Exception {
+        ISemaphore semaphore = CacheUtil.semaphore(1, "runner_leader");
+        if (semaphore.tryAcquire()) {
+            AtomicInteger taskDone = new AtomicInteger(1);
+            HashedWheelTimer timer = new HashedWheelTimer(5, TimeUnit.SECONDS);
+            for (IDelayLockRunner runner : runners) {
+                String simpleName = runner.getClass().getSimpleName();
+                timer.newTimeout(timeout -> {
+                    try {
+                        //执行
+                        runner.execute();
+                        //日志
+                        log.info("{} runner execute success", simpleName);
+                    } catch (Exception e) {
+                        log.error("{} runner execute fail {}", simpleName, e.getMessage());
+                    } finally {
+                        if (taskDone.addAndGet(1) == runners.size()) {//任务执行完毕之后,关闭时间轮
+                            Executors.newSingleThreadExecutor().submit(() -> {
+                                timer.stop();
+                                log.info("runner hashed wheel timer stop success");
+                                semaphore.release();
+                            });
+                        }
+                    }
+                }, runner.delay(), TimeUnit.SECONDS);
+            }
+        }
+    }
+
+}
+```
