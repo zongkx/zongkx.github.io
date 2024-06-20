@@ -121,6 +121,8 @@ public class TopicListener implements MessageListener<String> {
 
 ## 分布式锁 延迟异步任务(时间轮)
 
+适用于 k8s 多pod部署的时候 启动任务只需要单个pod执行的情况
+
 ```java
 
 /**
