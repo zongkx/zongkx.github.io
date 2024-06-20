@@ -1,3 +1,27 @@
+## 获取file 路径
+
+```java
+   public CommandLineRunner commandLineRunner() {
+    LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+    FileAppender<?> fileAppender = (FileAppender<?>) context.getLogger("ROOT").getAppender("FILE");
+    String file = Objects.isNull(fileAppender) ? "/logs" : fileAppender.getFile();
+    // 获取目录的Path对象
+    Path path = Paths.get(file);
+
+    // 获取文件存储对象
+    FileStore fileStore = Files.getFileStore(path);
+
+    // 获取磁盘的总空间、可用空间和已使用空间
+    long totalSpace = fileStore.getTotalSpace();
+    long usableSpace = fileStore.getUsableSpace();
+    long usedSpace = totalSpace - usableSpace;
+    return args -> {
+    };
+}
+
+
+```
+
 ## traceId
 
 ```Java

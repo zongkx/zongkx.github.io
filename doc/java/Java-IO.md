@@ -1,3 +1,80 @@
+## 序列化并压缩
+
+```java
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.zip.GZIPOutputStream;
+import java.util.Base64;
+import java.util.Arrays;
+
+public class StreamSerializationUtil {
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final JsonFactory jsonFactory = new JsonFactory(objectMapper);
+
+    // 流式序列化对象集合为JSON字符串并进行GZIP压缩
+    public static String serializeAndCompress(List<Object> objectList) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try (GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream);
+             JsonGenerator jsonGenerator = jsonFactory.createGenerator(gzipOutputStream)) {
+
+            // 开始数组
+            jsonGenerator.writeStartArray();
+
+            // 写入对象
+            for (Object obj : objectList) {
+                objectMapper.writeValue(jsonGenerator, obj);
+            }
+
+            // 结束数组
+            jsonGenerator.writeEndArray();
+        }
+
+        // 将压缩后的字节数组转换为Base64编码的字符串
+        return Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
+    }
+
+    // 解压缩并反序列化为对象集合
+    public static List<Object> decompressAndDeserialize(String compressedString, Class<Object[]> clazz) throws IOException {
+        byte[] compressedBytes = Base64.getDecoder().decode(compressedString);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try (GZIPInputStream gzipInputStream = new GZIPInputStream(new ByteArrayInputStream(compressedBytes))) {
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = gzipInputStream.read(buffer)) > 0) {
+                byteArrayOutputStream.write(buffer, 0, len);
+            }
+        }
+
+        String jsonString = byteArrayOutputStream.toString();
+        Object[] objectArray = objectMapper.readValue(jsonString, clazz);
+        return Arrays.asList(objectArray);
+    }
+
+    public static void main(String[] args) throws IOException {
+        // 示例对象集合
+        List<Object> objectList = List.of("item1", "item2", "item3");
+
+        // 序列化并压缩
+        String compressedString = serializeAndCompress(objectList);
+        System.out.println("Compressed String: " + compressedString);
+
+        // 解压缩并反序列化
+        List<Object> deserializedList = decompressAndDeserialize(compressedString, Object[].class);
+        System.out.println("Deserialized List: " + deserializedList);
+    }
+}
+
+
+```
+
 ## ZIP
 
 ```java

@@ -1,3 +1,31 @@
+## 切换jdk
+
+maven-toolchains-plugin
+
+```xml
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-toolchains-plugin</artifactId>
+    <version>3.2.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>toolchain</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <toolchains>
+            <jdk>
+                <version>14</version>
+                <vendor>oracle</vendor>
+            </jdk>
+        </toolchains>
+    </configuration>
+</plugin>
+```
+
 ## classifier
 
 一个项目打两个jar包
