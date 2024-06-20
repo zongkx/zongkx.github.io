@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as n}from"./chunks/framework.z7kdJ_yr.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/SRS.md","filePath":"doc/ops/SRS.md"}'),h={name:"doc/ops/SRS.md"},k=n("",14),t=[k];function l(p,e,E,d,r,g){return a(),i("div",null,t)}const o=s(h,[["render",l]]);export{y as __pageData,o as default};
