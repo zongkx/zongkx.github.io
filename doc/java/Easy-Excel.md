@@ -1,14 +1,13 @@
-## 依赖
+## list map导出并压缩
 
-```
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
-            <version>3.3.4</version>
-        </dependency>
-```
+```xml
 
-## list<map> 导出并压缩
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>easyexcel</artifactId>
+    <version>3.3.4</version>
+</dependency>
+```
 
 ```java
    private List<List<Object>> dataList() {
@@ -22,9 +21,6 @@
     }
     return list;
 }
-```
-
-```java
 
 @Test
 @SneakyThrows
@@ -56,5 +52,4 @@ void a1() {
     fos.flush();
 }
 ```
-
-over
+ 
