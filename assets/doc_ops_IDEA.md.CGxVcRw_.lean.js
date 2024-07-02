@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as n}from"./chunks/framework.Bsyxd66g.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/IDEA.md","filePath":"doc/ops/IDEA.md"}'),l={name:"doc/ops/IDEA.md"},p=n("",6),t=[p];function e(k,h,E,r,d,c){return a(),i("div",null,t)}const y=s(l,[["render",e]]);export{g as __pageData,y as default};
