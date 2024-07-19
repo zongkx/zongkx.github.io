@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as a,a4 as t}from"./chunks/framework.C8aSGU9Q.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/Minio.md","filePath":"doc/ops/Minio.md"}'),i={name:"doc/ops/Minio.md"},r=t("",3),c=[r];function n(s,d,l,_,m,p){return a(),o("div",null,c)}const f=e(i,[["render",n]]);export{u as __pageData,f as default};
