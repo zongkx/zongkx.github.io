@@ -31,13 +31,17 @@
 @Test
 @SneakyThrows
 void a1() {
-    long l = 1719792000;
-    Path dataFile = new Path("/data/output.parquet");
+    write(Collections.singletonList(new User(1L, "测试")));
+}
+
+@SneakyThrows
+private <T> void write(List<T> data) {
+    Path dataFile = Paths.get("D:\\demo.parquet");
     LocalOutputFile localOutputFile = new LocalOutputFile(dataFile);
     try (ParquetWriter<T> writer = AvroParquetWriter.<T>builder(localOutputFile)
-            .withSchema(ReflectData.AllowNull.get().getSchema(Pat.class))
+            .withSchema(ReflectData.AllowNull.get().getSchema(data.get(0).getClass()))
             .withDataModel(ReflectData.get())
-            .withConf(entries)
+            .withConf(new Configuration())
             .withCompressionCodec(SNAPPY)
             .withWriteMode(OVERWRITE)
             .withWriterVersion(ParquetProperties.WriterVersion.PARQUET_2_0)
@@ -48,6 +52,14 @@ void a1() {
             writer.write(t);
         }
     }
+}
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+static class User {
+    private Long id;
+    private String name;
 }
 
 ```
