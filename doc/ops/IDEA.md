@@ -64,13 +64,13 @@ public class ${NAME}Tests {
 2. 重启docker
 
    > `systemctl daemon-reload`
-    
+
    > `systemctl restart docker`
 
 3. 关闭centos防火墙
 
    > `systemctl stop firewalld.service `
-   >
+
    > `systemctl disable firewalld.service `
 
 4. 连接
