@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.BmEcP3jM.js";const c=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/java/安全框架.md","filePath":"doc/java/安全框架.md"}'),t={name:"doc/java/安全框架.md"},l=n("",70),p=[l];function h(e,k,r,E,d,g){return a(),i("div",null,p)}const y=s(t,[["render",h]]);export{c as __pageData,y as default};
