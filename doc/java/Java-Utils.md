@@ -1,3 +1,146 @@
+## TreeUtls
+```java
+public class TreeUtil {
+    /**
+     * 使用Map合成树
+     *
+     * @param menuList       需要合成树的List
+     * @param pId            对象中的父ID字段,如:Menu:getPid
+     * @param id             对象中的id字段 ,如：Menu:getId
+     * @param rootCheck      判断E中为根节点的条件，如：x->x.getPId()==-1L ,
+     *                       x->x.getParentId()==null,x->x.getParentMenuId()==0
+     * @param setSubChildren E中设置下级数据方法，如： Menu::setSubMenus
+     * @param <T>            ID字段类型
+     * @param <E>            泛型实体对象
+     * @return
+     */
+    public static <T, E> List<E> makeTree(List<E> menuList, Function<E, T> pId, Function<E, T> id,
+            Predicate<E> rootCheck, BiConsumer<E, List<E>> setSubChildren) {
+        // 按原数组顺序构建父级数据Map，使用Optional考虑pId为null
+        Map<Optional<T>, List<E>> parentMenuMap = menuList.stream().collect(Collectors.groupingBy(
+                node -> Optional.ofNullable(pId.apply(node)),
+                LinkedHashMap::new,
+                Collectors.toList()));
+        List<E> result = new ArrayList<>();
+        for (E node : menuList) {
+            // 添加到下级数据中
+            setSubChildren.accept(node, parentMenuMap.get(Optional.ofNullable(id.apply(node))));
+            // 如里是根节点，加入结构
+            if (rootCheck.test(node)) {
+                result.add(node);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 树中过滤
+     * 
+     * @param tree        需要过滤的树
+     * @param predicate   过滤条件
+     * @param getChildren 获取下级数据方法，如：MenuVo::getSubMenus
+     * @return List<E> 过滤后的树
+     * @param <E> 泛型实体对象
+     */
+    public static <E> List<E> filter(List<E> tree, Predicate<E> predicate, Function<E, List<E>> getChildren) {
+        return tree.stream().filter(item -> {
+            if (predicate.test(item)) {
+                List<E> children = getChildren.apply(item);
+                if (children != null && !children.isEmpty()) {
+                    filter(children, predicate, getChildren);
+                }
+                return true;
+            }
+            return false;
+        }).collect(Collectors.toList());
+    }
+
+    /**
+     * 树中搜索
+     * 
+     * @param tree
+     * @param predicate
+     * @param getSubChildren
+     * @return 返回搜索到的节点及其父级到根节点
+     * @param <E>
+     */
+    public static <E> List<E> search(List<E> tree, Predicate<E> predicate, Function<E, List<E>> getSubChildren) {
+        Iterator<E> iterator = tree.iterator();
+        while (iterator.hasNext()) {
+            E item = iterator.next();
+            List<E> childList = getSubChildren.apply(item);
+            if (childList != null && !childList.isEmpty()) {
+                search(childList, predicate, getSubChildren);
+            }
+            if (!predicate.test(item) && (childList == null || childList.isEmpty())) {
+                iterator.remove();
+            }
+        }
+        return tree;
+    }
+
+}
+
+public class TreeTest {
+
+    // 树节点数
+    public static Integer size = 5000000;
+    // 树深度
+    public static Integer deep = 100;
+    private static List<MenuVo> menuVos = new ArrayList<>();
+
+    @BeforeAll
+    public static void init() {
+        long currentId = 1;
+        List<MenuVo> currentLevel = new ArrayList<>();
+        MenuVo root = new MenuVo(currentId++, 0L, "Root");
+        menuVos.add(root);
+        currentLevel.add(root);
+        for (int level = 1; level < deep && currentId <= size; level++) {
+            List<MenuVo> nextLevel = new ArrayList<>();
+            for (MenuVo parent : currentLevel) {
+                for (int i = 0; i < size / Math.pow(10, level); i++) {
+                    if (currentId > size)
+                        break;
+                    MenuVo child = new MenuVo(currentId++, parent.getId(), String.format("测试name:%s", currentId));
+                    menuVos.add(child);
+                    nextLevel.add(child);
+                }
+            }
+            currentLevel = nextLevel;
+        }
+    }
+
+    @Test
+    public void testBigTree() {
+        List<MenuVo> tree = TreeUtil.makeTree(menuVos, MenuVo::getPId, MenuVo::getId, x -> x.getPId() == 0,
+                MenuVo::setSubMenus);
+        System.out.println(tree);
+    }
+
+}
+
+@AllArgsConstructor
+@Data
+public class MenuVo {
+
+    private Long id;
+    private Long pId;
+    private String name;
+    private List<MenuVo> subMenus;  
+
+    public MenuVo() {
+    }
+
+    public MenuVo(Long id, Long pId, String name) {
+        this.id = id;
+        this.pId = pId;
+        this.name = name;
+    }
+
+}
+```
+
 ## DateUtils
 
 ```java
