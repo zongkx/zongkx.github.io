@@ -1,3 +1,13 @@
+## 递归删除
+
+```java
+        try (Stream<Path> walk = Files.walk(Paths.get(deleteFile))) {
+            walk.sorted(Comparator.reverseOrder()).forEach(this::deleteDirectoryStream);
+        } catch (IOException e) {
+            log.error(" delete error ", e);
+        }
+```
+
 ## 序列化并压缩
 
 ```java
