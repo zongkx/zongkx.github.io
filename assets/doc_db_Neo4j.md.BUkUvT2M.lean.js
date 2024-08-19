@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as s,a4 as n}from"./chunks/framework.ZkTbufXI.js";const b=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Neo4j.md","filePath":"doc/db/Neo4j.md"}'),t={name:"doc/db/Neo4j.md"},p=n("",35),i=[p];function l(o,c,d,r,h,m){return s(),e("div",null,i)}const g=a(t,[["render",l]]);export{b as __pageData,g as default};

@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.ZkTbufXI.js";const y=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Trino.md","filePath":"doc/db/Trino.md"}'),t={name:"doc/db/Trino.md"},h=n("",16),p=[h];function l(k,e,r,E,d,g){return a(),i("div",null,p)}const c=s(t,[["render",l]]);export{y as __pageData,c as default};
