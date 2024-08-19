@@ -94,6 +94,11 @@ services:
     node.environment=docker
     node.data-dir=/data/trino
     ```
+## JDBC 链接
+ 
+> jdbc:trino://localhost:28443?SSLVerification=NONE
+ 
+
 
 ## 函数
 
