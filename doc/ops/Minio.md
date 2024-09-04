@@ -1,5 +1,12 @@
 ## 简介
 
+## 下载
+
+[](https://dl.min.io/server/minio/release/)
+
+> .\minio.exe server C:\data --console-address ":9000" --address ":9005" 
+
+
 ## https 部署
 
 - `/home/minio/conf/certs`中添加 `private.key` 和 `public.crt`
