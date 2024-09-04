@@ -1,1 +1,0 @@
-import{_ as t,c as a,o,a4 as e}from"./chunks/framework.ZkTbufXI.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/Tauri.md","filePath":"doc/ops/Tauri.md"}'),r={name:"doc/ops/Tauri.md"},i=e("",11),l=[i];function s(u,c,n,p,_,d){return o(),a("div",null,l)}const b=t(r,[["render",s]]);export{m as __pageData,b as default};

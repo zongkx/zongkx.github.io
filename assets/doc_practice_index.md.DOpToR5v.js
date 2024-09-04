@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as c}from"./chunks/framework.3tXBFUNe.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/practice/index.md","filePath":"doc/practice/index.md"}'),a={name:"doc/practice/index.md"};function r(o,n,d,i,s,p){return c(),t("div")}const f=e(a,[["render",r]]);export{m as __pageData,f as default};
