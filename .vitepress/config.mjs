@@ -20,7 +20,6 @@ export default defineConfig({
         // https://vitepress-sidebar.cdget.com/zhHans/guide/api#sortfolderto
         sidebar: generateSidebar([{
             sortMenusByName: true,
-            sortMenusByFileDatePrefix: true,
             sortMenusOrderByDescending: true,
             documentRootPath: '/doc/blog/',
             hyphenToSpace: true,
