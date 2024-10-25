@@ -16,3 +16,11 @@ hero:
 
 ---
 
+## Getting Started
+
+Welcome
+
+```sh
+npm init
+npx vitepress init
+```

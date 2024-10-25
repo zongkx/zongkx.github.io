@@ -1,2 +1,3 @@
 - [crossoverjie](https://crossoverjie.top/)
 - [lerry](https://lerry.me/)
+- [https://blog.fanscore.cn/](https://blog.fanscore.cn/)
