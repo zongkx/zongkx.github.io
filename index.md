@@ -21,6 +21,5 @@ hero:
 Welcome
 
 ```sh
-npm init
-npx vitepress init
+
 ```

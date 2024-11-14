@@ -7,4 +7,8 @@
  docker inspect -f '{{.State.Pid}}' my_container
 ```
 
+```shell
+# 查询最近30小时被杀掉的进程
+journalctl --since "30 hours  ago" | grep -i "killed process"
 
+```

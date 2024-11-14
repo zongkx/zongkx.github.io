@@ -1,6 +1,8 @@
 ## resource
 
 * https://dbeaver.io/download/
+* https://github.com/beekeeper-studio/beekeeper-studio
+* https://www.navicat.com.cn/products/navicat-premium-lite
 
 ## 免费的云数据库
 

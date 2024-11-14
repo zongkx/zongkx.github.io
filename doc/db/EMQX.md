@@ -1,3 +1,11 @@
+## 日志追踪
+
+进入容器后输入
+
+> emqx_ctl trace start client clientid log/my_client.log
+
+即可在/opt/emqx/log中查看追踪日志
+
 ## deploy
 
 ```yaml
