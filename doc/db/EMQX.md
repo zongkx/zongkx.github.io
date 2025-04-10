@@ -1,3 +1,43 @@
+## Mica 客户端
+
+```xml
+
+<dependency>
+    <groupId>net.dreamlu</groupId>
+    <artifactId>mica-mqtt-client-spring-boot-starter</artifactId>
+    <version>2.3.9</version>
+</dependency>
+```
+
+### yml
+
+只需要基础配置
+
+```yaml
+
+mqtt:
+  client:
+    enabled: true               # 是否开启客户端，默认：true
+    ip: 127.0.0.1              # 连接的服务端 ip ，默认：127.0.0.1
+    port: 1883                  # 端口：默认：1883
+    user-name: admin             # 认证的用户名
+    password: 'aaaa'          # 认证的密码
+```
+
+### 配置自定义线程数量
+
+由于默认线程数量只有2,可以通过`MqttClientCustomizer`来自定义配置
+
+```java
+
+@Bean
+public MqttClientCustomizer mqttClientCustomizer() {
+    //默认线程数2  提高到20
+    return creator -> creator.mqttExecutor(ThreadUtils.getBizExecutor(20));
+}
+
+```
+
 ## 日志追踪
 
 进入容器后输入
