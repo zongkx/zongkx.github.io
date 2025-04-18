@@ -2,6 +2,12 @@
 
 https://docs.hazelcast.com
 
+## CP/AP
+
+5.5社区版已经移除了CP子系统的功能, 目前仅支持AP
+
+[release-notes](https://docs.hazelcast.com/hazelcast/5.5/release-notes/5-5-0)
+
 ## 依赖
 
 ```
