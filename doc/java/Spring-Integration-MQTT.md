@@ -6,7 +6,7 @@
 
 ## 图
 
-![img.png](dfgdfg.images/img.png)
+![img.png](.images/zfgdfgsdfg.png)
 
 - 所有的 channel 都需要绑定一个 `MessageHandler`
 - `Router` 需要绑定一个全局 `Channel`

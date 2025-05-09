@@ -1,3 +1,7 @@
+## Fetch
+
+`.fetchResults().getResults()` 会带来额外的 `count` 操作,不需要 计数的地方 使用 `.fetch` 替代
+
 ## 依赖
 
 classifier可配置jakarta 针对jdk8以上
