@@ -45,6 +45,7 @@ services:
    [20763](https://grafana.com/grafana/dashboards/20763-windows-exporter-dashboard-2024/)
 3. 新增卡片
    ![img.png](.images/1234123453562134234.png)
+   ![img.png](.images/6456345623.png)
 
 ```json
 {
