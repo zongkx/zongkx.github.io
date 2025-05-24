@@ -18,8 +18,6 @@ hero:
 
 ## Getting Started
 
-Welcome
-
 ```sh
-
+echo HelloWorld
 ```
