@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ag as p}from"./chunks/framework.BDwTZuFy.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Kafka.md","filePath":"doc/db/Kafka.md"}'),k={name:"doc/db/Kafka.md"};function l(h,s,t,e,E,r){return n(),a("div",null,s[0]||(s[0]=[p("",18)]))}const y=i(k,[["render",l]]);export{d as __pageData,y as default};
