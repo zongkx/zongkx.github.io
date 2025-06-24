@@ -1,1 +1,0 @@
-import{_ as a,c as i,o as e,ag as t}from"./chunks/framework.DK1-H3E1.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/K8s.md","filePath":"doc/ops/K8s.md"}'),n={name:"doc/ops/K8s.md"};function l(h,s,p,r,o,k){return e(),i("div",null,s[0]||(s[0]=[t("",18)]))}const g=a(n,[["render",l]]);export{d as __pageData,g as default};
