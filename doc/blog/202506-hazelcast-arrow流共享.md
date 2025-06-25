@@ -101,3 +101,38 @@ private Schema schema() {
 }
 
 ```
+
+### 使用duckdb表作为 arrow 生产者
+
+消费者逻辑不变
+
+```java
+
+@Test
+@SneakyThrows
+void testLocalCache7() {
+    Config config = new Config();
+    config.addCacheConfig(new CacheSimpleConfig().setName("A"));
+    HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance(config);
+    try (var conn = DriverManager.getConnection("jdbc:duckdb:");
+         var stmt = conn.prepareStatement("SELECT * FROM generate_series(2000)");
+         var resultset = (DuckDBResultSet) stmt.executeQuery();
+         var allocator = new RootAllocator()) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (var reader = (ArrowReader) resultset.arrowExportStream(allocator, 256)) {
+            try (ArrowStreamWriter writer = new ArrowStreamWriter(reader.getVectorSchemaRoot(), null, baos)) {
+                writer.start();
+                while (reader.loadNextBatch()) {
+                    VectorSchemaRoot root = reader.getVectorSchemaRoot();
+                    writer.writeBatch();
+                    root.clear(); // 清除当前批次的数据
+                }
+                writer.end();
+            }
+        }
+        hazelcastInstance.getMap("A").set("key", baos.toByteArray());
+    }
+    Thread.sleep(1000000000);
+
+}
+```
