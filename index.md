@@ -21,3 +21,12 @@ hero:
 ```sh
 echo HelloWorld
 ```
+
+```mermaid
+flowchart TD
+    A[working]
+    A --> C[do something]
+    C --> D[Eat]
+    C --> E[Sleep]
+    C --> F[Coding]
+```
