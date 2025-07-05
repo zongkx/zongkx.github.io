@@ -42,7 +42,7 @@ import{_ as n,c as s,o as p,ag as e}from"./chunks/framework.Bw-5EFTY.js";const h
 <span class="line"><span>    @PostMapping(&quot;/delete/{id}&quot;)</span></span>
 <span class="line"><span>    public boolean dictionaryDetailDelete(@PathVariable Long id){</span></span>
 <span class="line"><span>        return iDictionaryDetailService.removeById(id);</span></span>
-<span class="line"><span>    }</span></span></code></pre></div><p>后台代码较少,主要提供两表的CRUD功能即可.</p><h3 id="前台" tabindex="-1">前台 <a class="header-anchor" href="#前台" aria-label="Permalink to &quot;前台&quot;">​</a></h3><p>前台主要包括两部分:左侧列表和右侧表格内容.左侧列表第一个菜单默认为对主表的管理[综合管理],点击后右侧显示主表的表格数据,添加数据后左侧列表中多出一个菜单,点击后即可对该[新增的数据字典表]进行数据维护.</p><p>Dictionary.vue 路由配置:</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span> routes: [</span></span>
+<span class="line"><span>    }</span></span></code></pre></div><p>后台代码较少,主要提供两表的CRUD功能即可.</p><h3 id="前台" tabindex="-1">前台 <a class="header-anchor" href="#前台" aria-label="Permalink to &quot;前台&quot;">​</a></h3><p>前台主要包括两部分:左侧列表和右侧表格内容.左侧列表第一个菜单默认为对主表的管理[综合管理] ,点击后右侧显示主表的表格数据,添加数据后左侧列表中多出一个菜单,点击后即可对该[新增的数据字典表]进行数据维护.</p><p>Dictionary.vue 路由配置:</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span> routes: [</span></span>
 <span class="line"><span>    {</span></span>
 <span class="line"><span>      path: &#39;/&#39;,</span></span>
 <span class="line"><span>      name: &#39;&#39;,</span></span>
