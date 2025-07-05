@@ -1,8 +1,8 @@
-import {defineConfig} from 'vitepress'
 import {generateSidebar} from 'vitepress-sidebar';
+import {withMermaid} from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
     title: "zongkx",
     description: "zongkx",
     ignoreDeadLinks: true,
@@ -60,4 +60,5 @@ export default defineConfig({
     mermaidPlugin: {
         class: "mermaid my-class", // set additional css classes for parent container
     },
-})
+});
+
