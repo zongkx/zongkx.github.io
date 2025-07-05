@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as h,ag as n}from"./chunks/framework.Bw-5EFTY.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Mysql.md","filePath":"doc/db/Mysql.md"}'),k={name:"doc/db/Mysql.md"};function l(t,s,p,e,E,d){return h(),a("div",null,s[0]||(s[0]=[n("",35)]))}const y=i(k,[["render",l]]);export{g as __pageData,y as default};
