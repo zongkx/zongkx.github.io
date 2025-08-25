@@ -1,1 +1,0 @@
-import{_ as e,c as s,o as n,a2 as t}from"./chunks/framework.DxykYmMe.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/Neo4j.md","filePath":"doc/db/Neo4j.md"}'),p={name:"doc/db/Neo4j.md"};function i(l,a,o,c,d,r){return n(),s("div",null,a[0]||(a[0]=[t("",35)]))}const u=e(p,[["render",i]]);export{m as __pageData,u as default};
