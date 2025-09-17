@@ -1,5 +1,7 @@
 ## wsl2
 
+[参考](https://blog.csdn.net/u012060059/article/details/149718650?spm=1001.2014.3001.5506)
+
 ### 1. 启用
 
 ```ps
