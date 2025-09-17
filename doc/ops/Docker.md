@@ -1,13 +1,52 @@
+## wsl2
+
+### 1. 启用
+
+```ps
+    # 启用WSL功能
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    # 启用虚拟机平台（WSL2依赖）
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+### 2. 安装更新wsl2的更新包
+
+> [https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+
+```ps
+wsl --set-default-version 2
+```
+
+### 3. 下载离线包
+
+下载 Linux 发行版离线包：
+以 Ubuntu 22.04 为例，通过微软镜像工具获取：
+打开 https://store.rg-adguard.net/
+输入 Ubuntu 22.04 的应用商店 URL：
+https://www.microsoft.com/store/productId/9PN20MSR04DW
+下载带有Ubuntu_2204且扩展名为.appx或.msixbundle的文件（约 800MB）。
+
+重命名appx为zip解压到指定目录, 管理员运行 ubuntu.exe 即可
+输入账号/设置密码
+
+```cmd
+Enter new UNIX username: yourname
+New password: 
+Retype new password:
+```
+
+最后执行
+
+```cmd
+ wsl --update --web-download
+```
+
 ## docker for windows 安装
 
 ### 1.开启windows服务:
 
 - 适用于linux的windows子系统
 - 虚拟机平台
-
-### 2. 安装更新wsl2的更新包(可选)
-
-> [https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
 
 ### 3. 安装
 
