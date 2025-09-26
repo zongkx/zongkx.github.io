@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,a2 as k}from"./chunks/framework.DLEg3w5z.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/S3.md","filePath":"doc/db/S3.md"}'),h={name:"doc/db/S3.md"};function l(t,s,p,e,E,r){return n(),a("div",null,[...s[0]||(s[0]=[k("",16)])])}const y=i(h,[["render",l]]);export{g as __pageData,y as default};
