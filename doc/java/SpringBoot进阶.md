@@ -1,3 +1,27 @@
+## SpringBoot3 startup
+
+```java
+public class Demo {
+    static void main(String[] args) {
+        SpringApplication app = new SpringApplication(CmsApplication.class);
+        app.setApplicationStartup(new BufferingApplicationStartup(2048));
+        app.run(args);
+    }
+
+}
+```
+
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus,startup"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "GET,POST"
+```
+
 ## 基于时间轮的异步任务
 
 ```java
