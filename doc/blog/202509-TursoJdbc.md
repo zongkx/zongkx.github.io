@@ -68,6 +68,20 @@ void execute_insert_should_return_number_of_inserted_elements() throws Exception
 
 ```
 
+## Type2 Type4 驱动
+
+- Type 2 驱动，也被称为部分 Java 驱动（Partially Java Driver）或 JDBC-Native API 驱动。
+- Type 4 驱动： 完全用 Java 编写，直接将 JDBC 调用转换为数据库的网络协议（如 TCP/IP）。
+
+turso/sqlite/duckdb这类嵌入式数据库必须要依赖 native lib, 所有必须要使用 Type2 驱动 ,另外使用 一体化JAR包的方式提高易用性,
+所有平台编译出来的原生库文件都被打包JAR中, Type2 最明显的劣势便是 native reflect 非常麻烦, 像 sqlite比较成熟的驱动提供了
+native image支持, duckdb 社区尚未有所行动, 未来Type2 JDBC驱动可能都会往 FFM发展, 简化驱动 native image支持
+
+## JDBC　Driver 处理 LocalDateTime
+
+虽然 JDBC 规范推荐使用 setObject(index, localDateTime) 来处理 Java 8 的日期时间类型，但在 SQLite JDBC
+驱动中，这种做法确实会经常遇到时区问题，导致数据存储不准确。
+
 ## spotless
 
 执行 gradle 插件中的  `spotlessJavaApply` 即可完成代码格式化
