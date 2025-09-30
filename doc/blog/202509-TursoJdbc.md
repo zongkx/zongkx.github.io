@@ -68,7 +68,7 @@ void execute_insert_should_return_number_of_inserted_elements() throws Exception
 
 ```
 
-## Type2 Type4 驱动
+## Type2/Type4 驱动
 
 - Type 2 驱动，也被称为部分 Java 驱动（Partially Java Driver）或 JDBC-Native API 驱动。
 - Type 4 驱动： 完全用 Java 编写，直接将 JDBC 调用转换为数据库的网络协议（如 TCP/IP）。
@@ -76,6 +76,43 @@ void execute_insert_should_return_number_of_inserted_elements() throws Exception
 turso/sqlite/duckdb这类嵌入式数据库必须要依赖 native lib, 所有必须要使用 Type2 驱动 ,另外使用 一体化JAR包的方式提高易用性,
 所有平台编译出来的原生库文件都被打包JAR中, Type2 最明显的劣势便是 native reflect 非常麻烦, 像 sqlite比较成熟的驱动提供了
 native image支持, duckdb 社区尚未有所行动, 未来Type2 JDBC驱动可能都会往 FFM发展, 简化驱动 native image支持
+
+## 孤儿内存
+
+ResultSet 底层维护了一个 SQLite 语句对象 (sqlite3_stmt*)，这个对象本质上是一个游标 (Cursor)
+Java 代码中调用 resultSet.next() 时，JDBC 驱动通过 JNI 调用底层的 C 函数（如 sqlite3_step()
+JDBC 规范为此提供了一个标准且强制的模式：
+完成对 ResultSet、Statement 和 Connection 的操作后，必须调用它们的 close() 方法:当 Java 代码调用 close() 时，JDBC 驱动通过
+JNI 调用底层的 C 函数，如 sqlite3_finalize()，来销毁对应的 sqlite3_stmt* 游标对象，从而释放它在原生堆上占用的所有内存。
+
+### 错误的案例
+
+into_raw()
+
+```rust
+#[no_mangle]
+pub extern "C" fn getVersion() -> *mut c_char {
+    let result = std::panic::catch_unwind(|| -> Result<String> {
+        // 在这里，编译器知道 Result<String> 等同于 Result<String, duckdb::Error>
+        let conn = Connection::open_in_memory()?;
+        let mut stmt = conn.prepare("SELECT version()")?;
+        let version: String = stmt.query_row([], |row| row.get(0))?;
+        Ok(version)
+    });
+    match result {
+        Ok(Ok(version)) => CString::new(version).unwrap().into_raw(),
+        _ => std::ptr::null_mut(),
+    }
+}
+```
+
+Rust 中使用 CString::new(version).unwrap().**into_raw()** 时：
+
+- CString::into_raw() 的作用是放弃 Rust 对这个字符串数据的内存管理权。
+- Rust 的所有权系统不再追踪这块内存，Rust 的内存安全保证也被绕过。
+- 这块内存将不会被 Rust 的栈或堆自动清理（不会在函数结束时释放）。 责任被转移给了外部调用者（即 Java/JNI）。
+
+JVM GC 无法感知或管理由 JNI/FFI 调用底层 C/Rust 代码分配的、位于原生堆 (Native Heap) 上的内存。
 
 ## JDBC　Driver 处理 LocalDateTime
 
