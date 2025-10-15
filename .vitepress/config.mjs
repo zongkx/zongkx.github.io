@@ -12,7 +12,7 @@ export default withMermaid({
             {text: 'java', link: '/doc/java/'},
             {text: 'db', link: '/doc/db/'},
             {text: 'ops', link: '/doc/ops/'},
-            {text: 'js', link: '/doc/js/'}
+            {text: 'front', link: '/doc/js/'}
         ],
         search: {
             provider: 'local'
