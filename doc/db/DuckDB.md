@@ -215,3 +215,17 @@ SELECT * FROM read_json_auto('C:\Users\zongkuoxiong\Downloads\download.json',max
   id||','||statesid||','||cityid as chain,id||','||statesid||','||cityid as i18n from main.cpc
 ```
 
+## sha1 逆向
+不加盐的情况
+
+```sql
+INSTALL crypto FROM community;
+LOAD crypto;
+
+
+SELECT  '+86'|| '186' || LPAD(CAST(series_value AS VARCHAR), 6, '0')  
+|| '60' AS fake_phone_number,crypto_hash('sha1', fake_phone_number ) d
+FROM GENERATE_SERIES(0, 999999) AS t(series_value)
+where d = '8ad87e0068ef935cfd217cd26b6f6e7ac9948954';
+
+```
