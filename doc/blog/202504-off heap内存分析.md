@@ -1,3 +1,6 @@
+## 参考
+[GC](https://docs.oracle.com/en/java/javase/21/gctuning/introduction-garbage-collection-tuning.html#GUID-326EB4CF-8C8C-4267-8355-21AB04F0D304)
+
 ## 问题
 
 - windows部署的springboot应用程序,任务管理器见内存缓慢增加,JProfiler 中堆和非堆内存平稳
