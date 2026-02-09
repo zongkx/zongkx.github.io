@@ -1,3 +1,13 @@
+## 补充(NEW)
+
+今天又发生了一次Pinned问题, 使用 JProfiler竟然排查不到, 使用 Arthas 配合 thread_dump 才把问题定位到
+
+- 启动arthus `"D:\18\jdk\bin\java.exe" -jar "D:\18\jdk\bin\arthas-boot.jar" 7020`
+- 找到top `thread -n 5`
+- 使用jcmd导出 thread_dump: ` jcmd 7020 Thread.dump_to_file -format=json thread_dump.json`
+- 对比top thread 是不是阻塞在载体线程
+![20260209-123123.png](.images/20260209-123123.png)
+
 ## 问题
 
 今天发现一个很奇怪的问题,在一个批量下线的场景中, 导致程序假死的现象
@@ -101,3 +111,4 @@ private void bb(HazelcastInstance hazelcastInstance, int i) throws InterruptedEx
     hazelcastInstance.getMap("A").evict(i + "");
 }
 ```
+
