@@ -1,0 +1,9 @@
+version: '3'
+services:
+  torna:
+    container_name: torna
+    image: registry.cn-hangzhou.aliyuncs.com/tanghc/torna:latest
+    ports:
+      - "7700:7700"
+    environment:
+      - TZ=Asia/Shanghai

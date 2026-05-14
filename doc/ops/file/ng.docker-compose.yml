@@ -1,0 +1,11 @@
+version: '3'
+services:
+  cms:
+    image: admin/cmsweb:2026.04.30.01.90
+    container_name: cmsweb
+    restart: always
+    extra_hosts:
+      - "localhost:172.28.255.34"
+    ports:
+      - "7788:80"
+      - "7443:443"

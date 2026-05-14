@@ -1,0 +1,26 @@
+version: '3'
+services:
+  emqx:
+    image: emqx/emqx:5.3.2
+    restart: always
+    ports:
+      - "38083:18083"
+      - "21883:1883"
+      - "28083:8083"
+      - "28883:8883"
+      - "28084:8084"
+    environment:
+      - TZ=Asia/Shanghai
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+        reservations:
+          memory:
+            128M
+    privileged: true
+#    限制性配置
+#    sysctls:
+#      - net.ipv4.tcp_wmem=128 128 128
+#      - net.ipv4.tcp_rmem=128 128 128
+#      - net.core.somaxconn=2

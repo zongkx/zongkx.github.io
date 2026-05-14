@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  ldap:
+    image: osixia/openldap:1.5.0 # 推荐使用特定版本，避免不兼容
+    hostname: ldap.example.org # 根据你的实际域名修改
+    ports:
+      - "389:389"
+      # - "636:636" # 不启用 LDAPS，所以注释掉 636 端口
+    environment:
+      - LDAP_DOMAIN=example.org # 替换为你的域名
+      - LDAP_ADMIN_PASSWORD=adminpassword # 替换为你的管理员密码
+      - LDAP_BASE_DN=dc=example,dc=org # 根据你的域名生成
+      - LDAP_ORGANISATION=Example Company # 组织名称
+      - LDAP_TLS=false # 明确禁用 TLS
+    volumes:
+      - ldap_data:/var/lib/ldap # 持久化 LDAP 数据
+    networks:
+      - ldap-net
+  ld:
+    image: dnknth/ldap-ui:latest
+    ports:
+      - 5000:5000
+    networks:
+      - ldap-net
+    environment:
+      - LDAP_URL=ldap://10.13.0.142:389
+  phpldapadmin:
+    image: osixia/phpldapadmin # 推荐使用特定版本
+    hostname: phpldapadmin.example.org # 根据你的实际域名修改
+    ports:
+      - "8080:80" # 将 phpLDAPAdmin 暴露在 8080 端口
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap # 指向 OpenLDAP 服务的主机名
+      - PHPLDAPADMIN_HTTPS=false # 明确禁用 HTTPS
+    depends_on:
+      - ldap # 确保 ldap 服务启动后再启动 phpldapadmin
+    networks:
+      - ldap-net
+
+volumes:
+  ldap_data:
+
+networks:
+  ldap-net:
+    driver: bridge
+
+    

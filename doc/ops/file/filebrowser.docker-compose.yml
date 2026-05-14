@@ -1,0 +1,14 @@
+version: '3'
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    ports:
+      - 4000:80
+    volumes:
+      - C:\Users\zongkuoxiong\Downloads\:/srv
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+        reservations:
+          memory: 128M

@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  # NocoBase 应用服务
+  nocobase:
+    image: nocobase/nocobase:latest  # 使用最新的 NocoBase 镜像
+    container_name: nocobase_app
+    restart: always
+    ports:
+      - "80:80"  # 将主机的 80 端口映射到容器的 80 端口
+    environment:
+      # --- 关键环境变量 ---
+      - APP_ENV=production        # 生产环境部署
+      - TZ=Asia/Shanghai          # 设置应用时区，请根据您的情况修改
+      - DB_DIALECT=postgres
+      - DB_CLIENT=pg              # 兼容旧版本，如果使用 pg，客户端通常是 pg
+      - DB_HOST=db                # 数据库服务名称，与您 docker-compose.yml 中定义的数据库服务名一致
+      - DB_PORT=5432
+      - DB_DATABASE=nocobase_db
+      - DB_USER=nocobase_user
+      - DB_PASSWORD=your_db_password_here
+      # --- 其他配置，请确保存在 ---
+      - APP_ENV=production        # 推荐生产环境部署
+      - APP_KEY=your_secret_key_here
+    volumes:
+      - ./storage:/app/storage    # 将应用存储文件映射到宿主机，保持数据持久化
+      - ./uploads:/app/uploads    # 映射上传文件
+
+  # 数据库服务 (以 PostgreSQL 为例)
+  db:
+    image: postgres:14-alpine
+    container_name: nocobase_db
+    restart: always
+    environment:
+      - POSTGRES_DB=nocobase_db
+      - POSTGRES_USER=nocobase_user
+      - POSTGRES_PASSWORD=your_db_password_here # **重要！** 保持与应用配置一致
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data # 将数据库数据映射到宿主机，保持数据持久化

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7.41
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+  mysql8:
+    image: mysql:latest #镜像名称以及版本
+    restart: always #重启docker后该容器也重启
+    container_name: mysql8 #容器名称
+    environment:
+      MYSQL_ROOT_PASSWORD: Comen_2020 #指定用户密码
+      TZ: Asia/Shanghai
+    ports:
+      - 3306:3306 #本地端口号与容器内部端口号
