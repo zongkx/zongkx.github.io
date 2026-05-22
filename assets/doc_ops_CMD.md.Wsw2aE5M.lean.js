@@ -1,0 +1,1 @@
+import{c as i,Q as a,j as t,m as e}from"./chunks/framework.CQedrDFh.js";const c=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/ops/CMD.md","filePath":"doc/ops/CMD.md"}'),n={name:"doc/ops/CMD.md"};function l(p,s,h,k,d,r){return a(),t("div",null,[...s[0]||(s[0]=[e("",2)])])}const m=i(n,[["render",l]]);export{c as __pageData,m as default};

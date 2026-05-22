@@ -1,0 +1,1 @@
+import{c as i,Q as a,j as n,m as k}from"./chunks/framework.CQedrDFh.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/db/S3.md","filePath":"doc/db/S3.md"}'),h={name:"doc/db/S3.md"};function l(t,s,p,e,E,r){return a(),n("div",null,[...s[0]||(s[0]=[k("",16)])])}const y=i(h,[["render",l]]);export{g as __pageData,y as default};
