@@ -5,7 +5,9 @@ services:
     ports:
       - 4000:80
     volumes:
-      - C:\Users\zongkuoxiong\Downloads\:/srv
+      - D:/download:/srv
+    environment:
+      - FB_BASEURL=/
     deploy:
       resources:
         limits:

@@ -1,0 +1,33 @@
+services:
+  # 容器 1：挂载并同步宿主机的 D:\1
+  jfs-mount-1:
+    image: juicedata/mount:ce-release-check
+    container_name: jfs-mount-1
+    restart: always
+    privileged: true
+    # 启动命令：自动检测。若没有 metadata.db 则先 format 格式化，随后 mount 挂载
+    entrypoint: >
+      sh -c "juicefs format --storage file --bucket /jfs-data/chunks sqlite3:///jfs-data/metadata.db mysyncfs || true && 
+             juicefs mount sqlite3:///jfs-data/metadata.db /mnt/jfs --no-syslog"
+    volumes:
+      # 映射宿主机目标挂载点 D:\1 到容器内
+      - /d/11:/mnt/jfs:shared
+      # 共享底层的区块数据和 SQLite 数据库存储目录
+      - /d/jfs-backend:/jfs-data
+
+  # 容器 2：挂载并同步宿主机的 D:\2
+  jfs-mount-2:
+    image: juicedata/mount:ce-release-check
+    container_name: jfs-mount-2
+    restart: always
+    privileged: true
+    # 依赖容器 1 完成初始化
+    depends_on:
+      - jfs-mount-1
+    # 容器 2 直接挂载同一个 SQLite 数据库即可
+    entrypoint: ["juicefs", "mount", "sqlite3:///jfs-data/metadata.db", "/mnt/jfs", "--no-syslog"]
+    volumes:
+      # 映射宿主机目标挂载点 D:\2 到容器内
+      - /d/2:/mnt/jfs:shared
+      # 共享相同的底层数据
+      - /d/jfs-backend:/jfs-data

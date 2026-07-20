@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  primary:
+    image: postgres:18
+    container_name: pg-primary
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    command: >
+      postgres
+      -c wal_level=replica
+      -c max_wal_senders=10
+      -c max_replication_slots=10
+      -c listen_addresses='*'
+    volumes:
+      - primary_data:/var/lib/postgresql/data
+      - ./primary/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./primary/pg_hba.conf:/etc/postgresql/pg_hba.conf
+  standby:
+    image: postgres:18
+    container_name: pg-standby
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      PGPASSWORD: postgres
+    depends_on:
+      - primary
+    command: >
+      bash -c "
+      rm -rf /var/lib/postgresql/data/* &&
+      until pg_isready -h primary -p 5432; do sleep 2; done &&
+      pg_basebackup -h primary -U postgres -D /var/lib/postgresql/data -Fp -Xs -P -R &&
+      postgres
+      "
+    volumes:
+      - standby_data:/var/lib/postgresql/data

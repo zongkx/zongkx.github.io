@@ -1,0 +1,36 @@
+services:
+  # ==========================================
+  # 1. 主库 (Primary)
+  # ==========================================
+  libsql-primary:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    container_name: libsql-primary
+    ports:
+      - "8080:8080"  # 外部应用连接主库的 HTTP/WebSocket 端口
+      - "5001:5001"  # 供从库同步使用的 gRPC 端口
+    volumes:
+      - ./data-primary:/var/lib/sqld
+    environment:
+      - SQLD_NODE=primary
+      - SQLD_HTTP_LISTEN_ADDR=0.0.0.0:8080
+      - SQLD_GRPC_LISTEN_ADDR=0.0.0.0:5001  # 必须开启，允许从节点建立同步长连接
+    restart: always
+
+  # ==========================================
+  # 2. 从库 (Replica)
+  # ==========================================
+  libsql-replica:
+    image: ghcr.io/tursodatabase/libsql-server:latest
+    container_name: libsql-replica
+    ports:
+      - "8081:8080"  # 映射到宿主机的 8081 端口，防止与主库冲突
+    volumes:
+      - ./data-replica:/var/lib/sqld
+    environment:
+      - SQLD_NODE=replica
+      - SQLD_HTTP_LISTEN_ADDR=0.0.0.0:8080
+      # 核心配置：指定主库的 gRPC 同步地址。在同一个 docker-compose 中可以直接用服务名
+      - SQLD_PRIMARY_URL=http://libsql-primary:5001
+    depends_on:
+      - libsql-primary
+    restart: always

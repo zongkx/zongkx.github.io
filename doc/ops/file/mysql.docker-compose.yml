@@ -8,7 +8,7 @@ services:
     ports:
       - "3306:3306"
   mysql8:
-    image: mysql:latest #镜像名称以及版本
+    image: mysql:8.4 #镜像名称以及版本
     restart: always #重启docker后该容器也重启
     container_name: mysql8 #容器名称
     environment:

@@ -1,4 +1,7 @@
 ## Rust离线安装
+最好使用 rustup 来管理 , windows 建议使用 msvc
+[rust](https://rustup.rs/)
+
 [下载链接](https://static.rust-lang.org/dist/rust-1.80.1-i686-pc-windows-gnu.msi)
 一直点下一步即可
 ## cargo 代理
